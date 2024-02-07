@@ -3,7 +3,7 @@ import type { NextAuthOptions } from "next-auth";
 import axios from "axios";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   secret: process.env.SECRET,
   pages: {
     signIn: "/login",
