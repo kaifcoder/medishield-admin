@@ -3,7 +3,7 @@ import type { NextAuthOptions } from "next-auth";
 import axios from "axios";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
   secret: process.env.SECRET,
   pages: {
     signIn: "/login",
@@ -77,4 +77,5 @@ const authOptions: NextAuthOptions = {
 };
 
 const handler = NextAuth(authOptions);
+
 export { handler as GET, handler as POST };
