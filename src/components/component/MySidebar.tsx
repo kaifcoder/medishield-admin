@@ -14,7 +14,7 @@ import { Button } from "../ui/button";
 
 const MySidebar = () => {
   return (
-    <div className="flex flex-col w-[280px] border-r min-h-screen">
+    <div className="flex flex-col w-[280px] border-r min-h-screen fixed bg-white">
       <div className="flex h-[60px] items-center px-6 bg-white">
         <Link className="flex items-center  gap-2 font-semibold" href="#">
           <Package2Icon className="h-6 w-6" />

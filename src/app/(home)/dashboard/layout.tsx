@@ -6,9 +6,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex items-start justify-between">
+    <div className="flex items-start justify-between h-full">
       <MySidebar />
-      <main className="w-full h-full">{children}</main>
+      <main className="w-full ml-[280px] overflow-y-auto">{children}</main>
     </div>
   );
 }

@@ -35,6 +35,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useRouter } from "next/navigation";
 
 const data: Payment[] = [
   {
@@ -171,6 +172,7 @@ export default function Page() {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
+  const router = useRouter();
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
@@ -205,6 +207,7 @@ export default function Page() {
           }
           className="max-w-sm"
         />
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
@@ -232,6 +235,8 @@ export default function Page() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+
+      {/* table */}
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -257,6 +262,7 @@ export default function Page() {
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
+                  onClick={() => router.push(`/dashboard/orders/${row.id}`)}
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
@@ -282,6 +288,8 @@ export default function Page() {
           </TableBody>
         </Table>
       </div>
+
+      {/* pagination */}
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
