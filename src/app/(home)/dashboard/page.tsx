@@ -1,5 +1,4 @@
 import { Dashboard } from "@/components/component/dashboard";
-import { Card, CardContent } from "@/components/ui/card";
 import React from "react";
 
 const DashBoard = () => {

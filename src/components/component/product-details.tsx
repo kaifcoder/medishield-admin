@@ -13,15 +13,258 @@ import {
 import { StarIcon } from "lucide-react";
 
 export function ProductDetails() {
+  const productInfo = {
+    _id: {
+      $oid: "65a6ebc6a4032a1d9948cfd1",
+    },
+    id: 35102,
+    name: "Dr. Morepen BG-03 Gluco One",
+    sku: "XXXXX00001-77",
+    special_price: null,
+    thumbnail_url: "/w/h/whatsapp_image_2020-08-29_at_7.25.51_pm_1.jpeg",
+    short_description: "Blood glucose monitoring system.",
+    manufacturer: null,
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: null,
+    meta_title: "Buy Dr. Morepen BG-03 Gluco One Glucometer",
+    meta_keyword: null,
+    meta_description:
+      "Dr. Morepen glucose blood glucose monitor model bg 03 is a smart glucose monitor that helps you measure blood glucose levels, quickly, accurately, and comfortably. ",
+    price: {
+      minimalPrice: 450,
+      maximalPrice: 450,
+      regularPrice: 0,
+    },
+    tier_prices: [],
+    media_gallery_entries: [
+      {
+        id: 354967,
+        media_type: "image",
+        label: null,
+        file: "/w/h/whatsapp_image_2020-08-29_at_7.25.51_pm_1.jpeg",
+      },
+      {
+        id: 354968,
+        media_type: "image",
+        label: null,
+        file: "/w/h/whatsapp_image_2020-08-29_at_7.25.52_pm_1_1.jpeg",
+      },
+      {
+        id: 354969,
+        media_type: "image",
+        label: null,
+        file: "/d/r/dr-morepen-glucose-monitor-bg-1207843-1-72232_1.jpg",
+      },
+      {
+        id: 354970,
+        media_type: "image",
+        label: null,
+        file: "/o/r/orderhealth.in-bg-03-dr-morepen-original2-750x750_1.jpeg",
+      },
+      {
+        id: 354971,
+        media_type: "image",
+        label: null,
+        file: "/t/y/tyu7ey474rtg_1.jpg",
+      },
+      {
+        id: 354972,
+        media_type: "image",
+        label: null,
+        file: "/s/u/sugar-monitoring-machine-500x500_2.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "Equipments",
+      },
+      {
+        name: "Glucometers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+      {
+        name: "The Republic Day Sale",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dr. Morepen BG-03 Gluco One Glucometer Combo</strong></p>\r\n<p>Dr. Morepen glucose blood glucose monitor model bg 03 is a smart glucose monitor that helps you measure blood glucose levels, quickly, accurately, and comfortably. The readings from the glucose meter are only to be used for general information purposes - they are not a substitute for a medical examination from a registered medical practitioner discuss your results with a registered medical practitioner. Never use the results to make medical decisions independently. Seek prompt medical attention for health care questions you have. Consult your physician before making changes to your medication, diet, fitness program, or blood glucose testing schedules.</p>\r\n<p><strong>Dr. Morepen BG-03 Gluco One Blood Glucose Test Strips</strong></p>\r\n<p>Dr. Morepen Gluco One Test Strips is used for routine blood glucose (sugar) testing. It provides information about how your treatment affects your blood glucose level. It is suitable for self-testing for both professional and home use. Testing with Dr. Morepen Gluco One Test Strips also helps keep your diabetes under control too. This product requires a tiny drop of blood and you can easily check and monitor your glucose level. Dr. Morepen Gluco One Test Strips are very easy to use and can complete the test within 5 seconds only. No coding or set up is required you just need to insert it and it starts working in 5 sec and gives an accurate result.</p>\r\n<p><strong>NOTE:</strong> The test strips will only work with Morepen BG03 Glucometer Machine.</p>",
+      key_specifications:
+        '<table style="height: 279px; width: 94.3846%;" border="0" width="331" cellspacing="0" cellpadding="0">\r\n<tbody>\r\n<tr class="grpDesc" style="height: 57px;">\r\n<td style="height: 57px; width: 100%;" colspan="2">\r\n<h3 class="active">Test Result Duration Specification</h3>\r\n</td>\r\n</tr>\r\n<tr style="height: 40px;">\r\n<td style="height: 40px; width: 30%;" width="30%"><strong>Test Result Duration</strong></td>\r\n<td style="height: 40px; width: 70%;" width="70%"><span class="stext">:   0 - 5 Sec</span></td>\r\n</tr>\r\n<tr class="grpDesc" style="height: 58px;">\r\n<td style="height: 58px; width: 100%;" colspan="2">\r\n<h3 class="active">Key Feature</h3>\r\n</td>\r\n</tr>\r\n<tr style="height: 22px;">\r\n<td style="height: 22px; width: 30%;" width="30%"><strong>Lifestyle</strong></td>\r\n<td style="height: 22px; width: 70%;" width="70%"><span class="stext">:   Everyday Use</span></td>\r\n</tr>\r\n<tr style="height: 22px;">\r\n<td style="height: 22px; width: 30%;" width="30%"><strong>Brand</strong></td>\r\n<td style="height: 22px; width: 70%;" width="70%"><span class="stext">:   Dr. Morepen</span></td>\r\n</tr>\r\n<tr class="grpDesc" style="height: 58px;">\r\n<td style="height: 58px; width: 100%;" colspan="2">\r\n<h3 class="active">Country of origin</h3>\r\n</td>\r\n</tr>\r\n<tr style="height: 22px;">\r\n<td style="height: 22px; width: 30%;" width="30%"><strong>Country of origin</strong></td>\r\n<td style="height: 22px; width: 70%;" width="70%">\r\n<p><span class="stext">:   India</span></p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class="text-grey f-size-13 lh-22" style="width: 30%;"><strong>Strips</strong></td>\r\n<td class="f-size-13 lh-22" style="width: 70%;">\r\n<div>\r\n<p>:   25 Strips</p>\r\n</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class="text-grey f-size-13 lh-22" style="width: 30%;"><strong>Package Contents</strong></td>\r\n<td class="f-size-13 lh-22" style="width: 70%;">\r\n<div>\r\n<p>:   1 Vial of 25 Test Strips</p>\r\n</div>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td class="text-grey f-size-13 lh-22" style="width: 30%;"><strong>Item Code</strong></td>\r\n<td class="f-size-13 lh-22" style="width: 70%;">:   BG 03</td>\r\n</tr>\r\n<tr>\r\n<td class="text-grey f-size-13 lh-22" style="width: 30%;"><strong>Items in Pack</strong></td>\r\n<td class="f-size-13 lh-22" style="width: 70%;">\r\n<div>\r\n<p>:   1 Kit</p>\r\n</div>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>',
+      packaging:
+        "<p><strong>Dr. Morepen BG-03 Gluco One Glucometer Combo</strong></p>\r\n<ul>\r\n<li>1 x BG-03 Gluco One Glucometer</li>\r\n<li>1 x Blood glucose test 25 strips</li>\r\n</ul>\r\n<p><strong>Dr. Morepen BG-03 Gluco One Blood Glucose Test Strips</strong></p>\r\n<ul>\r\n<li>1 x BG-03 Blood Glucose Test 25 Strips</li>\r\n</ul>",
+      direction_to_use:
+        "<ul>\r\n<li>Read the user manual carefully and completely before testing blood glucose for the first time.</li>\r\n</ul>",
+      features:
+        '<ul class="a-unordered-list a-vertical a-spacing-mini">\r\n<li><span class="a-list-item">Fast result in 5 seconds.</span></li>\r\n<li><span class="a-list-item">Small 0.5uL blood sample size.</span></li>\r\n<li><span class="a-list-item">Large memory. 10 Lancets.</span></li>\r\n<li><span class="a-list-item">Minimum Blood Sample: 0.5 microlitres; It features a large display screen that can store up to 300 test results.</span></li>\r\n<li class="text-black f-size-13 pad-t-5 pad-tb-xs-10 lh-20">Strips for Blood Glucose Monitoring System.</li>\r\n<li class="text-black f-size-13 pad-t-5 pad-tb-xs-10 lh-20">Routine Blood Glucose Testing with Monitoring System.</li>\r\n<li class="text-black f-size-13 pad-t-5 pad-tb-xs-10 lh-20">Easy to use.</li>\r\n<li class="text-black f-size-13 pad-t-5 pad-tb-xs-10 lh-20">Test Time: 5 Seconds.</li>\r\n<li><span class="a-list-item">300 Memories.</span></li>\r\n<li><span class="a-list-item">7,14 and 31-day average.</span></li>\r\n</ul>',
+    },
+    childProducts: [
+      {
+        id: 35101,
+        image_url: "/w/h/whatsapp_image_2020-08-29_at_7.25.52_pm_1.jpeg",
+        name: "Dr. Morepen BG-03 Gluco One Blood Glucose Test Strips",
+        sku: "DRMXX00101",
+        special_price: 450,
+        short_description: "Blood glucose test strips",
+        manufacturer: "6799",
+        average_rating: null,
+        rating_count: null,
+        is_in_stock: true,
+        pd_expiry_date: "2024-12-31 00:00:00",
+        meta_title: "Dr. Morepen BG-03 Blood Glucose Test Strips",
+        price: {
+          minimalPrice: {
+            amount: {
+              value: 450,
+              currency: "INR",
+            },
+          },
+          maximalPrice: {
+            amount: {
+              value: 450,
+              currency: "INR",
+            },
+          },
+          regularPrice: {
+            amount: {
+              value: 499,
+              currency: "INR",
+            },
+          },
+        },
+        tier_prices: [],
+        media_gallery_entries: [
+          {
+            media_type: "image",
+            label: null,
+            file: "/w/h/whatsapp_image_2020-08-29_at_7.25.52_pm_1.jpeg",
+          },
+          {
+            media_type: "image",
+            label: null,
+            file: "/o/r/orderhealth.in-bg-03-dr-morepen-original2-750x750.jpeg",
+          },
+          {
+            media_type: "image",
+            label: null,
+            file: "/t/y/tyu7ey474rtg.jpg",
+          },
+          {
+            media_type: "image",
+            label: null,
+            file: "/s/u/sugar-monitoring-machine-500x500_1.jpg",
+          },
+        ],
+        categories: [],
+      },
+      {
+        id: 35100,
+        image_url: "/w/h/whatsapp_image_2020-08-29_at_7.25.51_pm.jpeg",
+        name: "Dr. Morepen BG-03 Gluco One Glucometer Combo",
+        sku: "DRMXX00100",
+        special_price: 995,
+        short_description: "Blood glucose monitoring system",
+        manufacturer: "6799",
+        average_rating: null,
+        rating_count: null,
+        is_in_stock: true,
+        pd_expiry_date: null,
+        meta_title: "Dr. Morepen BG-03 Gluco One Glucometer Combo",
+        price: {
+          minimalPrice: {
+            amount: {
+              value: 995,
+              currency: "INR",
+            },
+          },
+          maximalPrice: {
+            amount: {
+              value: 995,
+              currency: "INR",
+            },
+          },
+          regularPrice: {
+            amount: {
+              value: 1164,
+              currency: "INR",
+            },
+          },
+        },
+        tier_prices: [
+          {
+            qty: 2,
+            value: 990,
+          },
+          {
+            qty: 5,
+            value: 988,
+          },
+        ],
+        media_gallery_entries: [
+          {
+            media_type: "image",
+            label: null,
+            file: "/w/h/whatsapp_image_2020-08-29_at_7.25.51_pm.jpeg",
+          },
+          {
+            media_type: "image",
+            label: null,
+            file: "/w/h/whatsapp_image_2020-08-29_at_7.25.52_pm.jpeg",
+          },
+          {
+            media_type: "image",
+            label: null,
+            file: "/d/r/dr-morepen-glucose-monitor-bg-1207843-1-72232.jpg",
+          },
+          {
+            media_type: "image",
+            label: null,
+            file: "/s/u/sugar-monitoring-machine-500x500.jpg",
+          },
+          {
+            media_type: "image",
+            label: null,
+            file: "/w/h/whatsapp_image_2020-08-29_at_6.00.12_pm.jpeg",
+          },
+          {
+            media_type: "image",
+            label: null,
+            file: "/g/d/gds5ykxm6p3tz-xlarge.jpg",
+          },
+        ],
+        categories: [],
+      },
+    ],
+  };
+
+  const categories = [
+    "T-Shirts",
+    "Pants",
+    "Shoes",
+    "Hats",
+    "Socks",
+    "Accessories",
+  ];
+
   return (
-    <div className="grid gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto  py-6">
+    <div className="grid gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-6">
       <div className="grid gap-4 items-start">
         <div className="flex items-start">
-          <div className="grid gap-4">
-            <h1 className="font-bold text-3xl">
-              Acme Prism T-Shirt: The Modern Blend of Style and Comfort
-            </h1>
-            <div className="flex items-center gap-4">
+          <div className="grid gap-3">
+            <h1 className="font-bold text-3xl">{productInfo.name}</h1>
+            <p className="font-bold">
+              SKU <span className="font-medium">{productInfo.sku}</span>
+            </p>
+
+            {/* <div className="flex items-center gap-4">
               <div className="flex items-center gap-0.5">
                 <StarIcon className="w-5 h-5 fill-primary" />
                 <StarIcon className="w-5 h-5 fill-primary" />
@@ -29,155 +272,84 @@ export function ProductDetails() {
                 <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
                 <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
               </div>
-            </div>
+            </div> */}
+            <p className="font-bold">
+              Stock <span className="font-medium mr-2">100</span>(
+              <span className="text-green-500 500">In Stock</span>)
+            </p>
             <div>
-              <p>60% combed ringspun cotton/40% polyester jersey tee.</p>
+              <p>{productInfo.short_description}</p>
             </div>
           </div>
-          <div className="text-4xl font-bold ml-auto">$99</div>
         </div>
-        <div className="grid gap-4 md:gap-10">
-          <div className="grid gap-2">
-            <Label className="text-base" htmlFor="color">
-              Color
-            </Label>
-            <RadioGroup
-              className="flex items-center gap-2"
-              defaultValue="black"
-              id="color"
-            >
-              <Label
-                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                htmlFor="color-black"
-              >
-                <RadioGroupItem id="color-black" value="black" />
-                Black
-              </Label>
-              <Label
-                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                htmlFor="color-white"
-              >
-                <RadioGroupItem id="color-white" value="white" />
-                White
-              </Label>
-              <Label
-                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                htmlFor="color-blue"
-              >
-                <RadioGroupItem id="color-blue" value="blue" />
-                Blue
-              </Label>
-            </RadioGroup>
-          </div>
-          <div className="grid gap-2">
-            <Label className="text-base" htmlFor="size">
-              Size
-            </Label>
-            <RadioGroup
-              className="flex items-center gap-2"
-              defaultValue="m"
-              id="size"
-            >
-              <Label
-                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                htmlFor="size-xs"
-              >
-                <RadioGroupItem id="size-xs" value="xs" />
-                XS
-              </Label>
-              <Label
-                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                htmlFor="size-s"
-              >
-                <RadioGroupItem id="size-s" value="s" />S
-                {"\n                          "}
-              </Label>
-              <Label
-                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                htmlFor="size-m"
-              >
-                <RadioGroupItem id="size-m" value="m" />M
-                {"\n                          "}
-              </Label>
-              <Label
-                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                htmlFor="size-l"
-              >
-                <RadioGroupItem id="size-l" value="l" />L
-                {"\n                          "}
-              </Label>
-              <Label
-                className="border cursor-pointer rounded-md p-2 flex items-center gap-2 [&:has(:checked)]:bg-gray-100 dark:[&:has(:checked)]:bg-gray-800"
-                htmlFor="size-xl"
-              >
-                <RadioGroupItem id="size-xl" value="xl" />
-                XL
-              </Label>
-            </RadioGroup>
-          </div>
+        <div className="text-3xl font-bold ">
+          ₹ {productInfo.price.minimalPrice}.00
         </div>
+
+        <div className="flex items-center">
+          <h1 className="font-lg font-medium">Listed in Categories</h1>
+          {productInfo.categories.map((category) => (
+            <p className="ml-2">{category.name}</p>
+          ))}
+        </div>
+
+        <h2>Product Varients</h2>
+        <div className="flex space-x-6">
+          {productInfo.childProducts.map((child) => (
+            <div className="flex space-x-4">
+              <div>
+                <img src={child.image_url} alt={child.image_url} />
+                <h1>
+                  {child.name} SKU #{child.sku}
+                </h1>
+                <p>{child.short_description}</p>
+                <p>{child.price.minimalPrice.amount.value}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
         <Accordion className="w-full" collapsible type="single">
           <AccordionItem value="more-info">
-            <AccordionTrigger>More Information</AccordionTrigger>
+            <AccordionTrigger>Description</AccordionTrigger>
             <AccordionContent>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
+              {productInfo.product_specs.description}
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-      </div>
-      <div className="grid gap-4">
-        <img
-          alt="Product Image"
-          className="aspect-square object-cover border border-gray-200 w-full rounded-lg overflow-hidden dark:border-gray-800"
-          height={600}
-          src="/placeholder.svg"
-          width={600}
-        />
-        <div className="hidden md:flex gap-4 items-start">
-          <button className="border hover:border-gray-900 rounded-lg overflow-hidden transition-colors dark:hover:border-gray-50">
-            <img
-              alt="Preview thumbnail"
-              className="aspect-square object-cover"
-              height={100}
-              src="/placeholder.svg"
-              width={100}
-            />
-            <span className="sr-only">View Image 1</span>
-          </button>
-          <button className="border hover:border-gray-900 rounded-lg overflow-hidden transition-colors dark:hover:border-gray-50">
-            <img
-              alt="Preview thumbnail"
-              className="aspect-square object-cover"
-              height={100}
-              src="/placeholder.svg"
-              width={100}
-            />
-            <span className="sr-only">View Image 2</span>
-          </button>
-          <button className="border hover:border-gray-900 rounded-lg overflow-hidden transition-colors dark:hover:border-gray-50">
-            <img
-              alt="Preview thumbnail"
-              className="aspect-square object-cover"
-              height={100}
-              src="/placeholder.svg"
-              width={100}
-            />
-            <span className="sr-only">View Image 3</span>
-          </button>
-          <button className="border hover:border-gray-900 rounded-lg overflow-hidden transition-colors dark:hover:border-gray-50">
-            <img
-              alt="Preview thumbnail"
-              className="aspect-square object-cover"
-              height={100}
-              src="/placeholder.svg"
-              width={100}
-            />
-            <span className="sr-only">View Image 4</span>
-          </button>
-        </div>
+
+        <Accordion className="w-full" collapsible type="single">
+          <AccordionItem value="more-info">
+            <AccordionTrigger>Key Specification</AccordionTrigger>
+            <AccordionContent>
+              {productInfo.product_specs.key_specifications}
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+        <Accordion className="w-full" collapsible type="single">
+          <AccordionItem value="more-info">
+            <AccordionTrigger>Packaging</AccordionTrigger>
+            <AccordionContent>
+              {productInfo.product_specs.packaging}
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+        <Accordion className="w-full" collapsible type="single">
+          <AccordionItem value="more-info">
+            <AccordionTrigger>Direction To Use</AccordionTrigger>
+            <AccordionContent>
+              {productInfo.product_specs.direction_to_use}
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+        <Accordion className="w-full" collapsible type="single">
+          <AccordionItem value="more-info">
+            <AccordionTrigger>Features</AccordionTrigger>
+            <AccordionContent>
+              {productInfo.product_specs.features}
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </div>
   );
