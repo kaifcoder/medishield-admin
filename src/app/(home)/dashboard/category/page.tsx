@@ -1,9 +1,8 @@
 import { CategoryAddPanel } from "@/components/component/category-add-panel";
-import { categories } from "@/data/categories";
+
 import React from "react";
 
 const page = () => {
-  const data = categories.categories;
   return (
     <div className="p-8">
       <header>
