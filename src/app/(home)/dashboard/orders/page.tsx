@@ -1,37 +1,7 @@
 "use client";
 
-import * as React from "react";
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
-import {
-  ArrowUpDown,
-  ChevronDown,
-  MoreHorizontal,
-  MoreHorizontalIcon,
-} from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
+
 import {
   Table,
   TableBody,
@@ -41,24 +11,30 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useRouter } from "next/navigation";
-import { OrderDetails } from "@/components/component/order-details";
 import { orders } from "@/data/orderData";
+import { PackageIcon } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 export default function Page() {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
   const router = useRouter();
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = React.useState({});
 
   const data = orders;
 
   return (
-    <div className="flex ">
-      <main className="flex flex-1 w-[500px] flex-col gap-4 p-4 md:gap-8 md:p-6">
+    <div>
+      <header className="border-b p-4">
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <PackageIcon className="w-6 h-6" />
+            <span className="text-lg font-semibold">All Orders</span>
+          </div>
+          <div className="ml-auto flex items-center gap-4">
+            <Input placeholder="Search..." type="search" />
+          </div>
+        </div>
+      </header>
+      <main className="flex flex-1  flex-col gap-4 p-4 md:gap-8 md:p-6">
+        <h1 className="text-xl font-semibold">All Orders</h1>
         <div className="border  shadow-sm rounded-lg p-2">
           <Table className="overflow-x-auto">
             <TableHeader>

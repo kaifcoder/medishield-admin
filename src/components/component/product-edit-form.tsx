@@ -27,8 +27,8 @@ import { Button } from "@/components/ui/button";
 export function ProductEditForm() {
   return (
     <div className="flex flex-col">
-      <div className="mt-10 mb-10">
-        <Card className="max-w-2xl mx-auto">
+      <div className="mx-10">
+        <Card className="max-w-4xl mx-auto">
           <CardHeader>
             <CardTitle>Add or Update Product</CardTitle>
             <CardDescription>
@@ -67,7 +67,7 @@ export function ProductEditForm() {
                 <Input id="image" placeholder="/path/to/image.jpg" />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="role">Role</Label>
+                <Label htmlFor="role">Category</Label>
                 <Select required>
                   <SelectTrigger>
                     <SelectValue placeholder="Select a role" />
@@ -85,7 +85,7 @@ export function ProductEditForm() {
           </CardContent>
           <CardFooter>
             <Button className="w-full" type="submit">
-              Create User
+              Save
             </Button>
           </CardFooter>
         </Card>

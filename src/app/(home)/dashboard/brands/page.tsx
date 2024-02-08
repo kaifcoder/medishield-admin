@@ -1,7 +1,12 @@
+import { BrandShowcase } from "@/components/component/brand-showcase";
 import React from "react";
 
 const page = () => {
-  return <div>page</div>;
+  return (
+    <>
+      <BrandShowcase />
+    </>
+  );
 };
 
 export default page;

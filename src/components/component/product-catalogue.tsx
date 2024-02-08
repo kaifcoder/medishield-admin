@@ -20,12 +20,12 @@ import {
 export function ProductCatalogue() {
   const router = useRouter();
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
       <header className="border-b p-4">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <PackageIcon className="w-6 h-6" />
-            <span className="text-lg font-semibold">Catalog</span>
+            <span className="text-lg font-semibold">Product Catalog</span>
           </div>
           <div className="ml-auto flex items-center gap-4">
             <Input placeholder="Search..." type="search" />
@@ -38,8 +38,8 @@ export function ProductCatalogue() {
           </div>
         </div>
       </header>
-      <main className="flex-1 p-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-4">
+      <main className="flex-1 m-8 ">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-4">
           <ProductCard />
           <ProductCard />
           <ProductCard />
