@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import { useMobileSidebar } from "@/hooks/use-mobile-sidebar";
 import { Button } from "@/components/ui/button";
@@ -32,7 +32,7 @@ const MobileSidebar = ({ children }: { children: React.ReactNode }) => {
   }
 
   return (
-    <>
+    <Suspense>
       <Button
         onClick={onOpen}
         className="block md:hidden mr-2"
@@ -49,7 +49,7 @@ const MobileSidebar = ({ children }: { children: React.ReactNode }) => {
           {children}
         </SheetContent>
       </Sheet>
-    </>
+    </Suspense>
   );
 };
 
