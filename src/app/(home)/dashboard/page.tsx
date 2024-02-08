@@ -1,3 +1,4 @@
+"use client";
 import { Dashboard } from "@/components/component/dashboard";
 import { DashboardCard } from "@/components/component/dashboard-card";
 import React from "react";

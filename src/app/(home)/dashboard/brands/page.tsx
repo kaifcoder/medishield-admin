@@ -1,3 +1,4 @@
+"use client";
 import { BrandShowcase } from "@/components/component/brand-showcase";
 import React from "react";
 

@@ -5,17 +5,17 @@ interface BrandCardProps {
   thumbnail: string;
 }
 
-const BrandCard = () => {
+const BrandCard = ({ name, thumbnail }: BrandCardProps) => {
   return (
     <div className="flex items-center gap-4 border p-4 rounded-xl shadow-md">
       <img
         alt="Brand thumbnail"
         className="aspect-square object-cover border border-gray-200 rounded-lg overflow-hidden w-20 dark:border-gray-800"
         height={120}
-        src="https://source.unsplash.com/120x120/?brand"
+        src={thumbnail}
         width={120}
       />
-      <h2 className="text-xl font-semibold tracking-tight">Acme Corporation</h2>
+      <h2 className="text-xl font-semibold tracking-tight">{name}</h2>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+"use client";
 import { CategoryAddPanel } from "@/components/component/category-add-panel";
 import React from "react";
 

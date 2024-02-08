@@ -5,9 +5,11 @@ import BrandCard from "./BrandCard";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { useRouter } from "next/navigation";
+import { brands } from "@/data/brands";
 
 export function BrandShowcase() {
   const router = useRouter();
+  const data = brands;
   return (
     <div className="flex flex-col">
       <header className="border-b p-4">
@@ -23,11 +25,15 @@ export function BrandShowcase() {
         </div>
       </header>
       <div className="grid sm:grid-cols-2 p-8 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-start">
-        {Array(200)
-          .fill(0)
-          .map((_, idx) => (
-            <BrandCard key={idx} />
-          ))}
+        {data.map((brand) => {
+          return (
+            <BrandCard
+              key={brand.name}
+              name={brand.name}
+              thumbnail={brand.logo}
+            />
+          );
+        })}
       </div>
     </div>
   );
