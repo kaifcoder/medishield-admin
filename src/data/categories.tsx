@@ -1,4 +1,4 @@
-const categories = {
+export const categories = {
   categories: [
     {
       _id: "65a57c5deefeb27762b8743d",

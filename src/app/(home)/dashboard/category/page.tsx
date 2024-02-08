@@ -1,4 +1,5 @@
 import { CategoryAddPanel } from "@/components/component/category-add-panel";
+import { categories } from "@/data/categories";
 import React from "react";
 
 const page = () => {
