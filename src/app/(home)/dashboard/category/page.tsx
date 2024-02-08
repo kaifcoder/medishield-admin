@@ -1,8 +1,8 @@
-"use client";
 import { CategoryAddPanel } from "@/components/component/category-add-panel";
 import React from "react";
 
 const page = () => {
+  const data = categories.categories;
   return (
     <div className="p-8">
       <header>
