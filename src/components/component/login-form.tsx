@@ -11,8 +11,10 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export function LoginForm() {
+  const router = useRouter();
   return (
     <Card className="w-full max-w-md mx-auto">
       <CardHeader className="text-center">
@@ -30,13 +32,7 @@ export function LoginForm() {
           <Label htmlFor="password">Password</Label>
           <Input id="password" required type="password" />
         </div>
-        <Button
-          onClick={() => {
-            console.log("Login button clicked");
-          }}
-          className="w-full"
-          type="submit"
-        >
+        <Button onClick={() => router.push("/dashboard")} className="w-full">
           Login
         </Button>
       </CardContent>
