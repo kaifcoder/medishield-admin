@@ -35,54 +35,44 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { allUsers } from "@/data/users";
 
-const data: Payment[] = [
-  {
-    id: "m5gr84i9",
-    amount: 316,
-    name: "Ken",
-    status: "success",
-    email: "ken99@yahoo.com",
-  },
-  {
-    id: "3u1reuv4",
-    amount: 242,
-    name: "Abe",
-    status: "success",
-    email: "Abe45@gmail.com",
-  },
-  {
-    id: "derv1ws0",
-    amount: 837,
-    name: "Monserrat",
-    status: "processing",
-    email: "Monserrat44@gmail.com",
-  },
-  {
-    id: "5kma53ae",
-    amount: 874,
-    name: "Silas",
-    status: "success",
-    email: "Silas22@gmail.com",
-  },
-  {
-    id: "bhqecj4p",
-    amount: 721,
-    name: "Carmella",
-    status: "failed",
-    email: "carmella@hotmail.com",
-  },
-];
+const data: UsersNew[] = allUsers
+  .map((user) => {
+    return {
+      email: user.email,
+      name: user.firstname + " " + user.lastname,
+      isEmailVerified: user.isEmailVerified,
+      role: user.role,
+    };
+  })
+  .filter((user) => user.role !== "admin");
 
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
+type UsersNew = {
   email: string;
   name: string;
+  isEmailVerified: boolean;
 };
 
-const columns: ColumnDef<Payment>[] = [
+export type Users = {
+  _id: string;
+  firstname: string;
+  lastname: string;
+  email: string;
+  mobile: string;
+  password: string;
+  role: string;
+  isEmailVerified: boolean;
+  googleAuthToken?: string;
+  address: string[];
+  wishlist: never[];
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+  refreshToken?: string;
+};
+
+const columns: ColumnDef<UsersNew>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -105,7 +95,6 @@ const columns: ColumnDef<Payment>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-
   {
     accessorKey: "name",
     header: ({ column }) => {
@@ -138,26 +127,22 @@ const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
   {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
+    accessorKey: "isEmailVerified",
+    header: () => <div className="text-right">Verified</div>,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-
-      // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
+      return (
+        <div className="text-right font-medium">
+          {row.getValue("isEmailVerified") ? "Verified" : "Not Verified"}
+        </div>
+      );
     },
   },
+
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original;
-
+      const user = row.original.email;
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -169,7 +154,7 @@ const columns: ColumnDef<Payment>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+              onClick={() => navigator.clipboard.writeText(user)}
             >
               Copy payment ID
             </DropdownMenuItem>
