@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 
 import {
@@ -15,7 +17,6 @@ import { Input } from "@/components/ui/input";
 
 export default function Page() {
   const router = useRouter();
-
   const data = orders;
 
   return (
