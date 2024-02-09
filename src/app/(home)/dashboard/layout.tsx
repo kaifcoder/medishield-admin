@@ -1,8 +1,6 @@
 import Sidebar from "@/components/Sidebar";
-import MySidebar from "@/components/component/MySidebar";
 import MobileSidebar from "@/components/mobile-sidebar";
-import NavItem from "@/components/nav-item";
-import NavbarSearch from "@/components/navbar-search";
+
 import { Suspense } from "react";
 
 export default function DashboardLayout({
