@@ -1,8 +1,20 @@
-import { Dashboard } from "@/components/component/dashboard";
+"use client";
+import Dashboard from "@/components/component/dashboard";
 import { DashboardCard } from "@/components/component/dashboard-card";
-import React from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 const DashBoard = () => {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!session?.user) {
+      router.replace("/");
+    }
+  }, [session, session?.user, router]);
+
   return (
     <div>
       <h1 className="text-2xl ml-8 mt-8 font-semibold">Dashboard</h1>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 interface BrandCardProps {
@@ -8,9 +9,9 @@ interface BrandCardProps {
 const BrandCard = ({ name, thumbnail }: BrandCardProps) => {
   return (
     <div className="flex items-center gap-4 border p-4 rounded-xl shadow-md">
-      <img
+      <Image
         alt="Brand thumbnail"
-        className="aspect-square object-cover border border-gray-200 rounded-lg overflow-hidden w-20 dark:border-gray-800"
+        className="aspect-square object-contain border border-gray-200 rounded-lg overflow-hidden w-20 dark:border-gray-800"
         height={120}
         src={thumbnail}
         width={120}

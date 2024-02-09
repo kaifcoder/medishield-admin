@@ -16,8 +16,10 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "../ui/pagination";
+import { productsData } from "@/data/products";
 
 export function ProductCatalogue() {
+  const data = productsData;
   const router = useRouter();
   return (
     <div className="flex flex-col ">
@@ -30,7 +32,7 @@ export function ProductCatalogue() {
           <div className="ml-auto flex items-center gap-4">
             <Input placeholder="Search..." type="search" />
             <Button
-              onClick={() => router.push("/dashboard/products/addProduct")}
+              onClick={() => router.replace("/dashboard/products/addProduct")}
               size="sm"
             >
               Add Product
@@ -40,12 +42,21 @@ export function ProductCatalogue() {
       </header>
       <main className="flex-1 m-8 ">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-4">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {data.map((product) => (
+            <ProductCard
+              key={product.sku}
+              title={product.name}
+              description={product.short_description}
+              image={
+                product.thumbnail_url.startsWith("http")
+                  ? product.thumbnail_url
+                  : "https://images1.dentalkart.com/media/catalog/product" +
+                    product.thumbnail_url
+              }
+              price={product.price?.minimalPrice}
+              slug={product.sku}
+            />
+          ))}
         </div>
         <Pagination>
           <PaginationContent>

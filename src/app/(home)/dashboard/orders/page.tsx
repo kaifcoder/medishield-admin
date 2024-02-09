@@ -12,79 +12,329 @@ import {
 } from "@/components/ui/table";
 import { useRouter } from "next/navigation";
 import { orders } from "@/data/orderData";
-import { PackageIcon } from "lucide-react";
+import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import {
+  ColumnDef,
+  ColumnFiltersState,
+  SortingState,
+  VisibilityState,
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import React from "react";
+
+const data: Orders[] = orders
+  .map((order) => {
+    return {
+      _id: order._id,
+      email: order.orderby?.email,
+      transactionId: order.paymentIntent.id,
+      total: order.paymentIntent.amount,
+      createdAt: order.createdAt,
+      orderStatus: order.orderStatus,
+    };
+  })
+  .reverse();
+
+type Orders = {
+  _id: string;
+  email?: string;
+  transactionId: string;
+  total: number;
+  createdAt: string;
+  orderStatus: string;
+};
+
+const columns: ColumnDef<Orders>[] = [
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: "_id",
+    header: () => <div className="text-right">Order Id</div>,
+    cell: ({ row }) => {
+      return (
+        <div className="text-right font-medium">{row.getValue("_id")}</div>
+      );
+    },
+  },
+  {
+    accessorKey: "email",
+    header: () => <div className="">Email</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+  },
+  {
+    accessorKey: "transactionId",
+    header: () => <div className="text-right">Transaction Id</div>,
+    cell: ({ row }) => {
+      return (
+        <div className="text-right font-medium">
+          {row.getValue("transactionId")}
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: "createdAt",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Date
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const date = new Date(row.getValue("createdAt")).toLocaleDateString(
+        "en-US",
+        {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }
+      );
+      return <div className="text-right font-medium">{date}</div>;
+    },
+  },
+  {
+    accessorKey: "total",
+    header: () => <div className="text-center mx-2">Total</div>,
+    cell: ({ row }) => {
+      return (
+        <div className="text-right font-medium">₹ {row.getValue("total")}</div>
+      );
+    },
+  },
+  {
+    accessorKey: "orderStatus",
+    header: () => <div className="text-right">Status</div>,
+    cell: ({ row }) => {
+      return (
+        <div className="text-right font-medium">
+          {row.getValue("orderStatus")}
+        </div>
+      );
+    },
+  },
+  {
+    id: "actions",
+    enableHiding: false,
+    accessorKey: "",
+    header: () => <div className="text-right">Actions</div>,
+    cell: ({ row }) => {
+      const router = useRouter();
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem
+              onClick={() =>
+                navigator.clipboard.writeText(row.original.transactionId)
+              }
+            >
+              Copy payment ID
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              onClick={() =>
+                router.push(`/dashboard/orders/${row.original._id}`)
+              }
+            >
+              View Order
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    },
+  },
+];
 
 export default function Page() {
-  const router = useRouter();
-  const data = orders;
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  );
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
+
+  const table = useReactTable({
+    data,
+    columns,
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    onColumnVisibilityChange: setColumnVisibility,
+    onRowSelectionChange: setRowSelection,
+    state: {
+      sorting,
+      columnFilters,
+      columnVisibility,
+      rowSelection,
+    },
+  });
 
   return (
-    <div>
-      <header className="border-b p-4">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <PackageIcon className="w-6 h-6" />
-            <span className="text-lg font-semibold">All Orders</span>
-          </div>
-          <div className="ml-auto flex items-center gap-4">
-            <Input placeholder="Search..." type="search" />
-          </div>
-        </div>
-      </header>
-      <main className="flex flex-1  flex-col gap-4 p-4 md:gap-8 md:p-6">
-        <h1 className="text-xl font-semibold">All Orders</h1>
-        <div className="border  shadow-sm rounded-lg p-2">
-          <Table className="overflow-x-auto">
-            <TableHeader>
-              <TableRow>
-                <TableHead className="">Order Id</TableHead>
-                <TableHead className="min-w-[100px]">Customer</TableHead>
-                <TableHead className="hidden md:table-cell">
-                  Payment Id
-                </TableHead>
-                <TableHead className="hidden md:table-cell">Date</TableHead>
-                <TableHead className="text-right">Total</TableHead>
-                <TableHead className="hidden sm:table-cell">Status</TableHead>
-                <TableHead className="">Actions</TableHead>
+    <div className="w-full p-8">
+      <h1 className="text-2xl font-semibold">Orders</h1>
+      <div className="flex items-center py-4">
+        <Input
+          placeholder="Filter emails..."
+          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn("email")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+        <div></div>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="ml-auto">
+              Columns <ChevronDown className="ml-2 h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            {table
+              .getAllColumns()
+              .filter((column) => column.getCanHide())
+              .map((column) => {
+                return (
+                  <DropdownMenuCheckboxItem
+                    key={column.id}
+                    className="capitalize"
+                    checked={column.getIsVisible()}
+                    onCheckedChange={(value) =>
+                      column.toggleVisibility(!!value)
+                    }
+                  >
+                    {column.id}
+                  </DropdownMenuCheckboxItem>
+                );
+              })}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+      <div className="rounded-md border">
+        <Table>
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <TableHead key={header.id}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </TableHead>
+                  );
+                })}
               </TableRow>
-            </TableHeader>
-            {data.map((order) => {
-              return (
-                <TableBody key={order._id}>
-                  <TableRow>
-                    <TableCell className="w-[100px] font-medium">
-                      {order._id}
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                     </TableCell>
-                    <TableCell className="">{order.orderby?.email}</TableCell>
-                    <TableCell className="hidden md:table-cell">
-                      {order.paymentIntent.id}
-                    </TableCell>
-                    <TableCell className="hidden md:table-cell">
-                      {order.createdAt}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      {order.paymentIntent.amount}
-                    </TableCell>
-                    <TableCell className="hidden sm:table-cell">
-                      {order.orderStatus}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <Button
-                        onClick={() =>
-                          router.push(`/dashboard/orders/${order._id}`)
-                        }
-                      >
-                        View Order
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              );
-            })}
-          </Table>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+      <div className="flex items-center justify-end space-x-2 py-4">
+        <div className="flex-1 text-sm text-muted-foreground">
+          {table.getFilteredSelectedRowModel().rows.length} of{" "}
+          {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
-      </main>
+        <div className="space-x-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            Next
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

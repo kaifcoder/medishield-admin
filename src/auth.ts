@@ -1,11 +1,12 @@
 import axios from "axios";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { toast } from "sonner";
 
 export const authOptions: NextAuthOptions = {
-  secret: process.env.SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: "/login",
+    signIn: "/",
   },
   session: {
     strategy: "jwt",
@@ -36,15 +37,15 @@ export const authOptions: NextAuthOptions = {
             }
           );
           const { data } = response;
-          console.log(data);
           return {
-            id: data.userId,
+            id: data._id,
             email: data.email,
-            access_token: data.access_token,
-            key: "Hey cool",
+            name: data.firstname + " " + data.lastname,
+            access_token: data.token,
+            key: "secret",
           };
-        } catch (err) {
-          console.log(err);
+        } catch (err: any) {
+          console.log(err.response.data.message);
           return null;
         }
       },
@@ -52,7 +53,6 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     session: ({ session, token }) => {
-      console.log(session, token);
       return {
         ...session,
         user: {

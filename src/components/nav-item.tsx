@@ -10,6 +10,7 @@ import ArtTrackIcon from "@mui/icons-material/ArtTrack";
 import GroupIcon from "@mui/icons-material/Group";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import { LogOut } from "lucide-react";
+import { signOut } from "next-auth/react";
 
 const routes = [
   {
@@ -55,7 +56,13 @@ const NavItem = () => {
   const pathname = usePathname();
 
   const onClickHandler = (href: string) => {
-    router.push(href);
+    if (href === "/") {
+      signOut({
+        callbackUrl: "/",
+      });
+    } else {
+      router.push(href);
+    }
   };
 
   return (

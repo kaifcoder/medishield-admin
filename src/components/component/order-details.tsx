@@ -1,3 +1,5 @@
+"use client";
+
 import {
   CardTitle,
   CardDescription,
@@ -15,8 +17,66 @@ import {
   Table,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../ui/dialog";
+import { useState } from "react";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { toast } from "sonner";
+import { Input } from "../ui/input";
+const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
+const formSchema = z.object({
+  trackingnumber: z.string(),
+});
 export function OrderDetails({ order }: any) {
+  const [open, setOpen] = useState(false);
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      trackingnumber: "",
+    },
+  });
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    // Do something with the form values.
+
+    toast("Order Shipped", {
+      description: "The order has been shipped.",
+      closeButton: true,
+    });
+
+    // ✅ This will be type-safe and validated.
+    console.log(values);
+    form.reset();
+    setOpen(false);
+  }
   return (
     <>
       <Card>
@@ -96,12 +156,11 @@ export function OrderDetails({ order }: any) {
             <div className="font-medium">Method</div>
             <div>Standard shipping</div>
             <div className="font-medium">Tracking number</div>
-            <div>1Z9999999999999999</div>
+            <div>not alloted</div>
             <div className="font-medium">Expected delivery</div>
             <div>
-              {new Date(
-                Date.now() + 1000 * 60 * 60 * 24 * 7
-              ).toLocaleDateString("en-US", {
+              Within 5-7 days from{" "}
+              {new Date(order.createdAt).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
@@ -147,8 +206,61 @@ export function OrderDetails({ order }: any) {
           <CardTitle>Actions</CardTitle>
         </CardHeader>
         <CardContent className="space-x-2">
-          <Button>Mark as shipped</Button>
-          <Button variant="outline">Cancel order</Button>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogTrigger>
+              <Button variant="default">Mark as Shipped</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Ship Order #{order._id}</DialogTitle>
+                <DialogDescription>
+                  Provide the tracking number for the order.
+                </DialogDescription>
+              </DialogHeader>
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-8"
+                >
+                  <FormField
+                    control={form.control}
+                    name="trackingnumber"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Tracking Number</FormLabel>
+                        <FormControl>
+                          <Input placeholder="AWB0001122233" {...field} />
+                        </FormControl>
+                        <FormDescription>
+                          Provide the tracking number for the order.
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button type="submit">Save changes</Button>
+                </form>
+              </Form>
+            </DialogContent>
+          </Dialog>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="outline">Cancel Order</Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This action cannot be undone. This will permanently delete the
+                  order.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction>Continue</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </CardContent>
       </Card>
     </>

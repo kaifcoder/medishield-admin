@@ -143,6 +143,864 @@ export const orders = [
     __v: 0,
   },
   {
+    _id: "65c276cca404ffdd7f837d65",
+    products: [
+      {
+        product: {
+          product_specs: {
+            description:
+              "<p><strong>GDC Distal End Cutter Flush Cut </strong> cuts wires close to the buccal tube and safely holds the distal ends. The tungsten carbide inserts ensure precision cutting,long wear and unsurpassed cutting performance.The orbital joint ensures  maximum performance and durability.Inclusion of flush allows to cut distal end more close to the holder.It eliminates the possibility of patient discomfort resulting from archwire protrusion.The exceptional grip ensures securing the wire through the entire cutting process,thereby,preventing any accidental aspiration of wire pieces.</p>\r\n<p> </p>\r\n<p> </p>\r\n<p> </p>",
+            key_specifications:
+              '<ul>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Instrument Name: </strong>Distal End Cutter Fkush Cut<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Type: </strong>Wire Cutting<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Category: </strong>Orthodontics<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Material: </strong>Stainless Steel<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Disposable / Reusable: </strong>Reusable</span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Autoclavable:</strong> Yes</span></li>\r\n</ul>',
+            packaging:
+              "<ul>\r\n<li>1 x GDC Distal End Cutter Flush Cut</li>\r\n</ul>",
+            direction_to_use:
+              "<ul>\r\n<li>Sterilize the instrument before use according to the manufacturer's instructions.</li>\r\n<li>Position the patient and the wire to be cut.</li>\r\n<li>Hold the instrument with your dominant hand and position the cutting blades around the wire to be cut.</li>\r\n<li>Apply gentle pressure to the handles to engage the cutting blades and cut the wire.</li>\r\n<li>Repeat the process as needed to trim the wire to the desired length.</li>\r\n</ul>",
+            features:
+              "<ul>\r\n<li>Made of high-quality stainless steel for durability and easy sterilization.</li>\r\n<li>Compact and lightweight design for easy handling and control during procedures.</li>\r\n<li>The flush cut design allows for a smooth and clean cut without leaving a sharp edge.</li>\r\n<li>Sharp and precise cutting blades provide efficient cutting of orthodontic wires.</li>\r\n<li>Ergonomic handles provide a comfortable grip and reduce hand fatigue during extended procedures.</li>\r\n<li>Autoclavable for easy sterilization and reuse.</li>\r\n</ul>",
+          },
+          _id: "65a6f02fa4032a1d9948d36b",
+          id: 6845,
+          name: "GDC Distal End Cutter Flush Cut (3000/68)",
+          sku: "GDCXX00183",
+          special_price: 2830,
+          thumbnail_url: "/d/i/distal_cutter_flush.jpg",
+          short_description:
+            "Distal End Cutter that helps to cut wires at the distal most end during orthodontic treatment",
+          manufacturer: "17",
+          average_rating: null,
+          rating_count: null,
+          is_in_stock: true,
+          is_cod: "1",
+          weight: null,
+          max_sale_qty: 100,
+          pd_expiry_date: null,
+          meta_title: null,
+          meta_keyword: null,
+          meta_description: null,
+          price: {
+            minimalPrice: 2830,
+            maximalPrice: 2830,
+            regularPrice: 4500,
+          },
+          tier_prices: [
+            {
+              qty: 2,
+              value: 2781,
+            },
+            {
+              qty: 5,
+              value: 2776,
+            },
+          ],
+          media_gallery_entries: [
+            {
+              id: 385120,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_flush.jpg",
+            },
+            {
+              id: 385122,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_flush1.jpg",
+            },
+            {
+              id: 385121,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_3.jpg",
+            },
+          ],
+          categories: [
+            {
+              name: "Distal End Cutter",
+            },
+            {
+              name: "GDC",
+            },
+            {
+              name: "Distal End Cutter",
+            },
+            {
+              name: "Orthodontics",
+            },
+            {
+              name: "Instruments",
+            },
+            {
+              name: "Orthodontic Instruments",
+            },
+          ],
+          qa_data: [
+            {
+              question: "Can the cutting blades be replaced?",
+              answer:
+                "Yes, the cutting blades can be replaced when they become dull or damaged.",
+              like: 0,
+              dislike: 1,
+            },
+            {
+              question: "Is the instrument easy to use?",
+              answer:
+                "Yes, the GDC Distal End Cutter (3000/68) has a compact design and ergonomic handles that make it easy to use and control.",
+              like: 0,
+              dislike: 0,
+            },
+          ],
+          childProducts: [
+            {
+              categories: [],
+              _id: "65c4c22f6480f3b8d9d83a9d",
+              media_gallery_entries: [],
+            },
+          ],
+        },
+        count: 1,
+        variant: "",
+        price: 2830,
+        _id: "65c27674a404ffdd7f837d55",
+      },
+    ],
+    paymentIntent: {
+      id: "pay_NXglDts1xr6yxr",
+      amount: 2980,
+      shipping: 150,
+      created: 1707243212976,
+      currency: "INR",
+    },
+    orderStatus: "Processing",
+    orderby: null,
+    shippingAddress: {
+      name: "kaif",
+      address: "Adarsh Vihar",
+      city: "Lucknow",
+      state: "UP",
+      mobile: "9336834706",
+      pincode: "226017",
+      country: "India",
+    },
+    createdAt: "2024-02-06T18:13:32.978Z",
+    updatedAt: "2024-02-06T18:13:32.978Z",
+    __v: 0,
+  },
+  {
+    _id: "65c276cca404ffdd7f837d65",
+    products: [
+      {
+        product: {
+          product_specs: {
+            description:
+              "<p><strong>GDC Distal End Cutter Flush Cut </strong> cuts wires close to the buccal tube and safely holds the distal ends. The tungsten carbide inserts ensure precision cutting,long wear and unsurpassed cutting performance.The orbital joint ensures  maximum performance and durability.Inclusion of flush allows to cut distal end more close to the holder.It eliminates the possibility of patient discomfort resulting from archwire protrusion.The exceptional grip ensures securing the wire through the entire cutting process,thereby,preventing any accidental aspiration of wire pieces.</p>\r\n<p> </p>\r\n<p> </p>\r\n<p> </p>",
+            key_specifications:
+              '<ul>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Instrument Name: </strong>Distal End Cutter Fkush Cut<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Type: </strong>Wire Cutting<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Category: </strong>Orthodontics<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Material: </strong>Stainless Steel<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Disposable / Reusable: </strong>Reusable</span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Autoclavable:</strong> Yes</span></li>\r\n</ul>',
+            packaging:
+              "<ul>\r\n<li>1 x GDC Distal End Cutter Flush Cut</li>\r\n</ul>",
+            direction_to_use:
+              "<ul>\r\n<li>Sterilize the instrument before use according to the manufacturer's instructions.</li>\r\n<li>Position the patient and the wire to be cut.</li>\r\n<li>Hold the instrument with your dominant hand and position the cutting blades around the wire to be cut.</li>\r\n<li>Apply gentle pressure to the handles to engage the cutting blades and cut the wire.</li>\r\n<li>Repeat the process as needed to trim the wire to the desired length.</li>\r\n</ul>",
+            features:
+              "<ul>\r\n<li>Made of high-quality stainless steel for durability and easy sterilization.</li>\r\n<li>Compact and lightweight design for easy handling and control during procedures.</li>\r\n<li>The flush cut design allows for a smooth and clean cut without leaving a sharp edge.</li>\r\n<li>Sharp and precise cutting blades provide efficient cutting of orthodontic wires.</li>\r\n<li>Ergonomic handles provide a comfortable grip and reduce hand fatigue during extended procedures.</li>\r\n<li>Autoclavable for easy sterilization and reuse.</li>\r\n</ul>",
+          },
+          _id: "65a6f02fa4032a1d9948d36b",
+          id: 6845,
+          name: "GDC Distal End Cutter Flush Cut (3000/68)",
+          sku: "GDCXX00183",
+          special_price: 2830,
+          thumbnail_url: "/d/i/distal_cutter_flush.jpg",
+          short_description:
+            "Distal End Cutter that helps to cut wires at the distal most end during orthodontic treatment",
+          manufacturer: "17",
+          average_rating: null,
+          rating_count: null,
+          is_in_stock: true,
+          is_cod: "1",
+          weight: null,
+          max_sale_qty: 100,
+          pd_expiry_date: null,
+          meta_title: null,
+          meta_keyword: null,
+          meta_description: null,
+          price: {
+            minimalPrice: 2830,
+            maximalPrice: 2830,
+            regularPrice: 4500,
+          },
+          tier_prices: [
+            {
+              qty: 2,
+              value: 2781,
+            },
+            {
+              qty: 5,
+              value: 2776,
+            },
+          ],
+          media_gallery_entries: [
+            {
+              id: 385120,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_flush.jpg",
+            },
+            {
+              id: 385122,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_flush1.jpg",
+            },
+            {
+              id: 385121,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_3.jpg",
+            },
+          ],
+          categories: [
+            {
+              name: "Distal End Cutter",
+            },
+            {
+              name: "GDC",
+            },
+            {
+              name: "Distal End Cutter",
+            },
+            {
+              name: "Orthodontics",
+            },
+            {
+              name: "Instruments",
+            },
+            {
+              name: "Orthodontic Instruments",
+            },
+          ],
+          qa_data: [
+            {
+              question: "Can the cutting blades be replaced?",
+              answer:
+                "Yes, the cutting blades can be replaced when they become dull or damaged.",
+              like: 0,
+              dislike: 1,
+            },
+            {
+              question: "Is the instrument easy to use?",
+              answer:
+                "Yes, the GDC Distal End Cutter (3000/68) has a compact design and ergonomic handles that make it easy to use and control.",
+              like: 0,
+              dislike: 0,
+            },
+          ],
+          childProducts: [
+            {
+              categories: [],
+              _id: "65c4c22f6480f3b8d9d83a9d",
+              media_gallery_entries: [],
+            },
+          ],
+        },
+        count: 1,
+        variant: "",
+        price: 2830,
+        _id: "65c27674a404ffdd7f837d55",
+      },
+    ],
+    paymentIntent: {
+      id: "pay_NXglDts1xr6yxr",
+      amount: 2980,
+      shipping: 150,
+      created: 1707243212976,
+      currency: "INR",
+    },
+    orderStatus: "Processing",
+    orderby: null,
+    shippingAddress: {
+      name: "kaif",
+      address: "Adarsh Vihar",
+      city: "Lucknow",
+      state: "UP",
+      mobile: "9336834706",
+      pincode: "226017",
+      country: "India",
+    },
+    createdAt: "2024-02-06T18:13:32.978Z",
+    updatedAt: "2024-02-06T18:13:32.978Z",
+    __v: 0,
+  },
+  {
+    _id: "65c276cca404ffdd7f837d65",
+    products: [
+      {
+        product: {
+          product_specs: {
+            description:
+              "<p><strong>GDC Distal End Cutter Flush Cut </strong> cuts wires close to the buccal tube and safely holds the distal ends. The tungsten carbide inserts ensure precision cutting,long wear and unsurpassed cutting performance.The orbital joint ensures  maximum performance and durability.Inclusion of flush allows to cut distal end more close to the holder.It eliminates the possibility of patient discomfort resulting from archwire protrusion.The exceptional grip ensures securing the wire through the entire cutting process,thereby,preventing any accidental aspiration of wire pieces.</p>\r\n<p> </p>\r\n<p> </p>\r\n<p> </p>",
+            key_specifications:
+              '<ul>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Instrument Name: </strong>Distal End Cutter Fkush Cut<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Type: </strong>Wire Cutting<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Category: </strong>Orthodontics<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Material: </strong>Stainless Steel<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Disposable / Reusable: </strong>Reusable</span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Autoclavable:</strong> Yes</span></li>\r\n</ul>',
+            packaging:
+              "<ul>\r\n<li>1 x GDC Distal End Cutter Flush Cut</li>\r\n</ul>",
+            direction_to_use:
+              "<ul>\r\n<li>Sterilize the instrument before use according to the manufacturer's instructions.</li>\r\n<li>Position the patient and the wire to be cut.</li>\r\n<li>Hold the instrument with your dominant hand and position the cutting blades around the wire to be cut.</li>\r\n<li>Apply gentle pressure to the handles to engage the cutting blades and cut the wire.</li>\r\n<li>Repeat the process as needed to trim the wire to the desired length.</li>\r\n</ul>",
+            features:
+              "<ul>\r\n<li>Made of high-quality stainless steel for durability and easy sterilization.</li>\r\n<li>Compact and lightweight design for easy handling and control during procedures.</li>\r\n<li>The flush cut design allows for a smooth and clean cut without leaving a sharp edge.</li>\r\n<li>Sharp and precise cutting blades provide efficient cutting of orthodontic wires.</li>\r\n<li>Ergonomic handles provide a comfortable grip and reduce hand fatigue during extended procedures.</li>\r\n<li>Autoclavable for easy sterilization and reuse.</li>\r\n</ul>",
+          },
+          _id: "65a6f02fa4032a1d9948d36b",
+          id: 6845,
+          name: "GDC Distal End Cutter Flush Cut (3000/68)",
+          sku: "GDCXX00183",
+          special_price: 2830,
+          thumbnail_url: "/d/i/distal_cutter_flush.jpg",
+          short_description:
+            "Distal End Cutter that helps to cut wires at the distal most end during orthodontic treatment",
+          manufacturer: "17",
+          average_rating: null,
+          rating_count: null,
+          is_in_stock: true,
+          is_cod: "1",
+          weight: null,
+          max_sale_qty: 100,
+          pd_expiry_date: null,
+          meta_title: null,
+          meta_keyword: null,
+          meta_description: null,
+          price: {
+            minimalPrice: 2830,
+            maximalPrice: 2830,
+            regularPrice: 4500,
+          },
+          tier_prices: [
+            {
+              qty: 2,
+              value: 2781,
+            },
+            {
+              qty: 5,
+              value: 2776,
+            },
+          ],
+          media_gallery_entries: [
+            {
+              id: 385120,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_flush.jpg",
+            },
+            {
+              id: 385122,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_flush1.jpg",
+            },
+            {
+              id: 385121,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_3.jpg",
+            },
+          ],
+          categories: [
+            {
+              name: "Distal End Cutter",
+            },
+            {
+              name: "GDC",
+            },
+            {
+              name: "Distal End Cutter",
+            },
+            {
+              name: "Orthodontics",
+            },
+            {
+              name: "Instruments",
+            },
+            {
+              name: "Orthodontic Instruments",
+            },
+          ],
+          qa_data: [
+            {
+              question: "Can the cutting blades be replaced?",
+              answer:
+                "Yes, the cutting blades can be replaced when they become dull or damaged.",
+              like: 0,
+              dislike: 1,
+            },
+            {
+              question: "Is the instrument easy to use?",
+              answer:
+                "Yes, the GDC Distal End Cutter (3000/68) has a compact design and ergonomic handles that make it easy to use and control.",
+              like: 0,
+              dislike: 0,
+            },
+          ],
+          childProducts: [
+            {
+              categories: [],
+              _id: "65c4c22f6480f3b8d9d83a9d",
+              media_gallery_entries: [],
+            },
+          ],
+        },
+        count: 1,
+        variant: "",
+        price: 2830,
+        _id: "65c27674a404ffdd7f837d55",
+      },
+    ],
+    paymentIntent: {
+      id: "pay_NXglDts1xr6yxr",
+      amount: 2980,
+      shipping: 150,
+      created: 1707243212976,
+      currency: "INR",
+    },
+    orderStatus: "Processing",
+    orderby: null,
+    shippingAddress: {
+      name: "kaif",
+      address: "Adarsh Vihar",
+      city: "Lucknow",
+      state: "UP",
+      mobile: "9336834706",
+      pincode: "226017",
+      country: "India",
+    },
+    createdAt: "2024-02-06T18:13:32.978Z",
+    updatedAt: "2024-02-06T18:13:32.978Z",
+    __v: 0,
+  },
+  {
+    _id: "65c276cca404ffdd7f837d65",
+    products: [
+      {
+        product: {
+          product_specs: {
+            description:
+              "<p><strong>GDC Distal End Cutter Flush Cut </strong> cuts wires close to the buccal tube and safely holds the distal ends. The tungsten carbide inserts ensure precision cutting,long wear and unsurpassed cutting performance.The orbital joint ensures  maximum performance and durability.Inclusion of flush allows to cut distal end more close to the holder.It eliminates the possibility of patient discomfort resulting from archwire protrusion.The exceptional grip ensures securing the wire through the entire cutting process,thereby,preventing any accidental aspiration of wire pieces.</p>\r\n<p> </p>\r\n<p> </p>\r\n<p> </p>",
+            key_specifications:
+              '<ul>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Instrument Name: </strong>Distal End Cutter Fkush Cut<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Type: </strong>Wire Cutting<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Category: </strong>Orthodontics<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Material: </strong>Stainless Steel<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Disposable / Reusable: </strong>Reusable</span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Autoclavable:</strong> Yes</span></li>\r\n</ul>',
+            packaging:
+              "<ul>\r\n<li>1 x GDC Distal End Cutter Flush Cut</li>\r\n</ul>",
+            direction_to_use:
+              "<ul>\r\n<li>Sterilize the instrument before use according to the manufacturer's instructions.</li>\r\n<li>Position the patient and the wire to be cut.</li>\r\n<li>Hold the instrument with your dominant hand and position the cutting blades around the wire to be cut.</li>\r\n<li>Apply gentle pressure to the handles to engage the cutting blades and cut the wire.</li>\r\n<li>Repeat the process as needed to trim the wire to the desired length.</li>\r\n</ul>",
+            features:
+              "<ul>\r\n<li>Made of high-quality stainless steel for durability and easy sterilization.</li>\r\n<li>Compact and lightweight design for easy handling and control during procedures.</li>\r\n<li>The flush cut design allows for a smooth and clean cut without leaving a sharp edge.</li>\r\n<li>Sharp and precise cutting blades provide efficient cutting of orthodontic wires.</li>\r\n<li>Ergonomic handles provide a comfortable grip and reduce hand fatigue during extended procedures.</li>\r\n<li>Autoclavable for easy sterilization and reuse.</li>\r\n</ul>",
+          },
+          _id: "65a6f02fa4032a1d9948d36b",
+          id: 6845,
+          name: "GDC Distal End Cutter Flush Cut (3000/68)",
+          sku: "GDCXX00183",
+          special_price: 2830,
+          thumbnail_url: "/d/i/distal_cutter_flush.jpg",
+          short_description:
+            "Distal End Cutter that helps to cut wires at the distal most end during orthodontic treatment",
+          manufacturer: "17",
+          average_rating: null,
+          rating_count: null,
+          is_in_stock: true,
+          is_cod: "1",
+          weight: null,
+          max_sale_qty: 100,
+          pd_expiry_date: null,
+          meta_title: null,
+          meta_keyword: null,
+          meta_description: null,
+          price: {
+            minimalPrice: 2830,
+            maximalPrice: 2830,
+            regularPrice: 4500,
+          },
+          tier_prices: [
+            {
+              qty: 2,
+              value: 2781,
+            },
+            {
+              qty: 5,
+              value: 2776,
+            },
+          ],
+          media_gallery_entries: [
+            {
+              id: 385120,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_flush.jpg",
+            },
+            {
+              id: 385122,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_flush1.jpg",
+            },
+            {
+              id: 385121,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_3.jpg",
+            },
+          ],
+          categories: [
+            {
+              name: "Distal End Cutter",
+            },
+            {
+              name: "GDC",
+            },
+            {
+              name: "Distal End Cutter",
+            },
+            {
+              name: "Orthodontics",
+            },
+            {
+              name: "Instruments",
+            },
+            {
+              name: "Orthodontic Instruments",
+            },
+          ],
+          qa_data: [
+            {
+              question: "Can the cutting blades be replaced?",
+              answer:
+                "Yes, the cutting blades can be replaced when they become dull or damaged.",
+              like: 0,
+              dislike: 1,
+            },
+            {
+              question: "Is the instrument easy to use?",
+              answer:
+                "Yes, the GDC Distal End Cutter (3000/68) has a compact design and ergonomic handles that make it easy to use and control.",
+              like: 0,
+              dislike: 0,
+            },
+          ],
+          childProducts: [
+            {
+              categories: [],
+              _id: "65c4c22f6480f3b8d9d83a9d",
+              media_gallery_entries: [],
+            },
+          ],
+        },
+        count: 1,
+        variant: "",
+        price: 2830,
+        _id: "65c27674a404ffdd7f837d55",
+      },
+    ],
+    paymentIntent: {
+      id: "pay_NXglDts1xr6yxr",
+      amount: 2980,
+      shipping: 150,
+      created: 1707243212976,
+      currency: "INR",
+    },
+    orderStatus: "Processing",
+    orderby: null,
+    shippingAddress: {
+      name: "kaif",
+      address: "Adarsh Vihar",
+      city: "Lucknow",
+      state: "UP",
+      mobile: "9336834706",
+      pincode: "226017",
+      country: "India",
+    },
+    createdAt: "2024-02-06T18:13:32.978Z",
+    updatedAt: "2024-02-06T18:13:32.978Z",
+    __v: 0,
+  },
+  {
+    _id: "65c276cca404ffdd7f837d65",
+    products: [
+      {
+        product: {
+          product_specs: {
+            description:
+              "<p><strong>GDC Distal End Cutter Flush Cut </strong> cuts wires close to the buccal tube and safely holds the distal ends. The tungsten carbide inserts ensure precision cutting,long wear and unsurpassed cutting performance.The orbital joint ensures  maximum performance and durability.Inclusion of flush allows to cut distal end more close to the holder.It eliminates the possibility of patient discomfort resulting from archwire protrusion.The exceptional grip ensures securing the wire through the entire cutting process,thereby,preventing any accidental aspiration of wire pieces.</p>\r\n<p> </p>\r\n<p> </p>\r\n<p> </p>",
+            key_specifications:
+              '<ul>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Instrument Name: </strong>Distal End Cutter Fkush Cut<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Type: </strong>Wire Cutting<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Category: </strong>Orthodontics<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Material: </strong>Stainless Steel<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Disposable / Reusable: </strong>Reusable</span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Autoclavable:</strong> Yes</span></li>\r\n</ul>',
+            packaging:
+              "<ul>\r\n<li>1 x GDC Distal End Cutter Flush Cut</li>\r\n</ul>",
+            direction_to_use:
+              "<ul>\r\n<li>Sterilize the instrument before use according to the manufacturer's instructions.</li>\r\n<li>Position the patient and the wire to be cut.</li>\r\n<li>Hold the instrument with your dominant hand and position the cutting blades around the wire to be cut.</li>\r\n<li>Apply gentle pressure to the handles to engage the cutting blades and cut the wire.</li>\r\n<li>Repeat the process as needed to trim the wire to the desired length.</li>\r\n</ul>",
+            features:
+              "<ul>\r\n<li>Made of high-quality stainless steel for durability and easy sterilization.</li>\r\n<li>Compact and lightweight design for easy handling and control during procedures.</li>\r\n<li>The flush cut design allows for a smooth and clean cut without leaving a sharp edge.</li>\r\n<li>Sharp and precise cutting blades provide efficient cutting of orthodontic wires.</li>\r\n<li>Ergonomic handles provide a comfortable grip and reduce hand fatigue during extended procedures.</li>\r\n<li>Autoclavable for easy sterilization and reuse.</li>\r\n</ul>",
+          },
+          _id: "65a6f02fa4032a1d9948d36b",
+          id: 6845,
+          name: "GDC Distal End Cutter Flush Cut (3000/68)",
+          sku: "GDCXX00183",
+          special_price: 2830,
+          thumbnail_url: "/d/i/distal_cutter_flush.jpg",
+          short_description:
+            "Distal End Cutter that helps to cut wires at the distal most end during orthodontic treatment",
+          manufacturer: "17",
+          average_rating: null,
+          rating_count: null,
+          is_in_stock: true,
+          is_cod: "1",
+          weight: null,
+          max_sale_qty: 100,
+          pd_expiry_date: null,
+          meta_title: null,
+          meta_keyword: null,
+          meta_description: null,
+          price: {
+            minimalPrice: 2830,
+            maximalPrice: 2830,
+            regularPrice: 4500,
+          },
+          tier_prices: [
+            {
+              qty: 2,
+              value: 2781,
+            },
+            {
+              qty: 5,
+              value: 2776,
+            },
+          ],
+          media_gallery_entries: [
+            {
+              id: 385120,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_flush.jpg",
+            },
+            {
+              id: 385122,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_flush1.jpg",
+            },
+            {
+              id: 385121,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_3.jpg",
+            },
+          ],
+          categories: [
+            {
+              name: "Distal End Cutter",
+            },
+            {
+              name: "GDC",
+            },
+            {
+              name: "Distal End Cutter",
+            },
+            {
+              name: "Orthodontics",
+            },
+            {
+              name: "Instruments",
+            },
+            {
+              name: "Orthodontic Instruments",
+            },
+          ],
+          qa_data: [
+            {
+              question: "Can the cutting blades be replaced?",
+              answer:
+                "Yes, the cutting blades can be replaced when they become dull or damaged.",
+              like: 0,
+              dislike: 1,
+            },
+            {
+              question: "Is the instrument easy to use?",
+              answer:
+                "Yes, the GDC Distal End Cutter (3000/68) has a compact design and ergonomic handles that make it easy to use and control.",
+              like: 0,
+              dislike: 0,
+            },
+          ],
+          childProducts: [
+            {
+              categories: [],
+              _id: "65c4c22f6480f3b8d9d83a9d",
+              media_gallery_entries: [],
+            },
+          ],
+        },
+        count: 1,
+        variant: "",
+        price: 2830,
+        _id: "65c27674a404ffdd7f837d55",
+      },
+    ],
+    paymentIntent: {
+      id: "pay_NXglDts1xr6yxr",
+      amount: 2980,
+      shipping: 150,
+      created: 1707243212976,
+      currency: "INR",
+    },
+    orderStatus: "Processing",
+    orderby: null,
+    shippingAddress: {
+      name: "kaif",
+      address: "Adarsh Vihar",
+      city: "Lucknow",
+      state: "UP",
+      mobile: "9336834706",
+      pincode: "226017",
+      country: "India",
+    },
+    createdAt: "2024-02-06T18:13:32.978Z",
+    updatedAt: "2024-02-06T18:13:32.978Z",
+    __v: 0,
+  },
+  {
+    _id: "65c276cca404ffdd7f837d65",
+    products: [
+      {
+        product: {
+          product_specs: {
+            description:
+              "<p><strong>GDC Distal End Cutter Flush Cut </strong> cuts wires close to the buccal tube and safely holds the distal ends. The tungsten carbide inserts ensure precision cutting,long wear and unsurpassed cutting performance.The orbital joint ensures  maximum performance and durability.Inclusion of flush allows to cut distal end more close to the holder.It eliminates the possibility of patient discomfort resulting from archwire protrusion.The exceptional grip ensures securing the wire through the entire cutting process,thereby,preventing any accidental aspiration of wire pieces.</p>\r\n<p> </p>\r\n<p> </p>\r\n<p> </p>",
+            key_specifications:
+              '<ul>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Instrument Name: </strong>Distal End Cutter Fkush Cut<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Type: </strong>Wire Cutting<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Category: </strong>Orthodontics<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Material: </strong>Stainless Steel<br /></span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Disposable / Reusable: </strong>Reusable</span></li>\r\n<li><span data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;instrument Name\\n\\n Surgical Instrument\\n\\n Type\\n\\n Dental Surgical Instrument\\n\\n Category\\n\\n Oral Surgery\\n\\n Material\\n\\n Stainless Steel\\n\\n Disposable / Reusable\\n\\n Reusable\\n\\n Sterile / Non-Sterile\\n\\n Non - Sterile\\n\\n Latex / Latex - free\\n\\n Latex Free&quot;}" data-sheets-userformat="{&quot;2&quot;:2689,&quot;3&quot;:{&quot;1&quot;:0},&quot;10&quot;:0,&quot;12&quot;:0,&quot;14&quot;:{&quot;1&quot;:2,&quot;2&quot;:16711680}}"><strong>Autoclavable:</strong> Yes</span></li>\r\n</ul>',
+            packaging:
+              "<ul>\r\n<li>1 x GDC Distal End Cutter Flush Cut</li>\r\n</ul>",
+            direction_to_use:
+              "<ul>\r\n<li>Sterilize the instrument before use according to the manufacturer's instructions.</li>\r\n<li>Position the patient and the wire to be cut.</li>\r\n<li>Hold the instrument with your dominant hand and position the cutting blades around the wire to be cut.</li>\r\n<li>Apply gentle pressure to the handles to engage the cutting blades and cut the wire.</li>\r\n<li>Repeat the process as needed to trim the wire to the desired length.</li>\r\n</ul>",
+            features:
+              "<ul>\r\n<li>Made of high-quality stainless steel for durability and easy sterilization.</li>\r\n<li>Compact and lightweight design for easy handling and control during procedures.</li>\r\n<li>The flush cut design allows for a smooth and clean cut without leaving a sharp edge.</li>\r\n<li>Sharp and precise cutting blades provide efficient cutting of orthodontic wires.</li>\r\n<li>Ergonomic handles provide a comfortable grip and reduce hand fatigue during extended procedures.</li>\r\n<li>Autoclavable for easy sterilization and reuse.</li>\r\n</ul>",
+          },
+          _id: "65a6f02fa4032a1d9948d36b",
+          id: 6845,
+          name: "GDC Distal End Cutter Flush Cut (3000/68)",
+          sku: "GDCXX00183",
+          special_price: 2830,
+          thumbnail_url: "/d/i/distal_cutter_flush.jpg",
+          short_description:
+            "Distal End Cutter that helps to cut wires at the distal most end during orthodontic treatment",
+          manufacturer: "17",
+          average_rating: null,
+          rating_count: null,
+          is_in_stock: true,
+          is_cod: "1",
+          weight: null,
+          max_sale_qty: 100,
+          pd_expiry_date: null,
+          meta_title: null,
+          meta_keyword: null,
+          meta_description: null,
+          price: {
+            minimalPrice: 2830,
+            maximalPrice: 2830,
+            regularPrice: 4500,
+          },
+          tier_prices: [
+            {
+              qty: 2,
+              value: 2781,
+            },
+            {
+              qty: 5,
+              value: 2776,
+            },
+          ],
+          media_gallery_entries: [
+            {
+              id: 385120,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_flush.jpg",
+            },
+            {
+              id: 385122,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_flush1.jpg",
+            },
+            {
+              id: 385121,
+              media_type: "image",
+              label: null,
+              file: "/d/i/distal_cutter_3.jpg",
+            },
+          ],
+          categories: [
+            {
+              name: "Distal End Cutter",
+            },
+            {
+              name: "GDC",
+            },
+            {
+              name: "Distal End Cutter",
+            },
+            {
+              name: "Orthodontics",
+            },
+            {
+              name: "Instruments",
+            },
+            {
+              name: "Orthodontic Instruments",
+            },
+          ],
+          qa_data: [
+            {
+              question: "Can the cutting blades be replaced?",
+              answer:
+                "Yes, the cutting blades can be replaced when they become dull or damaged.",
+              like: 0,
+              dislike: 1,
+            },
+            {
+              question: "Is the instrument easy to use?",
+              answer:
+                "Yes, the GDC Distal End Cutter (3000/68) has a compact design and ergonomic handles that make it easy to use and control.",
+              like: 0,
+              dislike: 0,
+            },
+          ],
+          childProducts: [
+            {
+              categories: [],
+              _id: "65c4c22f6480f3b8d9d83a9d",
+              media_gallery_entries: [],
+            },
+          ],
+        },
+        count: 1,
+        variant: "",
+        price: 2830,
+        _id: "65c27674a404ffdd7f837d55",
+      },
+    ],
+    paymentIntent: {
+      id: "pay_NXglDts1xr6yxr",
+      amount: 2980,
+      shipping: 150,
+      created: 1707243212976,
+      currency: "INR",
+    },
+    orderStatus: "Processing",
+    orderby: null,
+    shippingAddress: {
+      name: "kaif",
+      address: "Adarsh Vihar",
+      city: "Lucknow",
+      state: "UP",
+      mobile: "9336834706",
+      pincode: "226017",
+      country: "India",
+    },
+    createdAt: "2024-02-06T18:13:32.978Z",
+    updatedAt: "2024-02-06T18:13:32.978Z",
+    __v: 0,
+  },
+  {
     _id: "65c315f1bb91201d7118f72a",
     products: [
       {
