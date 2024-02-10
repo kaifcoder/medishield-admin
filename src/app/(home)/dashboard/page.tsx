@@ -1,6 +1,7 @@
 "use client";
 import Dashboard from "@/components/component/dashboard";
 import { DashboardCard } from "@/components/component/dashboard-card";
+import { Orders, columns } from "@/components/component/orderdata";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { use, useEffect, useState } from "react";
@@ -10,11 +11,15 @@ const DashBoard = () => {
   const user = session?.user;
   const router = useRouter();
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState([]);
 
   const fetchOrders = async () => {
+    setLoading(true);
     const res = await fetch("/api/orders");
     const data = await res.json();
     setOrders(data);
+    setLoading(false);
   };
   useEffect(() => {
     if (!session?.user) {
@@ -26,6 +31,20 @@ const DashBoard = () => {
     fetchOrders();
   }, []);
 
+  const data: Orders[] = orders
+    .map((order: any) => {
+      return {
+        _id: order._id,
+        email: order.orderby?.email,
+        transactionId: order.paymentIntent.id,
+        total: order.paymentIntent.amount,
+        createdAt: order.createdAt,
+        orderStatus: order.orderStatus,
+      };
+    })
+    .reverse()
+    .slice(0, 6);
+
   return (
     <div>
       <h1 className="text-2xl ml-8 mt-8 font-semibold">Dashboard</h1>
@@ -33,17 +52,30 @@ const DashBoard = () => {
         <DashboardCard
           title="Shipped Orders"
           heading="Total Shipped Orders"
-          value="100"
+          value={orders
+            .filter((order: any) => order.orderStatus === "Shipped")
+            .length.toString()}
         />
         <DashboardCard
           title="Pending Orders"
           heading="Total Pending Orders"
-          value="100"
+          value={orders
+            .filter((order: any) => order.orderStatus === "Processing")
+            .length.toString()}
         />
-        <DashboardCard title="users" heading="Total Users" value="50" />
+        <DashboardCard
+          title="Revenue"
+          heading="Total Revenue"
+          value={`₹ ${orders
+            .reduce(
+              (acc: number, order: any) => acc + order.paymentIntent.amount,
+              0
+            )
+            .toString()}`}
+        />
       </div>
       <h1 className="text-2xl ml-8 mt-8 font-semibold">Recent Orders</h1>
-      <Dashboard orders={orders} />
+      <Dashboard loading data={data} columns={columns} />
     </div>
   );
 };

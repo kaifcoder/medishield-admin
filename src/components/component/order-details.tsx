@@ -104,7 +104,7 @@ export function OrderDetails({ order }: any) {
             <div className="font-medium">Status</div>
             <div>{order.orderStatus}</div>
             <div className="font-medium">Total</div>
-            <div>₹ {order.paymentIntent.amount}</div>
+            <div>₹ {order.paymentIntent?.amount}</div>
           </div>
           <div className="grid grid-cols-2 gap-1 text-sm">
             <div className="font-medium">Customer</div>
@@ -131,7 +131,7 @@ export function OrderDetails({ order }: any) {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {order.products.map((product: any) => {
+              {order.products?.map((product: any) => {
                 return (
                   <TableRow key={product._id}>
                     <TableCell className="font-medium">

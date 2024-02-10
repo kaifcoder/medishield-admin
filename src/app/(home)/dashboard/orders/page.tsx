@@ -37,304 +37,45 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const data: Orders[] = orders
-  .map((order) => {
-    return {
-      _id: order._id,
-      email: order.orderby?.email,
-      transactionId: order.paymentIntent.id,
-      total: order.paymentIntent.amount,
-      createdAt: order.createdAt,
-      orderStatus: order.orderStatus,
-    };
-  })
-  .reverse();
-
-type Orders = {
-  _id: string;
-  email?: string;
-  transactionId: string;
-  total: number;
-  createdAt: string;
-  orderStatus: string;
-};
-
-const columns: ColumnDef<Orders>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    accessorKey: "_id",
-    header: () => <div className="text-right">Order Id</div>,
-    cell: ({ row }) => {
-      return (
-        <div className="text-right font-medium">{row.getValue("_id")}</div>
-      );
-    },
-  },
-  {
-    accessorKey: "email",
-    header: () => <div className="">Email</div>,
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
-  },
-  {
-    accessorKey: "transactionId",
-    header: () => <div className="text-right">Transaction Id</div>,
-    cell: ({ row }) => {
-      return (
-        <div className="text-right font-medium">
-          {row.getValue("transactionId")}
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "createdAt",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Date
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      const date = new Date(row.getValue("createdAt")).toLocaleDateString(
-        "en-US",
-        {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        }
-      );
-      return <div className="text-right font-medium">{date}</div>;
-    },
-  },
-  {
-    accessorKey: "total",
-    header: () => <div className="text-center mx-2">Total</div>,
-    cell: ({ row }) => {
-      return (
-        <div className="text-right font-medium">₹ {row.getValue("total")}</div>
-      );
-    },
-  },
-  {
-    accessorKey: "orderStatus",
-    header: () => <div className="text-right">Status</div>,
-    cell: ({ row }) => {
-      return (
-        <div className="text-right font-medium">
-          {row.getValue("orderStatus")}
-        </div>
-      );
-    },
-  },
-  {
-    id: "actions",
-    enableHiding: false,
-    accessorKey: "",
-    header: () => <div className="text-right">Actions</div>,
-    cell: ({ row }) => {
-      const router = useRouter();
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() =>
-                navigator.clipboard.writeText(row.original.transactionId)
-              }
-            >
-              Copy payment ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() =>
-                router.push(`/dashboard/orders/${row.original._id}`)
-              }
-            >
-              View Order
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    },
-  },
-];
+import Dashboard from "@/components/component/dashboard";
+import { Orders, columns } from "@/components/component/orderdata";
 
 export default function Page() {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = React.useState({});
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState([]);
 
-  const table = useReactTable({
-    data,
-    columns,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      rowSelection,
-    },
-  });
+  const fetchOrders = async () => {
+    setLoading(true);
+    const res = await fetch("/api/orders");
+    const data = await res.json();
+    setOrders(data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  const data: Orders[] = orders
+    .map((order: any) => {
+      return {
+        _id: order._id,
+        email: order.orderby?.email,
+        transactionId: order.paymentIntent.id,
+        total: order.paymentIntent.amount,
+        createdAt: order.createdAt,
+        orderStatus: order.orderStatus,
+      };
+    })
+    .reverse();
 
   return (
-    <div className="w-full p-8">
-      <h1 className="text-2xl font-semibold">Orders</h1>
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
-        <div></div>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown className="ml-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                );
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
-      <div className="rounded-md border">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
-        <div className="space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
-        </div>
-      </div>
+    <div>
+      <h1 className="text-2xl ml-8 mt-8 font-semibold">ALL Orders</h1>
+      <Dashboard loading data={data} columns={columns} />
     </div>
   );
 }
