@@ -3,17 +3,28 @@ import Dashboard from "@/components/component/dashboard";
 import { DashboardCard } from "@/components/component/dashboard-card";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { use, useEffect, useState } from "react";
 
 const DashBoard = () => {
   const { data: session } = useSession();
+  const user = session?.user;
   const router = useRouter();
+  const [orders, setOrders] = useState([]);
 
+  const fetchOrders = async () => {
+    const res = await fetch("/api/orders");
+    const data = await res.json();
+    setOrders(data);
+  };
   useEffect(() => {
     if (!session?.user) {
       router.replace("/");
     }
   }, [session, session?.user, router]);
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
 
   return (
     <div>
@@ -32,7 +43,7 @@ const DashBoard = () => {
         <DashboardCard title="users" heading="Total Users" value="50" />
       </div>
       <h1 className="text-2xl ml-8 mt-8 font-semibold">Recent Orders</h1>
-      <Dashboard />
+      <Dashboard orders={orders} />
     </div>
   );
 };
