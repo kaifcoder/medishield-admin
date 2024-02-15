@@ -11,8 +11,13 @@ const getProductDetails = (slug: any) => {
   return {
     name: product!.name,
     sku: product!.sku,
-    price: product!.price!.minimalPrice,
+    price: {
+      minimalPrice: product!.price.minimalPrice,
+      maximalPrice: product!.price.maximalPrice,
+      regularPrice: product!.price.regularPrice,
+    },
     short_description: product!.short_description,
+    stock: product!.max_sale_qty,
     product_specs: {
       description: product!.product_specs!.description,
       key_specifications: product!.product_specs!.key_specifications,
