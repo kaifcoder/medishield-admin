@@ -156,7 +156,9 @@ export function OrderDetails({ order }: any) {
             <div className="font-medium">Method</div>
             <div>Standard shipping</div>
             <div className="font-medium">Tracking number</div>
-            <div>not alloted</div>
+            <div>
+              {order?.trackingNumber ? order?.trackingNumber : "Not Alloted"}
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -191,69 +193,70 @@ export function OrderDetails({ order }: any) {
           </div>
         </CardContent>
       </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Actions</CardTitle>
-        </CardHeader>
-        <CardContent className="space-x-2">
-          <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger>
-              <Button variant="default">Mark as Shipped</Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-              <DialogHeader>
-                <DialogTitle>Ship Order #{order._id}</DialogTitle>
-                <DialogDescription>
-                  Provide the tracking number for the order.
-                </DialogDescription>
-              </DialogHeader>
-              <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-8"
-                >
-                  <FormField
-                    control={form.control}
-                    name="trackingnumber"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Tracking Number</FormLabel>
-                        <FormControl>
-                          <Input placeholder="AWB0001122233" {...field} />
-                        </FormControl>
-                        <FormDescription>
-                          Provide the tracking number for the order.
-                        </FormDescription>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button type="submit">Save changes</Button>
-                </form>
-              </Form>
-            </DialogContent>
-          </Dialog>
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button variant="outline">Cancel Order</Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete the
-                  order.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction>Continue</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        </CardContent>
-      </Card>
+      {order.orderStatus === "Processing" && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Actions</CardTitle>
+          </CardHeader>
+          <CardContent className="space-x-2">
+            <Dialog open={open} onOpenChange={setOpen}>
+              <DialogTrigger>
+                <Button variant="default">Mark as Shipped</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle>Ship Order #{order._id}</DialogTitle>
+                  <DialogDescription>
+                    Provide the tracking number for the order.
+                  </DialogDescription>
+                </DialogHeader>
+                <Form {...form}>
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-8"
+                  >
+                    <FormField
+                      control={form.control}
+                      name="trackingnumber"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Tracking Number</FormLabel>
+                          <FormControl>
+                            <Input placeholder="AWB0001122233" {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            Provide the tracking number for the order.
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <Button type="submit">Save changes</Button>
+                  </form>
+                </Form>
+              </DialogContent>
+            </Dialog>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="outline">Cancel Order</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will permanently delete
+                    the order.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction>Continue</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </CardContent>
+        </Card>
+      )}
     </>
   );
 }

@@ -47,6 +47,17 @@ export function BrandShowcase() {
     setLoading(false);
   };
 
+  const createBrand = async (brand: any) => {
+    setLoading(true);
+    const res = await fetch("/api/brands", {
+      method: "POST",
+      body: JSON.stringify(brand),
+    });
+    const data = await res.json();
+    setBrand(data["data"]);
+    setLoading(false);
+  };
+
   useEffect(() => {
     fetchBrands();
   }, []);
@@ -60,7 +71,7 @@ export function BrandShowcase() {
   });
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
-
+    createBrand(values);
     toast("Brand has been created", {
       description: "The brand has been added to the showcase.",
       closeButton: true,
