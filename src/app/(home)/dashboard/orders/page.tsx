@@ -45,7 +45,6 @@ import { Orders, columns } from "@/components/component/orderdata";
 export default function Page() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [users, setUsers] = useState([]);
 
   const fetchOrders = async () => {
     setLoading(true);

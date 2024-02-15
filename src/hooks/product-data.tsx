@@ -6,12 +6,11 @@ interface ChildProduct {
   name: string;
   sku: string;
   special_price: number;
-  // Optional properties based on your example
   short_description?: string;
   average_rating?: string;
   rating_count?: string;
-  is_in_stock: true; // Assuming child products will always be in stock
-  pd_expiry_date?: string; // Optional as in your example
+  is_in_stock: true;
+  pd_expiry_date?: string;
   meta_title: string;
   price: {
     minimalPrice: {
@@ -90,7 +89,7 @@ interface Product {
     direction_to_use: string;
     features: string;
   };
-  childProducts: ChildProduct[] | undefined; // Optional child products
+  childProducts: ChildProduct[] | undefined;
 }
 
 type ProductDataStore = {

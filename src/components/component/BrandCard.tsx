@@ -1,3 +1,4 @@
+import { MoreVertical } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -8,7 +9,7 @@ interface BrandCardProps {
 
 const BrandCard = ({ name, thumbnail }: BrandCardProps) => {
   return (
-    <div className="flex items-center gap-4 border p-4 rounded-xl shadow-md">
+    <div className="flex items-center gap-4 border p-4 rounded-xl shadow-md relative">
       <Image
         alt="Brand thumbnail"
         className="aspect-square object-contain border border-gray-200 rounded-lg overflow-hidden w-20 dark:border-gray-800"

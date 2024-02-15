@@ -17,8 +17,8 @@ import {
 } from "../ui/dialog";
 
 import { Label } from "../ui/label";
-import { useState } from "react";
-import { z } from "zod";
+import { useEffect, useState } from "react";
+import { BRAND, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import {
@@ -31,15 +31,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
-const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
-
 const formSchema = z.object({
   name: z.string(),
   logourl: z.string(),
 });
 
 export function BrandShowcase() {
-  const router = useRouter();
+  const [brand, setBrand] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const fetchBrands = async () => {
+    setLoading(true);
+    const res = await fetch("/api/brands");
+    const data = await res.json();
+    setBrand(data["data"]);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchBrands();
+  }, []);
   const [open, setOpen] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -62,7 +72,6 @@ export function BrandShowcase() {
     setOpen(false);
   }
 
-  const data = brands;
   return (
     <div className="flex flex-col">
       <header className="border-b p-4">
@@ -133,15 +142,10 @@ export function BrandShowcase() {
         </div>
       </header>
       <div className="grid sm:grid-cols-2 p-8 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-start">
-        {data.map((brand) => {
-          return (
-            <BrandCard
-              key={brand.name}
-              name={brand.name}
-              thumbnail={brand.logo}
-            />
-          );
-        })}
+        {!loading &&
+          brand.map((b: any) => {
+            return <BrandCard key={b.name} name={b.name} thumbnail={b.logo} />;
+          })}
       </div>
     </div>
   );

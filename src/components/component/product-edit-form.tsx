@@ -54,7 +54,19 @@ const formSchema = z.object({
     message: "product name must be at least 2 characters.",
   }),
   sku: z.string().min(2, { message: "sku must be at least 2 characters." }),
-  price: z.coerce.number().min(0, { message: "price must be greater than 0." }),
+
+  price: z.object({
+    minimalPrice: z.coerce.number().min(0, {
+      message: "price must be greater than 0.",
+    }),
+    maximalPrice: z.coerce.number().min(0, {
+      message: "price must be greater than 0.",
+    }),
+    regularPrice: z.coerce.number().min(0, {
+      message: "price must be greater than 0.",
+    }),
+  }),
+  stock: z.coerce.number().min(0, { message: "stock must be greater than 0." }),
   short_description: z.string().min(2, {
     message: "description must be at least 2 characters.",
   }),
@@ -98,7 +110,12 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
     defaultValues: defaultValues || {
       name: "",
       sku: "",
-      price: 0,
+      price: {
+        minimalPrice: 0,
+        maximalPrice: 0,
+        regularPrice: 0,
+      },
+      stock: 0,
       short_description: "",
       product_specs: {
         description: "",
@@ -115,15 +132,13 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
   });
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-
-    // ✅ This will be type-safe and validated.
     console.log(values);
     form.reset();
     setImages([]);
   }
 
   const [images, setImages] = useState<string[]>([]);
+  const [category, setCategory] = useState<string[]>([]);
   const handleAddImage = (imageUrl: string) => {
     const mediaEntry = { file: imageUrl };
 
@@ -163,7 +178,7 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                     <FormItem>
                       <FormLabel>Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="shadcn" {...field} />
+                        <Input placeholder="Product name" {...field} />
                       </FormControl>
                       <FormDescription>
                         Provide a name for the product.
@@ -206,7 +221,7 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                 />
                 <FormField
                   control={form.control}
-                  name="price"
+                  name="price.minimalPrice"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Price</FormLabel>
@@ -214,6 +229,23 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                         <Input
                           type="number"
                           placeholder="Price of the product in INR"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="stock"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Stock</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          placeholder="No. of products in stock"
                           {...field}
                         />
                       </FormControl>
@@ -341,11 +373,13 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                   name="categories"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Categories</FormLabel>
+                      <FormLabel>Category</FormLabel>
                       <FormControl>
-                        <CategoryDropDown
-                          categoryList={categories.categories}
-                        />
+                        <div className="ml-2">
+                          <CategoryDropDown
+                            categoryList={categories.categories}
+                          />
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>

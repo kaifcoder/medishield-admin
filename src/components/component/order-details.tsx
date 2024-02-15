@@ -157,15 +157,6 @@ export function OrderDetails({ order }: any) {
             <div>Standard shipping</div>
             <div className="font-medium">Tracking number</div>
             <div>not alloted</div>
-            <div className="font-medium">Expected delivery</div>
-            <div>
-              Within 5-7 days from{" "}
-              {new Date(order.createdAt).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </div>
           </div>
         </CardContent>
       </Card>

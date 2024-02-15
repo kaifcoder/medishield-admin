@@ -38,12 +38,6 @@ const routes = [
     icon: <CategoryIcon className="h-4 w-4 mr-2" />,
     href: `/dashboard/brands`,
   },
-
-  {
-    label: "Manage Users",
-    icon: <GroupIcon className="h-4 w-4 mr-2" />,
-    href: `/dashboard/users`,
-  },
   {
     label: "Logout",
     icon: <LogOut className="h-4 w-4 mr-2" />,
