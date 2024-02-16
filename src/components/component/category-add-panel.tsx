@@ -65,10 +65,10 @@ export function CategoryAddPanel() {
             data.map((category: any) => {
               return (
                 <div
-                  key={category.name}
+                  key={category._id}
                   className={
                     `flex items-center justify-between hover:bg-gray-300 cursor-pointer p-2 rounded-lg transition-all` +
-                    (category.name === selectedcategory ? "bg-gray-300" : "")
+                    (category._id === selectedcategory ? "bg-gray-300" : "")
                   }
                   onClick={() => setCategory(category._id)}
                 >
@@ -96,7 +96,7 @@ export function CategoryAddPanel() {
                     key={subcategory._id}
                     className={
                       `flex items-center justify-between hover:bg-gray-300 cursor-pointer p-2 rounded-lg transition-all` +
-                      (subcategory.name === selectedSubCategory
+                      (subcategory._id === selectedSubCategory
                         ? " bg-gray-300"
                         : "")
                     }

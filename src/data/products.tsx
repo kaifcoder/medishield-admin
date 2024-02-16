@@ -83,6 +83,1564 @@ export const productsData = [
   },
   {
     _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
+      $oid: "65a6ebaba4032a1d9948cfc1",
+    },
+    id: 45082,
+    name: "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    sku: "DRMXX00228",
+    special_price: 925,
+    thumbnail_url: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+    short_description: "Gum paint & mouthwash",
+    manufacturer: "6799",
+    average_rating: null,
+    rating_count: null,
+    is_in_stock: true,
+    stock: 100,
+    is_cod: "1",
+    weight: null,
+    max_sale_qty: 100,
+    pd_expiry_date: "2025-09-30 00:00:00",
+    meta_title:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_keyword:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+    meta_description:
+      "Dr Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles) ",
+    price: {
+      minimalPrice: 925,
+      maximalPrice: 925,
+      regularPrice: 2370,
+    },
+    tier_prices: [
+      {
+        qty: 5,
+        value: 895,
+      },
+      {
+        qty: 10,
+        value: 860,
+      },
+    ],
+    media_gallery_entries: [
+      {
+        id: 388684,
+        media_type: "image",
+        label:
+          "Dr. Morepen Dentosys Gumpaint And Mouthwash (Pack of 30 Bottles)",
+        file: "/d/e/dentosys_gumpaint_mouthwash1_1.jpg",
+      },
+    ],
+    categories: [
+      {
+        name: "General Dentistry",
+      },
+      {
+        name: "Under 999",
+      },
+      {
+        name: "Tooth Care",
+      },
+      {
+        name: "Mouthwashes",
+      },
+      {
+        name: "Pain Relievers",
+      },
+      {
+        name: "Dr. Morepen",
+      },
+    ],
+    qa_data: [],
+    product_specs: {
+      description:
+        "<p><strong>Dentosys Gumpaint And Mouthwash</strong></p>\r\n<p>Gum Paints can be used to provide relief from inflamed and bleeding gums, cold sores, and mouth ulcers. Tannic acid is applied topically for the treatment of cold sores, diaper rash, fever blisters, and poison ivy. Iodine acts as an anesthetic and anti-infective. Menthol acts as a local analgesic and gives a cooling sensation whereas camphor also acts as a local analgesic. Thymol acts as an analgesic and antiseptic.</p>\r\n<p><strong>Indications:</strong></p>\r\n<ul>\r\n<li>Painful gum disorders</li>\r\n<li>Inflamed and bleeding gums</li>\r\n<li>Teething pain and irritation</li>\r\n<li>Stomatitis (inflammation of the mucous lining of the mouth)</li>\r\n</ul>\r\n<p><strong>Mechanism:</strong></p>\r\n<p>Iodine acts as an antiseptic and anti-infective. Iodine has a powerful bactericidal action, and quickly gets to work killing bacteria and viruses. Tannic acid acts as an astringent for the mucous membrane of the mouth. It forms a film of protein 'tannate' that acts as mechanical protective. Menthol acts as a local analgesic and gives the sensation of coolness which gives some relief from the pain. Camphor acts as a mild analgesic. Thymol is a phenolic compound with antiseptic and antibacterial properties.</p>",
+      key_specifications:
+        '<p><strong>Composition:</strong></p>\r\n<table style="border-collapse: collapse; width: 40.2799%; height: 120px;" border="1">\r\n<tbody>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Iodine IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 1 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Potassium Iodide IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 2 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Tannic Acid IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.5 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Thymol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Menthol IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.25 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Camphor IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 0.20 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Glycerin IP</strong></td>\r\n<td style="width: 50%; height: 15px;"> 94.3 gm</td>\r\n</tr>\r\n<tr style="height: 15px;">\r\n<td style="width: 50%; height: 15px;"><strong>Alum IP </strong></td>\r\n<td style="width: 50%; height: 15px;"> 1.5 gm</td>\r\n</tr>\r\n<tr>\r\n<td style="width: 50%;"><strong>Purified water to make</strong></td>\r\n<td style="width: 50%;"> 100 ml</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p><strong>Precautions &amp; Warning:</strong></p>\r\n<ul>\r\n<li>Do not rinse with water or eat/drink anything for 10 minutes after the application of gum paint.</li>\r\n</ul>\r\n<p><strong>Storage:</strong></p>\r\n<ul>\r\n<li>Store in a cool and dry place. </li>\r\n<li>Protect from direct sunlight.</li>\r\n</ul>',
+      packaging: "<ul>\r\n<li>Pack of 30 bottles 15gm each</li>\r\n</ul>",
+      direction_to_use:
+        "<p><strong>How to use:</strong></p>\r\n<ul>\r\n<li>Apply with a cotton applicator for two or three minutes to the affected area.</li>\r\n</ul>",
+      features: "",
+    },
+    childProducts: {},
+  },
+  {
+    _id: {
       $oid: "65a6ebada4032a1d9948cfc2",
     },
     id: 38609,

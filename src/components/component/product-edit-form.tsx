@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+
 import {
   CardTitle,
   CardDescription,
@@ -8,16 +8,6 @@ import {
   CardFooter,
   Card,
 } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import {
-  SelectValue,
-  SelectTrigger,
-  SelectLabel,
-  SelectItem,
-  SelectGroup,
-  SelectContent,
-  Select,
-} from "@/components/ui/select";
 
 import { CategoryDropDown } from "./category-dropdown";
 import { categories } from "@/data/categories";
@@ -34,6 +24,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
@@ -131,6 +122,7 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
     },
   });
   // 2. Define a submit handler.
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
     form.reset();
@@ -139,16 +131,11 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
 
   const [images, setImages] = useState<string[]>([]);
   const [category, setCategory] = useState<string[]>([]);
+
   const handleAddImage = (imageUrl: string) => {
     const mediaEntry = { file: imageUrl };
-
-    // Get the current value of media_gallery_entries
     const currentMediaEntries = form.getValues("media_gallery_entries");
-
-    // Update media_gallery_entries with the new entry
     const updatedMediaEntries = [...currentMediaEntries, mediaEntry];
-
-    // Set the updated value in the form
     form.setValue("media_gallery_entries", updatedMediaEntries);
     console.log(form.getValues("media_gallery_entries"));
   };
