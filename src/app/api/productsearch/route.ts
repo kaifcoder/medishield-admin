@@ -6,9 +6,10 @@ export async function GET(request: Request) {
   const session: any = await getServerSession(authOptions);
   try {
     const response = await axios.get(
-      `${process.env.API_URL}/api/product/get/getallproducts?${
+      `${process.env.API_URL}/api/product/getallproducts?${
         request.url.split("?")[1]
-      }`,
+      }
+      `,
       {
         headers: {
           Authorization: `Bearer ${session?.user?.access_token}`,

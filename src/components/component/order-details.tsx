@@ -64,8 +64,27 @@ export function OrderDetails({ order }: any) {
       trackingnumber: "",
     },
   });
-  function onSubmit(values: z.infer<typeof formSchema>) {
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
+    const payload = {
+      ...values,
+      status: "Shipped",
+    };
+    console.log(payload);
+
+    const response = await fetch(`/api/orders/${order._id}`, {
+      method: "PUT",
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      // Handle the error
+      console.error(response.statusText);
+      return;
+    }
+
+    console.log(response);
 
     toast("Order Shipped", {
       description: "The order has been shipped.",
@@ -73,9 +92,10 @@ export function OrderDetails({ order }: any) {
     });
 
     // ✅ This will be type-safe and validated.
-    console.log(values);
     form.reset();
     setOpen(false);
+    // refresh the page
+    window.location.reload();
   }
   return (
     <>

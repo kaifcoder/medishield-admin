@@ -1,3 +1,4 @@
+"use client";
 import {
   AccordionTrigger,
   AccordionContent,
@@ -11,6 +12,7 @@ interface ProductDetailsProps {
 }
 
 export function ProductDetails({ product }: ProductDetailsProps) {
+  console.log(product);
   return (
     <div className="grid gap-4 lg:gap-12 max-w-6xl px-2  py-6">
       <h1 className="text-3xl font-bold">Product Details</h1>

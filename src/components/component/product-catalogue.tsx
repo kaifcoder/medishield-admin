@@ -16,10 +16,37 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "../ui/pagination";
-import { productsData } from "@/data/products";
+import { useEffect, useState } from "react";
 
 export function ProductCatalogue() {
-  const data = productsData;
+  const [products, setProducts] = useState([]) as any;
+  const [search, setSearch] = useState("") as any;
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [total, setTotal] = useState(0);
+
+  const fetchProducts = async (page: any) => {
+    setLoading(true);
+    const response = await fetch(`/api/product/?page=${page}`);
+    const data = await response.json();
+    setProducts(data["data"]);
+    setTotal(data["count"]);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchProducts(page);
+  }, [page]);
+
+  const fetchSearchProducts = async (search: any) => {
+    setLoading(true);
+    const response = await fetch(`/api/productsearch/?search=${search}`);
+    const data = await response.json();
+    setProducts(data["data"]);
+    setTotal(data["count"]);
+    setLoading(false);
+  };
+
   const router = useRouter();
   return (
     <div className="flex flex-col ">
@@ -30,7 +57,11 @@ export function ProductCatalogue() {
             <span className="text-lg font-semibold">Product Catalog</span>
           </div>
           <div className="ml-auto flex items-center gap-4">
-            <Input placeholder="Search..." type="search" />
+            <Input
+              placeholder="Search..."
+              type="search"
+              onChange={(e) => setSearch(e.target.value)}
+            />
             <Button
               onClick={() => router.replace("/dashboard/products/addProduct")}
               size="sm"
@@ -41,42 +72,39 @@ export function ProductCatalogue() {
         </div>
       </header>
       <main className="flex-1 m-8 ">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-4">
-          {data.map((product) => (
-            <ProductCard
-              key={product.sku}
-              title={product.name}
-              description={product.short_description}
-              image={
-                product.thumbnail_url.startsWith("http")
-                  ? product.thumbnail_url
-                  : "https://images1.dentalkart.com/media/catalog/product" +
-                    product.thumbnail_url
-              }
-              price={product.price?.minimalPrice}
-              slug={product.sku}
-            />
-          ))}
-        </div>
+        {loading ? (
+          <p>Loading products...</p>
+        ) : (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-4">
+            {products.map((product: any) => (
+              <ProductCard
+                key={product.sku}
+                title={product.name}
+                description={product.short_description}
+                image={
+                  product.thumbnail_url.startsWith("http")
+                    ? product.thumbnail_url
+                    : "https://images1.dentalkart.com/media/catalog/product" +
+                      product.thumbnail_url
+                }
+                price={product.price?.minimalPrice}
+                slug={product.sku}
+              />
+            ))}
+          </div>
+        )}
         <Pagination>
           <PaginationContent>
             <PaginationItem>
-              <PaginationPrevious href="#" />
+              <PaginationPrevious onClick={() => setPage(page - 1)} />
             </PaginationItem>
+            {
+              <div>
+                current page: {page} of {Math.ceil(total / 10)}
+              </div>
+            }
             <PaginationItem>
-              <PaginationLink href="#">1</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#">2</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#">3</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationEllipsis />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext href="#" />
+              <PaginationNext onClick={() => setPage(page + 1)} />
             </PaginationItem>
           </PaginationContent>
         </Pagination>
