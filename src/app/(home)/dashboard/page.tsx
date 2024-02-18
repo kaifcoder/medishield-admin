@@ -43,7 +43,7 @@ const DashBoard = () => {
       };
     })
     .reverse()
-    .slice(0, 6);
+    .slice(0, 10);
 
   return (
     <div>

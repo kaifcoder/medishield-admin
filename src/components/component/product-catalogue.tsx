@@ -16,7 +16,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "../ui/pagination";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 
 export function ProductCatalogue() {
   const [products, setProducts] = useState([]) as any;
@@ -40,6 +40,7 @@ export function ProductCatalogue() {
 
   const fetchSearchProducts = async (search: any) => {
     setLoading(true);
+    console.log(search);
     const response = await fetch(`/api/productsearch/?search=${search}`);
     const data = await response.json();
     setProducts(data["data"]);
@@ -60,7 +61,15 @@ export function ProductCatalogue() {
             <Input
               placeholder="Search..."
               type="search"
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={async (e) => {
+                setSearch(e.target.value);
+              }}
+              onKeyPress={async (e) => {
+                if (e.key === "Enter") {
+                  fetchSearchProducts(search);
+                  setSearch("");
+                }
+              }}
             />
             <Button
               onClick={() => router.replace("/dashboard/products/addProduct")}
@@ -78,6 +87,7 @@ export function ProductCatalogue() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-4">
             {products.map((product: any) => (
               <ProductCard
+                id={product._id}
                 key={product.sku}
                 title={product.name}
                 description={product.short_description}

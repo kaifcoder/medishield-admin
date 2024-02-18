@@ -61,6 +61,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                   <div className="flex space-x-2 items-start">
                     <img
                       src={
+                        child.image_url &&
                         child.image_url.startsWith("https://")
                           ? child.image_url
                           : "https://images1.dentalkart.com/media/catalog/product" +

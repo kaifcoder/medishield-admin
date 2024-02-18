@@ -5,9 +5,22 @@ import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { AlertDialogDemo } from "./alert-dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   title: string;
+  id: string;
   description: string;
   image: string;
   slug: string;
@@ -16,12 +29,30 @@ interface ProductCardProps {
 
 const ProductCard = ({
   title,
+  id,
   description,
   image,
   slug,
   price,
 }: ProductCardProps) => {
   const router = useRouter();
+
+  const deleteProduct = async (id: string) => {
+    const res = await fetch(`/api/product/${id}`, {
+      method: "DELETE",
+    });
+    const data = await res.json();
+  };
+
+  const handleAction = () => {
+    deleteProduct(id);
+    toast("Product has been deleted", {
+      description: "The product has been removed from the database.",
+      closeButton: true,
+    });
+
+    console.log("Action has been clicked");
+  };
   return (
     <Card className="cursor-pointer">
       <CardContent
@@ -52,7 +83,26 @@ const ProductCard = ({
           Edit
         </Button>
 
-        <AlertDialogDemo />
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button variant="destructive">Delete</Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete your
+                product and remove your data from our servers.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={handleAction}>
+                Continue
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </CardFooter>
     </Card>
   );

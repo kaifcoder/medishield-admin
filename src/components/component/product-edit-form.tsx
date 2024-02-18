@@ -13,7 +13,7 @@ import { CategoryDropDown } from "./category-dropdown";
 import { categories } from "@/data/categories";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 
 import {
   Form,
@@ -38,7 +38,7 @@ import {
   CommandItem,
 } from "../ui/command";
 import { brands } from "@/data/brands";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -57,7 +57,9 @@ const formSchema = z.object({
       message: "price must be greater than 0.",
     }),
   }),
-  stock: z.coerce.number().min(0, { message: "stock must be greater than 0." }),
+  max_sale_qty: z.coerce
+    .number()
+    .min(0, { message: "stock must be greater than 0." }),
   short_description: z.string().min(2, {
     message: "description must be at least 2 characters.",
   }),
@@ -106,7 +108,7 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
         maximalPrice: 0,
         regularPrice: 0,
       },
-      stock: 0,
+      max_sale_qty: 0,
       short_description: "",
       product_specs: {
         description: "",
@@ -128,9 +130,10 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
     form.reset();
     setImages([]);
   }
-
+  const [loading, setLoading] = useState(false);
   const [images, setImages] = useState<string[]>([]);
   const [category, setCategory] = useState<string[]>([]);
+  const [brands, setBrands] = useState<any[]>([]);
 
   const handleAddImage = (imageUrl: string) => {
     const mediaEntry = { file: imageUrl };
@@ -140,7 +143,21 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
     console.log(form.getValues("media_gallery_entries"));
   };
 
-  const brand = brands;
+  const fetchBrands = async () => {
+    setLoading(true);
+    const response = await fetch("/api/brands");
+    const data = await response.json();
+    console.log(data);
+    setLoading(false);
+    return data["data"];
+  };
+
+  useEffect(() => {
+    fetchBrands().then((data) => {
+      setBrands(data);
+    });
+    console.log(brands);
+  }, []);
 
   return (
     <div className="flex flex-col">
@@ -225,7 +242,7 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                 />
                 <FormField
                   control={form.control}
-                  name="stock"
+                  name="max_sale_qty"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Stock</FormLabel>
@@ -311,42 +328,44 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                               variant="outline"
                               role="combobox"
                               className={cn(
-                                "w-[200px] overflow-auto ml-4 justify-between",
+                                "w-[250px] overflow-auto ml-4 justify-between",
                                 !field.value && "text-muted-foreground"
                               )}
                             >
-                              {field.value
-                                ? brand.find((b) => b.name === field.value)
-                                    ?.name
+                              {!loading && field.value
+                                ? brands.find(
+                                    (b: any) => b.name === field.value
+                                  )?.name
                                 : "Select Manufacturer"}
                               <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                             </Button>
                           </FormControl>
                         </PopoverTrigger>
-                        <PopoverContent className="w-[200px]  p-1">
+                        <PopoverContent className="w-[250px]  p-1">
                           <Command>
                             <CommandInput placeholder="Search brands..." />
                             <CommandEmpty>No brands found.</CommandEmpty>
                             <CommandGroup className="h-[400px] overflow-auto">
-                              {brand.map((b) => (
-                                <CommandItem
-                                  value={b.name}
-                                  key={b.name}
-                                  onSelect={() => {
-                                    form.setValue("manufacturer", b.name);
-                                  }}
-                                >
-                                  <Check
-                                    className={cn(
-                                      "mr-2 h-4 w-4",
-                                      b.name === field.value
-                                        ? "opacity-100"
-                                        : "opacity-0"
-                                    )}
-                                  />
-                                  {b.name}
-                                </CommandItem>
-                              ))}
+                              {!loading &&
+                                brands.map((b: any) => (
+                                  <CommandItem
+                                    value={b.name}
+                                    key={b.name}
+                                    onSelect={() => {
+                                      form.setValue("manufacturer", b.name);
+                                    }}
+                                  >
+                                    <Check
+                                      className={cn(
+                                        "mr-2 h-4 w-4",
+                                        b.name === field.value
+                                          ? "opacity-100"
+                                          : "opacity-0"
+                                      )}
+                                    />
+                                    {b.name}
+                                  </CommandItem>
+                                ))}
                             </CommandGroup>
                           </Command>
                         </PopoverContent>

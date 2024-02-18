@@ -9,15 +9,12 @@ const Page = ({ params: { slug } }: any) => {
   const fetchProduct = async () => {
     setLoading(true);
     const response = await fetch(`/api/product/${slug}`);
-
     const data = await response.json();
-    console.log(data);
     setproduct(data["findProduct"]);
     setLoading(false);
   };
 
   useEffect(() => {
-    console.log("fetching product...");
     fetchProduct();
   }, [slug]);
 

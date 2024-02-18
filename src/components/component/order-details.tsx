@@ -51,7 +51,6 @@ import {
 } from "@/components/ui/form";
 import { toast } from "sonner";
 import { Input } from "../ui/input";
-const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
 const formSchema = z.object({
   trackingnumber: z.string(),
@@ -84,8 +83,6 @@ export function OrderDetails({ order }: any) {
       return;
     }
 
-    console.log(response);
-
     toast("Order Shipped", {
       description: "The order has been shipped.",
       closeButton: true,
@@ -97,6 +94,7 @@ export function OrderDetails({ order }: any) {
     // refresh the page
     window.location.reload();
   }
+
   return (
     <>
       <Card>
@@ -155,7 +153,7 @@ export function OrderDetails({ order }: any) {
                 return (
                   <TableRow key={product._id}>
                     <TableCell className="font-medium">
-                      {product.product.name}
+                      {product.product.name} #SKU: {product.variant}
                     </TableCell>
                     <TableCell>{product.count}</TableCell>
                     <TableCell>₹ {product?.price}</TableCell>
@@ -256,24 +254,6 @@ export function OrderDetails({ order }: any) {
                 </Form>
               </DialogContent>
             </Dialog>
-            <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button variant="outline">Cancel Order</Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete
-                    the order.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction>Continue</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
           </CardContent>
         </Card>
       )}
