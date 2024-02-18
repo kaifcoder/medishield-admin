@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/card";
 
 import { CategoryDropDown } from "./category-dropdown";
-import { categories } from "@/data/categories";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { set, useForm } from "react-hook-form";
@@ -29,7 +28,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { cn } from "@/lib/utils";
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronsUpDown, Cross, Delete } from "lucide-react";
 import {
   Command,
   CommandEmpty,
@@ -37,7 +36,6 @@ import {
   CommandInput,
   CommandItem,
 } from "../ui/command";
-import { brands } from "@/data/brands";
 import { useEffect, useState } from "react";
 
 const formSchema = z.object({
@@ -132,8 +130,10 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
   }
   const [loading, setLoading] = useState(false);
   const [images, setImages] = useState<string[]>([]);
-  const [category, setCategory] = useState<string[]>([]);
+  const [category, setCategory] = useState<[]>([]);
+
   const [brands, setBrands] = useState<any[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
 
   const handleAddImage = (imageUrl: string) => {
     const mediaEntry = { file: imageUrl };
@@ -141,6 +141,16 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
     const updatedMediaEntries = [...currentMediaEntries, mediaEntry];
     form.setValue("media_gallery_entries", updatedMediaEntries);
     console.log(form.getValues("media_gallery_entries"));
+  };
+
+  const handleAddCategory = (category: any) => {
+    form.resetField("categories");
+
+    const currentCategories = form.getValues("categories");
+
+    const updatedCategories = [...currentCategories, ...category];
+    form.setValue("categories", updatedCategories);
+    console.log(form.getValues("categories"));
   };
 
   const fetchBrands = async () => {
@@ -152,10 +162,24 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
     return data["data"];
   };
 
+  const fetchCategories = async () => {
+    setLoading(true);
+    const response = await fetch("/api/category");
+    const data = await response.json();
+    console.log(data);
+    setLoading(false);
+    return data["categories"];
+  };
+
   useEffect(() => {
     fetchBrands().then((data) => {
       setBrands(data);
     });
+
+    fetchCategories().then((data) => {
+      setCategories(data);
+    });
+
     console.log(brands);
   }, []);
 
@@ -382,15 +406,33 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                       <FormLabel>Category</FormLabel>
                       <FormControl>
                         <div className="ml-2">
-                          <CategoryDropDown
-                            categoryList={categories.categories}
-                          />
+                          {!loading && (
+                            <CategoryDropDown
+                              categoryList={categories}
+                              setCategory={setCategory}
+                              handleChange={handleAddCategory}
+                            />
+                          )}
                         </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+                {category.length > 0 && (
+                  <>
+                    <div className="flex gap-2">
+                      {category.map((cat: any, index) => (
+                        <div
+                          key={index}
+                          className="flex border p-1 rounded-sm shadow-sm"
+                        >
+                          <span>{cat.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
                 <FormField
                   control={form.control}
                   name="product_specs.description"

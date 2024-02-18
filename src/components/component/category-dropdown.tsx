@@ -15,9 +15,15 @@ import {
 
 interface Category {
   categoryList: any[];
+  setCategory: any;
+  handleChange: any;
 }
 
-export function CategoryDropDown({ categoryList }: Category) {
+export function CategoryDropDown({
+  categoryList,
+  setCategory,
+  handleChange,
+}: Category) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -28,6 +34,12 @@ export function CategoryDropDown({ categoryList }: Category) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup className="">
           {categoryList.map((category) => {
+            function handleClick(selectedCategory: any) {
+              setCategory(selectedCategory);
+              handleChange(selectedCategory.map((item: any) => item));
+              console.log("clicked -->" + JSON.stringify(selectedCategory));
+            }
+
             return category.children.length > 0 ? (
               <DropdownMenuSub key={category._id}>
                 <DropdownMenuSubTrigger>
@@ -46,7 +58,22 @@ export function CategoryDropDown({ categoryList }: Category) {
                               {subcategory.children.map(
                                 (subsubcategory: any) => {
                                   return (
-                                    <DropdownMenuItem key={subsubcategory._id}>
+                                    <DropdownMenuItem
+                                      key={subsubcategory._id}
+                                      onClick={() =>
+                                        handleClick([
+                                          {
+                                            name: subsubcategory.name,
+                                          },
+                                          {
+                                            name: subcategory.name,
+                                          },
+                                          {
+                                            name: category.name,
+                                          },
+                                        ])
+                                      }
+                                    >
                                       <span>{subsubcategory.name}</span>
                                     </DropdownMenuItem>
                                   );
@@ -56,7 +83,19 @@ export function CategoryDropDown({ categoryList }: Category) {
                           </DropdownMenuPortal>
                         </DropdownMenuSub>
                       ) : (
-                        <DropdownMenuItem key={subcategory._id}>
+                        <DropdownMenuItem
+                          key={subcategory._id}
+                          onClick={() =>
+                            handleClick([
+                              {
+                                name: subcategory.name,
+                              },
+                              {
+                                name: category.name,
+                              },
+                            ])
+                          }
+                        >
                           <span>{subcategory.name}</span>
                         </DropdownMenuItem>
                       );
@@ -65,7 +104,16 @@ export function CategoryDropDown({ categoryList }: Category) {
                 </DropdownMenuPortal>
               </DropdownMenuSub>
             ) : (
-              <DropdownMenuItem key={category._id}>
+              <DropdownMenuItem
+                key={category._id}
+                onClick={() =>
+                  handleClick([
+                    {
+                      name: category.name,
+                    },
+                  ])
+                }
+              >
                 <span>{category.name}</span>
               </DropdownMenuItem>
             );
