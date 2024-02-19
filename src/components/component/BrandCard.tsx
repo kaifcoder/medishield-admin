@@ -10,7 +10,7 @@ interface BrandCardProps {
 const BrandCard = ({ name, thumbnail }: BrandCardProps) => {
   return (
     <div className="flex items-center gap-4 border p-4 rounded-xl shadow-md relative">
-      <Image
+      <img
         alt="Brand thumbnail"
         className="aspect-square object-contain border border-gray-200 rounded-lg overflow-hidden w-20 dark:border-gray-800"
         height={120}

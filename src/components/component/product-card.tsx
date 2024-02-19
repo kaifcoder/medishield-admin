@@ -59,7 +59,7 @@ const ProductCard = ({
         onClick={() => router.push(`/dashboard/products/${slug}`)}
         className="p-4 flex flex-col gap-2"
       >
-        <Image
+        <img
           alt="Image"
           className="aspect-video object-contain rounded-lg overflow-hidden border border-gray-200 w-full dark:border-gray-800"
           height={150}

@@ -8,8 +8,6 @@ import {
   CardFooter,
   Card,
 } from "@/components/ui/card";
-
-import { CategoryDropDown } from "./category-dropdown";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -26,19 +24,10 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { cn } from "@/lib/utils";
-import { Check, ChevronsUpDown, Cross, Delete } from "lucide-react";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "../ui/command";
+
 import { useEffect, useState } from "react";
-import useDisableNumberInputScroll from "@/hooks/useNumber";
 import { toast } from "sonner";
+import useDisableNumberInputScroll from "@/hooks/useNumber";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -82,22 +71,13 @@ const formSchema = z.object({
       })
     )
     .min(1, { message: "media_gallery_entries must have at least 1 entry." }),
-  categories: z.array(
-    z.object({
-      name: z.string(),
-    })
-  ),
-  manufacturer: z
-    .string()
-    .min(2, { message: "brand must be at least 2 characters." }),
 });
 
 interface ProductEditFormProps {
   defaultValues?: z.infer<typeof formSchema>;
 }
 
-export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
-  // 1. Use `useForm` to create a form instance.
+export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues || {
@@ -119,35 +99,22 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
       },
       thumbnail_url: "",
       media_gallery_entries: [],
-      categories: [],
-      manufacturer: "",
     },
   });
-  // 2. Define a submit handler.
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      console.log(values);
-      const response = await fetch("/api/product", {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      form.reset();
-      setImages([]);
-      toast.success("Product added successfully");
-    } catch (error) {
-      toast.error("Error in adding product");
-    }
+    const res = await fetch(`/api/product/${values.sku}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+    const data = await res.json();
+    toast.success("Product updated successfully");
+    window.location.reload();
   }
   const [loading, setLoading] = useState(false);
-  const [images, setImages] = useState<string[]>([]);
-  const [category, setCategory] = useState<[]>([]);
-
-  const [brands, setBrands] = useState<any[]>([]);
-  const [categories, setCategories] = useState<any[]>([]);
 
   const handleAddImage = (imageUrl: string) => {
     const mediaEntry = { file: imageUrl };
@@ -156,46 +123,6 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
     form.setValue("media_gallery_entries", updatedMediaEntries);
     console.log(form.getValues("media_gallery_entries"));
   };
-
-  const handleAddCategory = (category: any) => {
-    form.resetField("categories");
-
-    const currentCategories = form.getValues("categories");
-
-    const updatedCategories = [...currentCategories, ...category];
-    form.setValue("categories", updatedCategories);
-    console.log(form.getValues("categories"));
-  };
-
-  const fetchBrands = async () => {
-    setLoading(true);
-    const response = await fetch("/api/brands");
-    const data = await response.json();
-    console.log(data);
-    setLoading(false);
-    return data["data"];
-  };
-
-  const fetchCategories = async () => {
-    setLoading(true);
-    const response = await fetch("/api/category");
-    const data = await response.json();
-    console.log(data);
-    setLoading(false);
-    return data["categories"];
-  };
-
-  useEffect(() => {
-    fetchBrands().then((data) => {
-      setBrands(data);
-    });
-
-    fetchCategories().then((data) => {
-      setCategories(data);
-    });
-
-    console.log(brands);
-  }, []);
 
   useDisableNumberInputScroll();
 
@@ -355,100 +282,7 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="manufacturer"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Manufacturer</FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant="outline"
-                              role="combobox"
-                              className={cn(
-                                "w-[250px] overflow-auto ml-4 justify-between",
-                                !field.value && "text-muted-foreground"
-                              )}
-                            >
-                              {!loading && field.value
-                                ? brands.find(
-                                    (b: any) => b.name === field.value
-                                  )?.name
-                                : "Select Manufacturer"}
-                              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-[250px]  p-1">
-                          <Command>
-                            <CommandInput placeholder="Search brands..." />
-                            <CommandEmpty>No brands found.</CommandEmpty>
-                            <CommandGroup className="h-[400px] overflow-auto">
-                              {!loading &&
-                                brands.map((b: any) => (
-                                  <CommandItem
-                                    value={b.name}
-                                    key={b.name}
-                                    onSelect={() => {
-                                      form.setValue("manufacturer", b.name);
-                                    }}
-                                  >
-                                    <Check
-                                      className={cn(
-                                        "mr-2 h-4 w-4",
-                                        b.name === field.value
-                                          ? "opacity-100"
-                                          : "opacity-0"
-                                      )}
-                                    />
-                                    {b.name}
-                                  </CommandItem>
-                                ))}
-                            </CommandGroup>
-                          </Command>
-                        </PopoverContent>
-                      </Popover>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="categories"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Category</FormLabel>
-                      <FormControl>
-                        <div className="ml-2">
-                          {!loading && (
-                            <CategoryDropDown
-                              categoryList={categories}
-                              setCategory={setCategory}
-                              handleChange={handleAddCategory}
-                            />
-                          )}
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                {category.length > 0 && (
-                  <>
-                    <div className="flex gap-2">
-                      {category.map((cat: any, index) => (
-                        <div
-                          key={index}
-                          className="flex border p-1 rounded-sm shadow-sm"
-                        >
-                          <span>{cat.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </>
-                )}
+
                 <FormField
                   control={form.control}
                   name="product_specs.description"

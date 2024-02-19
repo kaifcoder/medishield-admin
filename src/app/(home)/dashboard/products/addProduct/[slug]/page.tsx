@@ -1,8 +1,7 @@
 "use client";
 import { ProductEditForm } from "@/components/component/product-edit-form";
+import { ProductUpdate } from "@/components/component/product-update";
 import React, { useEffect, useState } from "react";
-
-const getProductDetails = (slug: any) => {};
 
 const page = ({ params: { slug } }: any) => {
   const [product, setproduct] = useState({}) as any;
@@ -18,7 +17,6 @@ const page = ({ params: { slug } }: any) => {
   useEffect(() => {
     fetchProduct();
   }, []);
-  console.log(product);
 
   const values = {
     name: product!.name,
@@ -43,10 +41,6 @@ const page = ({ params: { slug } }: any) => {
         file: media.file,
       })
     ),
-    categories: product!.categories?.map((category: any) => ({
-      name: category.name,
-    })),
-    manufacturer: product!.manufacturer!,
   };
 
   return (
@@ -55,7 +49,7 @@ const page = ({ params: { slug } }: any) => {
         <p className="p-8">Loading product...</p>
       ) : (
         <div className="p-8">
-          <ProductEditForm defaultValues={values} />
+          <ProductUpdate defaultValues={values} />
         </div>
       )}
     </>

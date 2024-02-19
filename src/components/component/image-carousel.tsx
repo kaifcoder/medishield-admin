@@ -25,14 +25,16 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
             <div className="p-1">
               <Card>
                 <CardContent className="flex aspect-square  items-center justify-center p-6">
-                  <Image
+                  <img
                     alt="Image"
                     loading="lazy"
                     width={400}
                     height={400}
                     src={
-                      "https://images1.dentalkart.com/media/catalog/product" +
-                      images[index]
+                      images[index].startsWith("http")
+                        ? images[index]
+                        : "https://images1.dentalkart.com/media/catalog/product" +
+                          images[index]
                     }
                   />
                 </CardContent>

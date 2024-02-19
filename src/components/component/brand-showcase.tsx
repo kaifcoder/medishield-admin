@@ -5,7 +5,6 @@ import BrandCard from "./BrandCard";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { useRouter } from "next/navigation";
-import { brands } from "@/data/brands";
 import {
   Dialog,
   DialogContent,
@@ -92,10 +91,9 @@ export function BrandShowcase() {
             <span className="text-lg font-semibold">Brands</span>
           </div>
           <div className="ml-auto flex items-center gap-4">
-            <Input placeholder="Search..." type="search" />
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger>
-                <Button variant="outline">Add Brand</Button>
+                <Button variant="default">Add Brand</Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
