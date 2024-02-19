@@ -1,42 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { useRouter } from "next/navigation";
-import { orders } from "@/data/orderData";
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
 import React, { useEffect, useState } from "react";
 
 import Dashboard from "@/components/component/dashboard";
