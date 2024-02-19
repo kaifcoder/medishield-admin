@@ -17,7 +17,7 @@ import {
 
 import { Label } from "../ui/label";
 import { useEffect, useState } from "react";
-import { BRAND, z } from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import {
