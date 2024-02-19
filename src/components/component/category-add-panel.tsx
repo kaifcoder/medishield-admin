@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { categories } from "@/data/categories";
 import { Delete } from "lucide-react";
 import { useEffect, useState } from "react";
 
