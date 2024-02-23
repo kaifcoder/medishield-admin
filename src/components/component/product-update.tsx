@@ -34,7 +34,7 @@ const formSchema = z.object({
     message: "product name must be at least 2 characters.",
   }),
   sku: z.string().min(2, { message: "sku must be at least 2 characters." }),
-
+  medishield_coins: z.coerce.number(),
   price: z.object({
     minimalPrice: z.coerce.number().min(0, {
       message: "price must be greater than 0.",
@@ -200,6 +200,23 @@ export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
                         <Input
                           type="number"
                           placeholder="Price of the product in INR"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="medishield_coins"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Medishield Coins (MSC)</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          placeholder="Medishield Coins for the product"
                           {...field}
                         />
                       </FormControl>

@@ -60,6 +60,7 @@ const formSchema = z.object({
   max_sale_qty: z.coerce
     .number()
     .min(0, { message: "stock must be greater than 0." }),
+  medishield_coins: z.coerce.number(),
   short_description: z.string().min(2, {
     message: "description must be at least 2 characters.",
   }),
@@ -121,6 +122,7 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
       media_gallery_entries: [],
       categories: [],
       manufacturer: "",
+      medishield_coins: 0,
     },
   });
   // 2. Define a submit handler.
@@ -159,10 +161,14 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
 
   const handleAddCategory = (category: any) => {
     form.resetField("categories");
-
     const currentCategories = form.getValues("categories");
-
-    const updatedCategories = [...currentCategories, ...category];
+    const updatedCategories = [
+      ...currentCategories,
+      ...category,
+      {
+        name: form.getValues("manufacturer"),
+      },
+    ];
     form.setValue("categories", updatedCategories);
     console.log(form.getValues("categories"));
   };
@@ -273,6 +279,23 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                         <Input
                           type="number"
                           placeholder="Price of the product in INR"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="medishield_coins"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Medishield Coin (MSC)</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          placeholder="Provide MedishieldCoin for the product"
                           {...field}
                         />
                       </FormControl>

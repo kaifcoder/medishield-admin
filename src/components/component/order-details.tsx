@@ -121,16 +121,42 @@ export function OrderDetails({ order }: any) {
             </div>
             <div className="font-medium">Status</div>
             <div>{order.orderStatus}</div>
-            <div className="font-medium">Total</div>
-            <div>₹ {order.paymentIntent?.amount}</div>
-          </div>
-          <div className="grid grid-cols-2 gap-1 text-sm">
-            <div className="font-medium">Customer</div>
+
+            <div className="font-medium">Sub Total</div>
             <div>
-              {order.orderby?.firstname} {order.orderby?.lastname}
+              ₹{" "}
+              {order.paymentIntent?.amount -
+                order.paymentIntent?.shipping +
+                order.paymentIntent?.msc}
             </div>
-            <div className="font-medium">Email</div>
-            <div>{order.orderby?.email}</div>
+
+            <div className="font-medium">Discount</div>
+            <div>₹ {order.paymentIntent?.msc}</div>
+            <div className="font-medium">Total after Discount</div>
+            <div>
+              ₹ {order.paymentIntent?.amount - order.paymentIntent?.shipping}
+            </div>
+            <div className="font-medium">Shipping Fee</div>
+            <div>₹ {order.paymentIntent?.shipping}</div>
+
+            <div className="font-bold">Grand Total</div>
+            <div className="font-bold">₹ {order.paymentIntent?.amount}</div>
+          </div>
+          <div className="flex space-y-2 flex-col justify-start items-start text-sm">
+            <div className="flex space-x-4">
+              <div className="font-medium">Customer</div>
+              <div>
+                {order.orderby?.firstname} {order.orderby?.lastname}
+              </div>
+            </div>
+            <div className="flex space-x-4">
+              <div className="font-medium">Email</div>
+              <div>{order.orderby?.email}</div>
+            </div>
+            <div className="flex space-x-4">
+              <div className="font-medium">Phone</div>
+              <div>{order.shippingAddress?.mobile}</div>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -153,7 +179,15 @@ export function OrderDetails({ order }: any) {
                 return (
                   <TableRow key={product._id}>
                     <TableCell className="font-medium">
-                      {product.product.name} #SKU: {product.variant}
+                      {product.product.childProducts.length > 1
+                        ? product.product.childProducts.map(
+                            (child: any, sku: any) =>
+                              child.sku === product.variant
+                                ? `${child.name}`
+                                : ``
+                          )
+                        : product.product.name}{" "}
+                      #SKU: {product.variant}
                     </TableCell>
                     <TableCell>{product.count}</TableCell>
                     <TableCell>₹ {product?.price}</TableCell>
@@ -180,27 +214,14 @@ export function OrderDetails({ order }: any) {
           </div>
         </CardContent>
       </Card>
-      <Card>
-        <CardHeader>
-          <CardTitle>Customer details</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-1 text-sm">
-            <Link className="text-blue-600 underline" href="#">
-              {order.orderby?.firstname} {order.orderby?.lastname}
-            </Link>
-            <div>{order.orderby?.email}</div>
-            <div>{order.shippingAddress?.mobile}</div>
-          </div>
-        </CardContent>
-      </Card>
+
       <Card>
         <CardHeader>
           <CardTitle>Shipping address</CardTitle>
         </CardHeader>
         <CardContent>
           <div>
-            {order.shippingAddress?.name}
+            {order.shippingAddress?.name} - {order.shippingAddress?.mobile}
             <br />
             {order.shippingAddress?.address}
             <br />

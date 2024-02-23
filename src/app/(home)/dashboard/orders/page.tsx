@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
 import Dashboard from "@/components/component/dashboard";
 import { Orders, columns } from "@/components/component/orderdata";
 
@@ -37,7 +36,7 @@ export default function Page() {
   return (
     <div>
       <h1 className="text-2xl ml-8 mt-8 font-semibold">ALL Orders</h1>
-      <Dashboard loading data={data} columns={columns} />
+      <Dashboard loading={loading} data={data} columns={columns} />
     </div>
   );
 }

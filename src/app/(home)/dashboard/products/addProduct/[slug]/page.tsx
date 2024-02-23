@@ -41,6 +41,7 @@ const page = ({ params: { slug } }: any) => {
         file: media.file,
       })
     ),
+    medishield_coins: product!.medishield_coins,
   };
 
   return (

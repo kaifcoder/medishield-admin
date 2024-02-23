@@ -75,7 +75,7 @@ const DashBoard = () => {
         />
       </div>
       <h1 className="text-2xl ml-8 mt-8 font-semibold">Recent Orders</h1>
-      <Dashboard loading data={data} columns={columns} />
+      <Dashboard loading={loading} data={data} columns={columns} />
     </div>
   );
 };
