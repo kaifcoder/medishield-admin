@@ -1,7 +1,13 @@
 "use client";
 import Dashboard from "@/components/component/dashboard";
 import { DashboardCard } from "@/components/component/dashboard-card";
+import {
+  PopularProducts,
+  popularcolumns,
+} from "@/components/component/mostbought";
 import { Orders, columns } from "@/components/component/orderdata";
+import PopularProductTable from "@/components/component/popular-product-table";
+import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { use, useEffect, useState } from "react";
@@ -11,8 +17,10 @@ const DashBoard = () => {
   const user = session?.user;
   const router = useRouter();
   const [orders, setOrders] = useState([]);
+  const [popularProducts, setPopularProducts] = useState([] as any);
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
+  const [view, setView] = useState("orders");
 
   const fetchOrders = async () => {
     setLoading(true);
@@ -21,6 +29,15 @@ const DashBoard = () => {
     setOrders(data);
     setLoading(false);
   };
+
+  const fetchPopularProducts = async () => {
+    setLoading(true);
+    const res = await fetch("/api/product/popular");
+    const data = await res.json();
+    setPopularProducts(data);
+    setLoading(false);
+  };
+
   useEffect(() => {
     if (!session?.user) {
       router.replace("/");
@@ -29,7 +46,8 @@ const DashBoard = () => {
 
   useEffect(() => {
     fetchOrders();
-  }, []);
+    fetchPopularProducts();
+  }, [view]);
 
   const data: Orders[] = orders
     .map((order: any) => {
@@ -44,6 +62,19 @@ const DashBoard = () => {
     })
     .reverse()
     .slice(0, 10);
+
+  const popularProductsData: PopularProducts[] = popularProducts.map(
+    (product: any) => {
+      return {
+        _id: product._id,
+        name: product.name,
+        sku: product.sku,
+        price: product.price.minimalPrice,
+        stock: product.max_sale_qty,
+        medishield_coins: product.medishield_coins ?? 0,
+      };
+    }
+  );
 
   return (
     <div>
@@ -74,8 +105,27 @@ const DashBoard = () => {
             .toString()}`}
         />
       </div>
-      <h1 className="text-2xl ml-8 mt-8 font-semibold">Recent Orders</h1>
-      <Dashboard loading={loading} data={data} columns={columns} />
+      <Button className="ml-4" onClick={() => setView("products")}>
+        View Popular Products
+      </Button>
+      <Button className="ml-4" onClick={() => setView("orders")}>
+        View Recent Orders
+      </Button>
+      {view === "orders" ? (
+        <div>
+          <h1 className="text-2xl ml-8 mt-8 font-semibold">Recent Orders</h1>
+          <Dashboard loading={loading} data={data} columns={columns} />
+        </div>
+      ) : (
+        <div>
+          <h1 className="text-2xl ml-8 mt-8 font-semibold">Popular Products</h1>
+          <PopularProductTable
+            loading={loading}
+            data={popularProductsData}
+            columns={popularcolumns}
+          />
+        </div>
+      )}
     </div>
   );
 };

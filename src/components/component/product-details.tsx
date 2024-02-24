@@ -67,7 +67,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                           : "https://images1.dentalkart.com/media/catalog/product" +
                             child.image_url
                       }
-                      alt={child.image_url}
+                      alt={"product image not available"}
                       className="object-cover  h-20 rounded-md"
                     />
                     <div>
