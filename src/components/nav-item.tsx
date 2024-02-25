@@ -28,11 +28,11 @@ const routes = [
     icon: <ProductionQuantityLimitsIcon className="h-4 w-4 mr-2" />,
     href: `/dashboard/products`,
   },
-  {
-    label: "Categories",
-    icon: <CategoryIcon className="h-4 w-4 mr-2" />,
-    href: `/dashboard/category`,
-  },
+  // {
+  //   label: "Categories",
+  //   icon: <CategoryIcon className="h-4 w-4 mr-2" />,
+  //   href: `/dashboard/category`,
+  // },
   {
     label: "Brands",
     icon: <CategoryIcon className="h-4 w-4 mr-2" />,

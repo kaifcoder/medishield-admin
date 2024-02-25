@@ -40,14 +40,10 @@ export function CategoryAddPanel() {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Update state with new category tree
-        setCategoryTree(data.categories); // Replace with actual state update logic
-        // Provide success feedback to user
+        setCategoryTree(data.categories);
       })
       .catch((error) => {
-        // Handle API error
         console.error("Error adding category:", error);
-        // Display error message to user
       });
   }
 
