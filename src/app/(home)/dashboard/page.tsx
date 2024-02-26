@@ -49,6 +49,15 @@ const DashBoard = () => {
     fetchPopularProducts();
   }, [view]);
 
+  // add pooling for orders and popular products
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchOrders();
+      fetchPopularProducts();
+    }, 20000);
+    return () => clearInterval(interval);
+  }, []);
+
   const data: Orders[] = orders
     .map((order: any) => {
       return {
