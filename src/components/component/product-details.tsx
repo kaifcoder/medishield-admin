@@ -29,8 +29,16 @@ export function ProductDetails({ product }: ProductDetailsProps) {
               SKU <span className="font-medium">{product.sku}</span>
             </p>
             <p className="font-bold">
-              Stock <span className="font-medium mr-2">100</span>(
-              <span className="text-green-500 500">In Stock</span>)
+              Stock{" "}
+              <span className="font-medium mr-2">{product.max_sale_qty}</span>(
+              <span
+                className={`
+              ${product.max_sale_qty > 0 ? "text-green-500" : "text-red-500"}
+              `}
+              >
+                {product.max_sale_qty > 0 ? "In Stock" : "Out of Stock"}
+              </span>
+              )
             </p>
             <div>
               <p>{product.short_description}</p>
