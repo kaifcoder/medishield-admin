@@ -42,6 +42,17 @@ import {
 } from "@/components/ui/form";
 import { toast } from "sonner";
 import { Input } from "../ui/input";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "../ui/alert-dialog";
 
 const formSchema = z.object({
   trackingnumber: z.string(),
@@ -266,6 +277,28 @@ export function OrderDetails({ order }: any) {
                 </Form>
               </DialogContent>
             </Dialog>
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="outline">Cancel Order</Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This action cannot be undone. This will refund all the money
+                    and order will be discarded.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={() => alert(order.paymentIntent.id)}
+                  >
+                    Continue
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </CardContent>
         </Card>
       )}
