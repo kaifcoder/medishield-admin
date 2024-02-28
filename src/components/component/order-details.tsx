@@ -57,6 +57,7 @@ import {
 const formSchema = z.object({
   trackingnumber: z.string(),
 });
+
 export function OrderDetails({ order }: any) {
   const [open, setOpen] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -93,6 +94,29 @@ export function OrderDetails({ order }: any) {
     // ✅ This will be type-safe and validated.
     form.reset();
     setOpen(false);
+    // refresh the page
+    window.location.reload();
+  }
+
+  async function handleCancelOrder() {
+    // console.log(id);
+    console.log(order._id);
+
+    const response = await fetch(`/api/orders/cancel/${order._id}`, {
+      method: "PUT",
+    });
+
+    if (!response.ok) {
+      // Handle the error
+      console.error(response.statusText);
+      return;
+    }
+
+    toast("Order Cancelled", {
+      description: "The order has been cancelled.",
+      closeButton: true,
+    });
+
     // refresh the page
     window.location.reload();
   }
@@ -291,9 +315,7 @@ export function OrderDetails({ order }: any) {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction
-                    onClick={() => alert(order.paymentIntent.id)}
-                  >
+                  <AlertDialogAction onClick={() => handleCancelOrder()}>
                     Continue
                   </AlertDialogAction>
                 </AlertDialogFooter>
