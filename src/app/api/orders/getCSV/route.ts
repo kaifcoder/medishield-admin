@@ -14,7 +14,7 @@ export async function GET(request: Request) {
       }
     );
 
-    return new Response(JSON.stringify(response.data));
+    return new Response(response.data);
   } catch (error) {
     console.log(error);
     return new Response("Error", {

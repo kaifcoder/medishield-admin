@@ -41,6 +41,14 @@ const DashBoard = () => {
   const getCSV = async () => {
     setLoading(true);
     const res = await fetch("/api/orders/getCSV");
+    if (res.status === 200) {
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "pendingOrders.csv";
+      a.click();
+    }
     setLoading(false);
   };
 
