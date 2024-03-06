@@ -38,6 +38,12 @@ const DashBoard = () => {
     setLoading(false);
   };
 
+  const getCSV = async () => {
+    setLoading(true);
+    const res = await fetch("/api/orders/getCSV");
+    setLoading(false);
+  };
+
   useEffect(() => {
     if (!session?.user) {
       router.replace("/");
@@ -119,6 +125,9 @@ const DashBoard = () => {
       </Button>
       <Button className="ml-4" onClick={() => setView("orders")}>
         View Recent Orders
+      </Button>
+      <Button className="ml-4" onClick={() => getCSV()}>
+        Export to CSV (pending orders)
       </Button>
       {view === "orders" ? (
         <div>
