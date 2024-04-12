@@ -21,11 +21,13 @@ const page = ({ params: { slug } }: any) => {
   const values = {
     name: product!.name,
     sku: product!.sku,
+    barcode: product!.barcode,
     price: {
       minimalPrice: product!.price?.minimalPrice,
       maximalPrice: product!.price?.maximalPrice,
       regularPrice: product!.price?.regularPrice,
     },
+
     short_description: product!.short_description,
     max_sale_qty: product!.max_sale_qty,
     product_specs: {
