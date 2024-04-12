@@ -45,7 +45,9 @@ const formSchema = z.object({
     message: "product name must be at least 2 characters.",
   }),
   sku: z.string().min(2, { message: "sku must be at least 2 characters." }),
-
+  barcode: z.string().min(2, {
+    message: "barcode must be at least 2 characters.",
+  }),
   price: z.object({
     minimalPrice: z.coerce.number().min(0, {
       message: "price must be greater than 0.",
@@ -248,6 +250,22 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                       </FormControl>
                       <FormDescription>
                         Enter Product SKU (Stock Keeping Unit)
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="barcode"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Barcode</FormLabel>
+                      <FormControl>
+                        <Input placeholder="" {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        Enter Product Barcode (Universal Product Code - UPC)
                       </FormDescription>
                       <FormMessage />
                     </FormItem>

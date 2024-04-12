@@ -34,6 +34,9 @@ const formSchema = z.object({
     message: "product name must be at least 2 characters.",
   }),
   sku: z.string().min(2, { message: "sku must be at least 2 characters." }),
+  barcode: z
+    .string()
+    .min(2, { message: "barcode must be at least 2 characters." }),
   medishield_coins: z.coerce.number(),
   price: z.object({
     minimalPrice: z.coerce.number().min(0, {
@@ -124,6 +127,28 @@ export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
     console.log(form.getValues("media_gallery_entries"));
   };
 
+  const handleBarcodeChange = () => {
+    let interval: NodeJS.Timeout | null = null;
+    var barcode = "";
+    document.addEventListener("keydown", (e) => {
+      if (interval) clearInterval(interval);
+      if (e.key === "Enter") {
+        e.preventDefault();
+        if (barcode) {
+          form.setValue("barcode", barcode);
+        }
+        barcode = "";
+        return;
+      }
+      if (e.key !== "Shift") {
+        barcode += e.key;
+      }
+      interval = setInterval(() => (barcode = ""), 60);
+    });
+  };
+
+  handleBarcodeChange();
+
   useDisableNumberInputScroll();
 
   return (
@@ -169,6 +194,22 @@ export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
                       </FormControl>
                       <FormDescription>
                         Enter Product SKU (Stock Keeping Unit)
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="barcode"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Barcode</FormLabel>
+                      <FormControl>
+                        <Input placeholder="" {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        Enter Product Barcode (Universal Product Code - UPC)
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
