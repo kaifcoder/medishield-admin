@@ -6,16 +6,30 @@ import {
   Accordion,
 } from "@/components/ui/accordion";
 import { ImageCarousel } from "./image-carousel";
+import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
 
 interface ProductDetailsProps {
   product: any;
 }
 
 export function ProductDetails({ product }: ProductDetailsProps) {
+  const router = useRouter();
   console.log(product);
   return (
     <div className="grid gap-4 lg:gap-12 max-w-6xl px-2  py-6">
-      <h1 className="text-3xl font-bold">Product Details</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold">Product Details</h1>
+        <Button
+          onClick={() =>
+            router.push(`/dashboard/products/addProduct/${product.sku}`)
+          }
+          size="sm"
+          variant="default"
+        >
+          Edit
+        </Button>
+      </div>
       <div className="grid gap-2 md:items-start">
         <div className="md:flex md:space-x-20 items-center md:items-start">
           <ImageCarousel
@@ -102,7 +116,11 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           <AccordionItem value="more-info">
             <AccordionTrigger>Description</AccordionTrigger>
             <AccordionContent>
-              {product.product_specs.description}
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: product.product_specs.description,
+                }}
+              ></p>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -111,7 +129,11 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           <AccordionItem value="more-info">
             <AccordionTrigger>Key Specification</AccordionTrigger>
             <AccordionContent>
-              {product.product_specs.key_specifications}
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: product.product_specs.key_specifications,
+                }}
+              ></p>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -119,7 +141,11 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           <AccordionItem value="more-info">
             <AccordionTrigger>Packaging</AccordionTrigger>
             <AccordionContent>
-              {product.product_specs.packaging}
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: product.product_specs.packaging,
+                }}
+              ></p>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -127,7 +153,11 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           <AccordionItem value="more-info">
             <AccordionTrigger>Direction To Use</AccordionTrigger>
             <AccordionContent>
-              {product.product_specs.direction_to_use}
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: product.product_specs.direction_to_use,
+                }}
+              ></p>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -135,7 +165,11 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           <AccordionItem value="more-info">
             <AccordionTrigger>Features</AccordionTrigger>
             <AccordionContent>
-              {product.product_specs.features}
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: product.product_specs.features,
+                }}
+              ></p>
             </AccordionContent>
           </AccordionItem>
         </Accordion>

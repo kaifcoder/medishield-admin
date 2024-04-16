@@ -17,6 +17,7 @@ import {
   PaginationPrevious,
 } from "../ui/pagination";
 import { use, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 export function ProductCatalogue() {
   const [products, setProducts] = useState([]) as any;
@@ -24,6 +25,9 @@ export function ProductCatalogue() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
+  const searchParams = useSearchParams();
+
+  const searchq = searchParams.get("search");
 
   const fetchProducts = async (page: any) => {
     setLoading(true);
@@ -35,13 +39,15 @@ export function ProductCatalogue() {
   };
 
   useEffect(() => {
-    fetchProducts(page);
-  }, [page]);
+    if (searchq == null) {
+      fetchProducts(page);
+    }
+  }, [page, searchq]);
 
-  const fetchSearchProducts = async (search: any) => {
+  const fetchSearchProducts = async (searchq: string) => {
     setLoading(true);
-    console.log(search);
-    const response = await fetch(`/api/productsearch/?search=${search}`);
+    console.log(searchq);
+    const response = await fetch(`/api/productsearch/?search=${searchq}`);
     const data = await response.json();
     setProducts(data["data"]);
     setTotal(data["count"]);
@@ -59,6 +65,7 @@ export function ProductCatalogue() {
           </div>
           <div className="ml-auto flex items-center gap-4">
             <Input
+              className="w-96"
               placeholder="Search..."
               type="search"
               onChange={async (e) => {
@@ -66,6 +73,7 @@ export function ProductCatalogue() {
               }}
               onKeyPress={async (e) => {
                 if (e.key === "Enter") {
+                  router.push(`/dashboard/products?search=${search}`);
                   fetchSearchProducts(search);
                   setSearch("");
                 }
@@ -76,6 +84,25 @@ export function ProductCatalogue() {
               size="sm"
             >
               Add Product
+            </Button>
+            <Button
+              onClick={() => router.replace("/dashboard/products/addProduct")}
+              size="sm"
+            >
+              Export all Products
+            </Button>
+            <Button
+              onClick={() => router.replace("/dashboard/products/addProduct")}
+              size="sm"
+            >
+              Bulk Update
+            </Button>
+            <Button
+              onClick={() => router.replace("/dashboard/products/addProduct")}
+              size="sm"
+              variant={`destructive`}
+            >
+              Bulk Delete
             </Button>
           </div>
         </div>
