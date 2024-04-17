@@ -1,5 +1,6 @@
 import { MoreVertical } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 interface BrandCardProps {
@@ -8,8 +9,14 @@ interface BrandCardProps {
 }
 
 const BrandCard = ({ name, thumbnail }: BrandCardProps) => {
+  const router = useRouter();
   return (
-    <div className="flex items-center gap-4 border p-4 rounded-xl shadow-md relative">
+    <div
+      onClick={() => {
+        router.push(`/dashboard/products?search=${name}`);
+      }}
+      className="flex cursor-pointer items-center gap-4 border p-4 rounded-xl shadow-md relative"
+    >
       <img
         alt="Brand thumbnail"
         className="aspect-square object-contain border border-gray-200 rounded-lg overflow-hidden w-20 dark:border-gray-800"

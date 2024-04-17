@@ -26,6 +26,7 @@ const page = ({ params: { slug } }: any) => {
   return (
     <div className="p-8 h-screen">
       <h1 className="text-2xl font-semibold">Order Details</h1>
+
       {loading && (
         <div className="flex justify-center h-full items-center">
           <p>Loading...</p>

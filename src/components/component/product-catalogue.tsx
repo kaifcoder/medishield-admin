@@ -41,6 +41,8 @@ export function ProductCatalogue() {
   useEffect(() => {
     if (searchq == null) {
       fetchProducts(page);
+    } else {
+      fetchSearchProducts(searchq);
     }
   }, [page, searchq]);
 
@@ -108,6 +110,13 @@ export function ProductCatalogue() {
         </div>
       </header>
       <main className="flex-1 m-8 ">
+        {products.length === 0 && !loading ? (
+          <div className="flex items-center justify-center h-64">
+            <p className="text-lg text-gray-500">
+              No products found. Try adding a new product.
+            </p>
+          </div>
+        ) : null}
         {loading ? (
           <p>Loading products...</p>
         ) : (
@@ -133,7 +142,12 @@ export function ProductCatalogue() {
         <Pagination>
           <PaginationContent>
             <PaginationItem>
-              <PaginationPrevious onClick={() => setPage(page - 1)} />
+              <PaginationPrevious
+                className="cursor-pointer"
+                onClick={() => {
+                  if (page > 1) setPage(page - 1);
+                }}
+              />
             </PaginationItem>
             {
               <div>
@@ -141,7 +155,10 @@ export function ProductCatalogue() {
               </div>
             }
             <PaginationItem>
-              <PaginationNext onClick={() => setPage(page + 1)} />
+              <PaginationNext
+                className="cursor-pointer"
+                onClick={() => setPage(page + 1)}
+              />
             </PaginationItem>
           </PaginationContent>
         </Pagination>

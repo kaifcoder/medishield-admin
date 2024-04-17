@@ -55,7 +55,10 @@ import {
 } from "../ui/alert-dialog";
 
 const formSchema = z.object({
-  trackingnumber: z.string(),
+  w: z.string(),
+  h: z.string(),
+  l: z.string(),
+  b: z.string(),
 });
 
 export function OrderDetails({ order }: any) {
@@ -63,7 +66,10 @@ export function OrderDetails({ order }: any) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      trackingnumber: "",
+      w: "",
+      h: "",
+      l: "",
+      b: "",
     },
   });
 
@@ -183,6 +189,10 @@ export function OrderDetails({ order }: any) {
               <div className="font-medium">Phone</div>
               <div>{order.shippingAddress?.mobile}</div>
             </div>
+            <div className="flex space-x-4">
+              <div className="font-medium">Phone</div>
+              <div>{order.shippingAddress?.mobile}</div>
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -282,15 +292,63 @@ export function OrderDetails({ order }: any) {
                   >
                     <FormField
                       control={form.control}
-                      name="trackingnumber"
+                      name="w"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Tracking Number</FormLabel>
+                          <FormLabel>Weight of Package</FormLabel>
                           <FormControl>
-                            <Input placeholder="AWB0001122233" {...field} />
+                            <Input placeholder="0.5 Kg" {...field} />
                           </FormControl>
                           <FormDescription>
-                            Provide the tracking number for the order.
+                            Provide the weight of the package.
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="h"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Height of Package</FormLabel>
+                          <FormControl>
+                            <Input placeholder="10 cm" {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            Provide the height of the package.
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="l"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Length of Package</FormLabel>
+                          <FormControl>
+                            <Input placeholder="10 cm" {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            Provide the length of the package.
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="b"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Breadth of Package</FormLabel>
+                          <FormControl>
+                            <Input placeholder="10 cm" {...field} />
+                          </FormControl>
+                          <FormDescription>
+                            Provide the breadth of the package.
                           </FormDescription>
                           <FormMessage />
                         </FormItem>

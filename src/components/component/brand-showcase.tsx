@@ -151,6 +151,11 @@ export function BrandShowcase() {
         </div>
       </header>
       <div className="grid sm:grid-cols-2 p-8 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-start">
+        {loading && (
+          <div>
+            <p>Loading...</p>
+          </div>
+        )}
         {!loading &&
           brand.map((b: any) => {
             return <BrandCard key={b.name} name={b.name} thumbnail={b.logo} />;

@@ -50,6 +50,7 @@ export default function Dashboard({ data, columns, loading }: props) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = useState({});
+  const router = useRouter();
 
   const table = useReactTable({
     data,
@@ -86,6 +87,26 @@ export default function Dashboard({ data, columns, loading }: props) {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
+              Filter by Status <ChevronDown className="ml-2 h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            {/* processing , delivered, cancelled filter */}
+            {["Processing", "Delivered", "Cancelled"].map((status) => (
+              <DropdownMenuItem
+                key={status}
+                onClick={() => {
+                  table.getColumn("orderStatus")?.setFilterValue(status);
+                }}
+              >
+                {status}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="ml-8">
               Columns <ChevronDown className="ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
@@ -135,6 +156,11 @@ export default function Dashboard({ data, columns, loading }: props) {
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
+                  onClick={() => {
+                    // @ts-ignore
+                    router.push(`/dashboard/orders/${row.original._id}`);
+                  }}
+                  className="cursor-pointer"
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
