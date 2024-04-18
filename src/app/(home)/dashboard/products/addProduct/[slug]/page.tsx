@@ -1,22 +1,23 @@
 "use client";
-import { ProductEditForm } from "@/components/component/product-edit-form";
 import { ProductUpdate } from "@/components/component/product-update";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 
 const page = ({ params: { slug } }: any) => {
   const [product, setproduct] = useState({}) as any;
   const [loading, setLoading] = useState(true);
+  const [childProducts, setChildProducts] = useState([]);
   const fetchProduct = async () => {
     setLoading(true);
     const response = await fetch(`/api/product/${slug}`);
     const data = await response.json();
     setproduct(data["findProduct"]);
     setLoading(false);
+    setChildProducts(data["findProduct"].childProducts);
   };
 
   useEffect(() => {
     fetchProduct();
-  }, []);
+  }, [slug]);
 
   const values = {
     name: product!.name,
@@ -44,6 +45,21 @@ const page = ({ params: { slug } }: any) => {
       })
     ),
     medishield_coins: product!.medishield_coins,
+    childProducts:
+      childProducts.length > 1
+        ? childProducts?.map((child: any) => ({
+            sku: child.sku,
+            name: child.name,
+            price: child.price,
+            image_url: child.image_url,
+          }))
+        : [],
+  };
+
+  const handleRemoveChildProduct = (index: number) => {
+    const newChildProducts = [...childProducts];
+    newChildProducts.splice(index, 1); // Remove the child product at the given index
+    setChildProducts(newChildProducts);
   };
 
   return (
@@ -52,7 +68,10 @@ const page = ({ params: { slug } }: any) => {
         <p className="p-8">Loading product...</p>
       ) : (
         <div className="p-8">
-          <ProductUpdate defaultValues={values} />
+          <ProductUpdate
+            defaultValues={values}
+            handleRemoveChildProduct={handleRemoveChildProduct}
+          />
         </div>
       )}
     </>

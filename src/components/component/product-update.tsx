@@ -22,12 +22,58 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import useDisableNumberInputScroll from "@/hooks/useNumber";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../ui/accordion";
+import MarkdownEditor from "./markdown-editor";
+
+const childFormSchema = z.object({
+  name: z.string().min(2, {
+    message: "product name must be at least 2 characters.",
+  }),
+  sku: z.string().min(2, { message: "sku must be at least 2 characters." }),
+  image_url: z.string().min(2, {
+    message: "image_url must be at least 2 characters.",
+  }),
+  price: z.object({
+    minimalPrice: z.object({
+      amount: z.object({
+        currency: z.string(),
+        value: z.coerce.number().min(0, {
+          message: "price must be greater than 0.",
+        }),
+      }),
+    }),
+    maximalPrice: z.object({
+      amount: z.object({
+        currency: z.string(),
+        value: z.coerce.number().min(0, {
+          message: "price must be greater than 0.",
+        }),
+      }),
+    }),
+    regularPrice: z.object({
+      amount: z.object({
+        currency: z.string(),
+        value: z.coerce.number().min(0, {
+          message: "price must be greater than 0.",
+        }),
+      }),
+    }),
+  }),
+});
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -74,13 +120,20 @@ const formSchema = z.object({
       })
     )
     .min(1, { message: "media_gallery_entries must have at least 1 entry." }),
+  childProducts: z.array(childFormSchema),
 });
 
 interface ProductEditFormProps {
   defaultValues?: z.infer<typeof formSchema>;
+  childProducts?: z.infer<typeof childFormSchema>[];
+  handleRemoveChildProduct: (index: number) => void;
 }
 
-export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
+export function ProductUpdate({
+  defaultValues,
+  handleRemoveChildProduct,
+}: ProductEditFormProps) {
+  console.log(defaultValues);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues || {
@@ -102,6 +155,7 @@ export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
       },
       thumbnail_url: "",
       media_gallery_entries: [],
+      childProducts: [],
     },
   });
 
@@ -125,6 +179,14 @@ export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
     const updatedMediaEntries = [...currentMediaEntries, mediaEntry];
     form.setValue("media_gallery_entries", updatedMediaEntries);
     console.log(form.getValues("media_gallery_entries"));
+  };
+
+  const handleRemoveImage = (index: number) => {
+    const currentMediaEntries = form.getValues("media_gallery_entries");
+    const updatedMediaEntries = currentMediaEntries.filter(
+      (_, i) => i !== index
+    );
+    form.setValue("media_gallery_entries", updatedMediaEntries);
   };
 
   const handleBarcodeChange = () => {
@@ -309,6 +371,7 @@ export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
                             id="image"
                             placeholder="Image URL"
                           />
+                          {/* <Input type="file" id="file" /> */}
                           <Button
                             type="button"
                             onClick={() =>
@@ -331,7 +394,23 @@ export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
                             .getValues("media_gallery_entries")
                             .map((image, index) => (
                               <div key={index} className="flex flex-col">
+                                <img
+                                  src={
+                                    image.file.startsWith("https://")
+                                      ? image.file
+                                      : "https://images1.dentalkart.com/media/catalog/product" +
+                                        image.file
+                                  }
+                                  alt="product"
+                                  className="h-24 w-24"
+                                />
                                 <span>{image.file}</span>
+                                <Button
+                                  type="button"
+                                  onClick={() => handleRemoveImage(index)}
+                                >
+                                  Remove
+                                </Button>
                               </div>
                             ))}
                         </div>
@@ -348,8 +427,10 @@ export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
                     <FormItem>
                       <FormLabel>Description</FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Detail description for the product"
+                        <MarkdownEditor
+                          handleProcedureContentChange={(value: string) => {
+                            form.setValue("product_specs.description", value);
+                          }}
                           {...field}
                         />
                       </FormControl>
@@ -364,8 +445,13 @@ export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
                     <FormItem>
                       <FormLabel>Direction to use</FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Detail description for the product"
+                        <MarkdownEditor
+                          handleProcedureContentChange={(value: string) => {
+                            form.setValue(
+                              "product_specs.direction_to_use",
+                              value
+                            );
+                          }}
                           {...field}
                         />
                       </FormControl>
@@ -380,8 +466,13 @@ export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
                     <FormItem>
                       <FormLabel>Key Specification</FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Detail description for the product"
+                        <MarkdownEditor
+                          handleProcedureContentChange={(value: string) => {
+                            form.setValue(
+                              "product_specs.key_specifications",
+                              value
+                            );
+                          }}
                           {...field}
                         />
                       </FormControl>
@@ -396,8 +487,10 @@ export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
                     <FormItem>
                       <FormLabel>Packaging</FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Detail description for the product"
+                        <MarkdownEditor
+                          handleProcedureContentChange={(value: string) => {
+                            form.setValue("product_specs.packaging", value);
+                          }}
                           {...field}
                         />
                       </FormControl>
@@ -412,8 +505,10 @@ export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
                     <FormItem>
                       <FormLabel>Features</FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Detail description for the product"
+                        <MarkdownEditor
+                          handleProcedureContentChange={(value: string) => {
+                            form.setValue("product_specs.features", value);
+                          }}
                           {...field}
                         />
                       </FormControl>
@@ -421,6 +516,104 @@ export function ProductUpdate({ defaultValues }: ProductEditFormProps) {
                     </FormItem>
                   )}
                 />
+
+                {defaultValues?.childProducts &&
+                  defaultValues?.childProducts?.length > 0 && (
+                    <div>
+                      <hr />
+                      <h1 className="font-semibold text-2xl">
+                        Sub/Child Products
+                      </h1>
+                    </div>
+                  )}
+
+                {defaultValues?.childProducts?.map((childProduct, index) => (
+                  <Accordion
+                    key={index}
+                    className="w-full"
+                    collapsible
+                    type="single"
+                  >
+                    <AccordionItem value="more-info">
+                      <AccordionTrigger>{childProduct.name}</AccordionTrigger>
+                      <AccordionContent className="p-2">
+                        <FormField
+                          key={index}
+                          control={form.control}
+                          name={`childProducts.${index}.name`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Child Product Name</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Product name" {...field} />
+                              </FormControl>
+                              <FormDescription>
+                                Provide a name for the product.
+                              </FormDescription>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name={`childProducts.${index}.sku`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>SKU</FormLabel>
+                              <FormControl>
+                                <Input placeholder="#XXXXXXXSKU" {...field} />
+                              </FormControl>
+                              <FormDescription>
+                                Enter Product SKU (Stock Keeping Unit)
+                              </FormDescription>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name={`childProducts.${index}.image_url`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Image URL</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Image URL" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name={`childProducts.${index}.price.minimalPrice.amount.value`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Price</FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="number"
+                                  placeholder="Price of the product in INR"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        {/* remove button */}
+                        <Button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleRemoveChildProduct(index);
+                          }}
+                          className="bg-red-500 hover:bg-red-600 text-white w-full mt-5"
+                        >
+                          Remove
+                        </Button>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                ))}
                 <Button type="submit">Submit</Button>
               </form>
             </Form>

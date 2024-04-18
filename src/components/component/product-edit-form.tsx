@@ -95,11 +95,51 @@ const formSchema = z.object({
     .min(2, { message: "brand must be at least 2 characters." }),
 });
 
+const childFormSchema = z.object({
+  name: z.string().min(2, {
+    message: "product name must be at least 2 characters.",
+  }),
+  sku: z.string().min(2, { message: "sku must be at least 2 characters." }),
+  image_url: z.string().min(2, {
+    message: "image_url must be at least 2 characters.",
+  }),
+  price: z.object({
+    minimalPrice: z.object({
+      amount: z.object({
+        currency: z.string(),
+        value: z.coerce.number().min(0, {
+          message: "price must be greater than 0.",
+        }),
+      }),
+    }),
+    maximalPrice: z.object({
+      amount: z.object({
+        currency: z.string(),
+        value: z.coerce.number().min(0, {
+          message: "price must be greater than 0.",
+        }),
+      }),
+    }),
+    regularPrice: z.object({
+      amount: z.object({
+        currency: z.string(),
+        value: z.coerce.number().min(0, {
+          message: "price must be greater than 0.",
+        }),
+      }),
+    }),
+  }),
+});
+
 interface ProductEditFormProps {
   defaultValues?: z.infer<typeof formSchema>;
+  childProducts?: z.infer<typeof childFormSchema>[];
 }
 
-export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
+export function ProductEditForm({
+  defaultValues,
+  childProducts,
+}: ProductEditFormProps) {
   // 1. Use `useForm` to create a form instance.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -570,6 +610,7 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                     </FormItem>
                   )}
                 />
+                {}
                 <Button type="submit">Submit</Button>
               </form>
             </Form>

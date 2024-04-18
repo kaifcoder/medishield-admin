@@ -87,21 +87,29 @@ export default function Dashboard({ data, columns, loading }: props) {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
-              Filter by Status <ChevronDown className="ml-2 h-4 w-4" />
+              <p>
+                {(table.getColumn("orderStatus")?.getFilterValue() as string) ??
+                  ("Select Status" as string)}
+              </p>
+              <ChevronDown className="ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {/* processing , delivered, cancelled filter */}
-            {["Processing", "Delivered", "Cancelled"].map((status) => (
-              <DropdownMenuItem
-                key={status}
-                onClick={() => {
-                  table.getColumn("orderStatus")?.setFilterValue(status);
-                }}
-              >
-                {status}
-              </DropdownMenuItem>
-            ))}
+            {["All", "Processing", "Shipped", "Delivered", "Cancelled"].map(
+              (status) => (
+                <DropdownMenuItem
+                  key={status}
+                  onClick={() => {
+                    status === "All"
+                      ? table.getColumn("orderStatus")?.setFilterValue("")
+                      : table.getColumn("orderStatus")?.setFilterValue(status);
+                  }}
+                >
+                  {status}
+                </DropdownMenuItem>
+              )
+            )}
           </DropdownMenuContent>
         </DropdownMenu>
         <DropdownMenu>

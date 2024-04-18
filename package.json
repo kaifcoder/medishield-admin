@@ -38,6 +38,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.50.1",
     "react-markdown": "^9.0.1",
+    "react-quill": "^2.0.0",
     "rehype-react": "^8.0.0",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.0",
