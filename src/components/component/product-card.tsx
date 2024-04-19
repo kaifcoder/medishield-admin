@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 import { useEdgeStore } from "@/lib/edgestore";
+import { Label } from "../ui/label";
+import { Switch } from "../ui/switch";
 
 interface ProductCardProps {
   title: string;
@@ -27,6 +29,7 @@ interface ProductCardProps {
   slug: string;
   price: number;
   media_gallery: string[];
+  product: any;
 }
 
 const ProductCard = ({
@@ -37,9 +40,12 @@ const ProductCard = ({
   slug,
   price,
   media_gallery,
+  product,
 }: ProductCardProps) => {
   const router = useRouter();
   const { edgestore } = useEdgeStore();
+
+  const [isPublished, setIsPublished] = React.useState(product.published);
 
   const deleteProduct = async (id: string) => {
     const res = await fetch(`/api/product/${id}`, {
@@ -76,6 +82,21 @@ const ProductCard = ({
 
     console.log("Action has been clicked");
   };
+
+  const handlePublish = async (id: string) => {
+    const res = await fetch(`/api/product/${id}`, {
+      method: "PUT",
+      body: JSON.stringify({ published: !isPublished }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    console.log("Publishing product", id);
+    // turn off the switch
+    setIsPublished(!isPublished);
+  };
+
   return (
     <Card className="cursor-pointer">
       <CardContent
@@ -97,7 +118,15 @@ const ProductCard = ({
           <span className="text-lg font-bold">₹ {price}</span>
         </div>
       </CardContent>
-      <CardFooter className="p-4 flex items-center justify-between">
+      <CardFooter className="p-4 sm:flex  items-center justify-between">
+        <div className="flex items-center space-x-2">
+          <Label htmlFor="published">Published</Label>
+          <Switch
+            id="published"
+            checked={isPublished}
+            onCheckedChange={() => handlePublish(slug)}
+          />
+        </div>
         <Button
           onClick={() => router.push(`/dashboard/products/addProduct/${slug}`)}
           size="sm"
@@ -105,10 +134,11 @@ const ProductCard = ({
         >
           Edit
         </Button>
-
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button variant="destructive">Delete</Button>
+            <Button size="sm" variant="destructive">
+              Delete
+            </Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>

@@ -63,6 +63,7 @@ const formSchema = z.object({
 
 export function OrderDetails({ order }: any) {
   const [open, setOpen] = useState(false);
+  console.log(order);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -243,10 +244,60 @@ export function OrderDetails({ order }: any) {
           <div className="grid grid-cols-2 gap-1 text-sm">
             <div className="font-medium">Method</div>
             <div>Standard shipping</div>
-            <div className="font-medium">Tracking number</div>
+            <div className="font-medium">Tracking number (AWB code)</div>
             <div>
               {order?.trackingNumber ? order?.trackingNumber : "Not Alloted"}
             </div>
+            {order?.shipmentInfo?.payload?.shipment_id && (
+              <>
+                <div className="font-medium">Message</div>
+                <div>
+                  {order?.shipmentInfo.payload.awb_assign_error
+                    ? order?.shipmentInfo.payload.awb_assign_error
+                    : "None"}
+                </div>
+                <div className="font-medium">Courier</div>
+                <div>
+                  {order?.shipmentInfo.payload.courier_name !== ""
+                    ? order?.shipmentInfo.payload.courier_name
+                    : "Not Assigned"}
+                </div>
+                <div className="font-medium">Pickup Date</div>
+                <div>
+                  {order?.shipmentInfo.payload.pickup_scheduled_date
+                    ? new Date(
+                        order?.shipmentInfo.payload.pickup_scheduled_date
+                      ).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })
+                    : "Not Assigned"}
+                </div>
+                <div className="font-medium">Applied Weight</div>
+                <div>{order?.shipmentInfo.payload.applied_weight}</div>
+                <div className="font-medium">shiprocket order id</div>
+                <div>
+                  <Link
+                    href={`https://app.shiprocket.in/seller/orders/details/${order?.shipmentInfo.payload.order_id}`}
+                    className="text-blue-600 underline"
+                    target="_blank"
+                  >
+                    {order?.shipmentInfo.payload.order_id}
+                  </Link>
+                </div>
+                {order?.shipmentInfo.payload.label_url && (
+                  <Button>
+                    <Link
+                      href={order?.shipmentInfo.payload.label_url}
+                      target="_blank"
+                    >
+                      Download Shipping Label
+                    </Link>
+                  </Button>
+                )}
+              </>
+            )}
           </div>
         </CardContent>
       </Card>

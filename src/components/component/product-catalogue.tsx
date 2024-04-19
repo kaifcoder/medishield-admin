@@ -56,6 +56,20 @@ export function ProductCatalogue() {
     setLoading(false);
   };
 
+  const getAllProductsCSV = async () => {
+    setLoading(true);
+    const res = await fetch(`/api/product/export/all`);
+    if (res.status === 200) {
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "products.csv";
+      a.click();
+    }
+    setLoading(false);
+  };
+
   const router = useRouter();
   return (
     <div className="flex flex-col ">
@@ -87,10 +101,7 @@ export function ProductCatalogue() {
             >
               Add Product
             </Button>
-            <Button
-              onClick={() => router.replace("/dashboard/products/addProduct")}
-              size="sm"
-            >
+            <Button onClick={getAllProductsCSV} size="sm">
               Export all Products
             </Button>
             <Button
@@ -138,6 +149,7 @@ export function ProductCatalogue() {
                 media_gallery={product.media_gallery_entries.map(
                   (file: any) => file.file
                 )}
+                product={product}
               />
             ))}
           </div>
