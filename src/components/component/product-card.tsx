@@ -17,6 +17,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
+import { useEdgeStore } from "@/lib/edgestore";
 
 interface ProductCardProps {
   title: string;
@@ -25,6 +26,7 @@ interface ProductCardProps {
   image: string;
   slug: string;
   price: number;
+  media_gallery: string[];
 }
 
 const ProductCard = ({
@@ -34,8 +36,10 @@ const ProductCard = ({
   image,
   slug,
   price,
+  media_gallery,
 }: ProductCardProps) => {
   const router = useRouter();
+  const { edgestore } = useEdgeStore();
 
   const deleteProduct = async (id: string) => {
     const res = await fetch(`/api/product/${id}`, {
@@ -45,11 +49,30 @@ const ProductCard = ({
   };
 
   const handleAction = () => {
-    deleteProduct(id);
-    toast("Product has been deleted", {
-      description: "The product has been removed from the database.",
-      closeButton: true,
-    });
+    // first delete the images
+    try {
+      console.log("Deleting images", media_gallery);
+      media_gallery.forEach(async (image) => {
+        try {
+          await edgestore.publicFiles.delete({
+            url: image,
+          });
+        } catch (error) {
+          console.log("Error deleting image", error);
+        }
+      });
+      deleteProduct(id);
+      toast("Product has been deleted", {
+        description: "The product has been removed from the database.",
+        closeButton: true,
+      });
+      router.refresh();
+    } catch (error) {
+      toast("Error", {
+        description: "There was an error deleting the product.",
+        closeButton: true,
+      });
+    }
 
     console.log("Action has been clicked");
   };

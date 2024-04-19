@@ -135,6 +135,9 @@ export function ProductCatalogue() {
                 }
                 price={product.price?.minimalPrice}
                 slug={product.sku}
+                media_gallery={product.media_gallery_entries.map(
+                  (file: any) => file.file
+                )}
               />
             ))}
           </div>

@@ -1,5 +1,6 @@
 import Sidebar from "@/components/Sidebar";
 import MobileSidebar from "@/components/mobile-sidebar";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 
 import { Suspense } from "react";
 
@@ -24,7 +25,7 @@ export default function DashboardLayout({
         <div className="text-lg font-semibold">MediShield Admin</div>
       </div>
       <main className="w-full md:ml-[250px]  ml-0 overflow-auto">
-        {children}
+        <EdgeStoreProvider>{children}</EdgeStoreProvider>
       </main>
     </div>
   );

@@ -54,7 +54,7 @@ export default function MarkdownEditor({
         modules={modules}
         formats={formats}
         value={value}
-        placeholder="write your Product Description ...."
+        placeholder="Write something awesome..."
         onChange={handleProcedureContentChange}
         style={{
           height: "100%",

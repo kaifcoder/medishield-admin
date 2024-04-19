@@ -52,6 +52,7 @@ export async function DELETE(request: Request, { params: { slug } }: any) {
   const session: any = await getServerSession(authOptions);
   try {
     console.log(slug);
+
     const response = await axios.delete(
       `${process.env.API_URL}/api/product/delete/${slug}`,
       {

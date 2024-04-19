@@ -125,7 +125,6 @@ const formSchema = z.object({
 
 interface ProductEditFormProps {
   defaultValues?: z.infer<typeof formSchema>;
-  childProducts?: z.infer<typeof childFormSchema>[];
   handleRemoveChildProduct: (index: number) => void;
 }
 

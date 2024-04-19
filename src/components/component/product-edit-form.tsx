@@ -39,6 +39,14 @@ import {
 import { useEffect, useState } from "react";
 import useDisableNumberInputScroll from "@/hooks/useNumber";
 import { toast } from "sonner";
+import { FileState, MultiImageDropzone } from "./multi-image-upload";
+import { useEdgeStore } from "@/lib/edgestore";
+import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
+
+const MarkdownEditor = dynamic(() => import("./markdown-editor"), {
+  ssr: false,
+});
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -133,13 +141,11 @@ const childFormSchema = z.object({
 
 interface ProductEditFormProps {
   defaultValues?: z.infer<typeof formSchema>;
-  childProducts?: z.infer<typeof childFormSchema>[];
 }
 
-export function ProductEditForm({
-  defaultValues,
-  childProducts,
-}: ProductEditFormProps) {
+export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
+  const router = useRouter();
+
   // 1. Use `useForm` to create a form instance.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -181,7 +187,10 @@ export function ProductEditForm({
       });
       form.reset();
       setImages([]);
+      setCategory([]);
+      setFileStates([]);
       toast.success("Product added successfully");
+      console.log(response);
     } catch (error) {
       toast.error("Error in adding product");
     }
@@ -193,11 +202,41 @@ export function ProductEditForm({
   const [brands, setBrands] = useState<any[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
 
+  const [fileStates, setFileStates] = useState<FileState[]>([]);
+  const { edgestore } = useEdgeStore();
+  function updateFileProgress(key: string, progress: FileState["progress"]) {
+    setFileStates((fileStates) => {
+      const newFileStates = structuredClone(fileStates);
+      const fileState = newFileStates.find(
+        (fileState) => fileState.key === key
+      );
+      if (fileState) {
+        fileState.progress = progress;
+      }
+      return newFileStates;
+    });
+  }
+
+  function updateFileStateUrl(key: string, url: string) {
+    setFileStates((fileStates) => {
+      const newFileStates = structuredClone(fileStates);
+      const fileState = newFileStates.find(
+        (fileState) => fileState.key === key
+      );
+      if (fileState) {
+        fileState.url = url;
+      }
+      return newFileStates;
+    });
+  }
+
   const handleAddImage = (imageUrl: string) => {
     const mediaEntry = { file: imageUrl };
     const currentMediaEntries = form.getValues("media_gallery_entries");
     const updatedMediaEntries = [...currentMediaEntries, mediaEntry];
     form.setValue("media_gallery_entries", updatedMediaEntries);
+    // set thumbnail url as first image
+    form.setValue("thumbnail_url", updatedMediaEntries[0].file);
     console.log(form.getValues("media_gallery_entries"));
   };
 
@@ -381,44 +420,94 @@ export function ProductEditForm({
 
                 <FormField
                   control={form.control}
-                  name="thumbnail_url"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Thumbnail URL</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Thumbnail Image URL" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
                   name="media_gallery_entries"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Images</FormLabel>
                       <FormControl>
                         <div className="space-y-2">
-                          <Input
-                            type="text"
-                            id="image"
-                            placeholder="Image URL"
+                          <MultiImageDropzone
+                            value={fileStates}
+                            dropzoneOptions={{
+                              maxFiles: 6,
+                            }}
+                            onChange={(files: any) => {
+                              setFileStates(files);
+                            }}
+                            onFilesAdded={async (addedFiles: any) => {
+                              setFileStates([...fileStates, ...addedFiles]);
+                              await Promise.all(
+                                addedFiles.map(async (addedFileState: any) => {
+                                  try {
+                                    const res =
+                                      await edgestore.publicFiles.upload({
+                                        file: addedFileState.file,
+                                        onProgressChange: async (progress) => {
+                                          updateFileProgress(
+                                            addedFileState.key,
+                                            progress
+                                          );
+                                          if (progress === 100) {
+                                            // wait 1 second to set it to complete
+                                            // so that the user can see the progress bar at 100%
+                                            await new Promise((resolve) =>
+                                              setTimeout(resolve, 1000)
+                                            );
+                                            updateFileProgress(
+                                              addedFileState.key,
+                                              "COMPLETE"
+                                            );
+                                            updateFileStateUrl(
+                                              addedFileState.key,
+                                              res.url
+                                            );
+                                          }
+                                        },
+                                      });
+                                    console.log(res);
+                                    handleAddImage(res.url);
+                                  } catch (err) {
+                                    updateFileProgress(
+                                      addedFileState.key,
+                                      "ERROR"
+                                    );
+                                  }
+                                })
+                              );
+                            }}
+                            onFileRemove={async (removedFile: any) => {
+                              // remove image from edgestore
+                              try {
+                                const res = await edgestore.publicFiles.delete({
+                                  url: removedFile.url,
+                                });
+
+                                toast.success("Image removed successfully");
+                                setFileStates((fileStates) =>
+                                  fileStates.filter(
+                                    (fileState) =>
+                                      fileState.key !== removedFile.key
+                                  )
+                                );
+                                // remove image from media_gallery_entries
+                                const currentMediaEntries = form.getValues(
+                                  "media_gallery_entries"
+                                );
+                                const updatedMediaEntries =
+                                  currentMediaEntries.filter(
+                                    (entry: any) =>
+                                      entry.file !== removedFile.url
+                                  );
+                                form.setValue(
+                                  "media_gallery_entries",
+                                  updatedMediaEntries
+                                );
+                              } catch (error) {
+                                console.error(error);
+                                toast.error("Error in removing image");
+                              }
+                            }}
                           />
-                          <Button
-                            type="button"
-                            onClick={() =>
-                              handleAddImage(
-                                (
-                                  document.getElementById(
-                                    "image"
-                                  ) as HTMLInputElement
-                                )?.value
-                              )
-                            }
-                          >
-                            Add Image
-                          </Button>
                         </div>
                       </FormControl>
                       {
@@ -537,8 +626,10 @@ export function ProductEditForm({
                     <FormItem>
                       <FormLabel>Description</FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Detail description for the product"
+                        <MarkdownEditor
+                          handleProcedureContentChange={(value: string) => {
+                            form.setValue("product_specs.description", value);
+                          }}
                           {...field}
                         />
                       </FormControl>
@@ -553,8 +644,13 @@ export function ProductEditForm({
                     <FormItem>
                       <FormLabel>Direction to use</FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Detail description for the product"
+                        <MarkdownEditor
+                          handleProcedureContentChange={(value: string) => {
+                            form.setValue(
+                              "product_specs.direction_to_use",
+                              value
+                            );
+                          }}
                           {...field}
                         />
                       </FormControl>
@@ -569,8 +665,13 @@ export function ProductEditForm({
                     <FormItem>
                       <FormLabel>Key Specification</FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Detail description for the product"
+                        <MarkdownEditor
+                          handleProcedureContentChange={(value: string) => {
+                            form.setValue(
+                              "product_specs.key_specifications",
+                              value
+                            );
+                          }}
                           {...field}
                         />
                       </FormControl>
@@ -585,8 +686,10 @@ export function ProductEditForm({
                     <FormItem>
                       <FormLabel>Packaging</FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Detail description for the product"
+                        <MarkdownEditor
+                          handleProcedureContentChange={(value: string) => {
+                            form.setValue("product_specs.packaging", value);
+                          }}
                           {...field}
                         />
                       </FormControl>
@@ -601,8 +704,10 @@ export function ProductEditForm({
                     <FormItem>
                       <FormLabel>Features</FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Detail description for the product"
+                        <MarkdownEditor
+                          handleProcedureContentChange={(value: string) => {
+                            form.setValue("product_specs.features", value);
+                          }}
                           {...field}
                         />
                       </FormControl>
