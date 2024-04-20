@@ -1,8 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { CardContent, CardFooter, Card } from "@/components/ui/card";
-import { Loader, Loader2, PackageIcon } from "lucide-react";
+import { Loader2, PackageIcon } from "lucide-react";
 import { Input } from "../ui/input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -31,6 +30,7 @@ export function ProductCatalogue() {
   const searchParams = useSearchParams();
 
   const searchq = searchParams.get("search");
+  const published = searchParams.get("published");
 
   const fetchProducts = async (page: any) => {
     setLoading(true);
@@ -104,6 +104,7 @@ export function ProductCatalogue() {
             >
               Add Product
             </Button>
+
             <Button onClick={getAllProductsCSV} size="sm">
               Export all Products
             </Button>
