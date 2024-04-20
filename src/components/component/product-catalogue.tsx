@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter, Card } from "@/components/ui/card";
-import { PackageIcon } from "lucide-react";
+import { Loader, Loader2, PackageIcon } from "lucide-react";
 import { Input } from "../ui/input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -18,12 +18,15 @@ import {
 } from "../ui/pagination";
 import { use, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import CSVReader from "react-csv-reader";
 
 export function ProductCatalogue() {
   const [products, setProducts] = useState([]) as any;
   const [search, setSearch] = useState("") as any;
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [importing, setImporting] = useState(false);
+  const [exporting, setExporting] = useState(false);
   const [total, setTotal] = useState(0);
   const searchParams = useSearchParams();
 
@@ -57,17 +60,17 @@ export function ProductCatalogue() {
   };
 
   const getAllProductsCSV = async () => {
-    setLoading(true);
+    setExporting(true);
     const res = await fetch(`/api/product/export/all`);
-    if (res.status === 200) {
-      const blob = await res.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "products.csv";
-      a.click();
-    }
-    setLoading(false);
+    const data = await res.json();
+    // download the file
+    const url = window.URL.createObjectURL(new Blob([data]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "products.csv");
+    document.body.appendChild(link);
+    link.click();
+    setExporting(false);
   };
 
   const router = useRouter();
@@ -104,23 +107,26 @@ export function ProductCatalogue() {
             <Button onClick={getAllProductsCSV} size="sm">
               Export all Products
             </Button>
-            <Button
-              onClick={() => router.replace("/dashboard/products/addProduct")}
-              size="sm"
-            >
-              Bulk Update
-            </Button>
-            <Button
-              onClick={() => router.replace("/dashboard/products/addProduct")}
-              size="sm"
-              variant={`destructive`}
-            >
-              Bulk Delete
-            </Button>
+
+            <Button size="sm">Import Products (CSV)</Button>
           </div>
         </div>
       </header>
       <main className="flex-1 m-8 ">
+        {exporting && (
+          <div className="flex items-center justify-center h-64">
+            <Loader2
+              className="w-8 h-8 
+            animate-spin
+           "
+            />
+            <p className="text-lg text-gray-500">
+              Exporting products... Please wait. Do not close the window. You
+              can do other things while the export is in progress. file will be
+              downloaded automatically.
+            </p>
+          </div>
+        )}
         {products.length === 0 && !loading ? (
           <div className="flex items-center justify-center h-64">
             <p className="text-lg text-gray-500">

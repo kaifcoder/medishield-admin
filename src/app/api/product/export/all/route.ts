@@ -13,7 +13,6 @@ export async function GET(request: Request) {
         },
       }
     );
-
     return new Response(JSON.stringify(response.data));
   } catch (error) {
     console.log(error);
