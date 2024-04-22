@@ -6,7 +6,7 @@ export async function GET(request: Request, { params: { slug } }: any) {
   const session: any = await getServerSession(authOptions);
   try {
     const response = await axios.get(
-      `${process.env.API_URL}/api/product/getproduct/${slug}`,
+      `${process.env.API_URL}/api/product/getproductwithid/${slug}`,
       {
         headers: {
           Authorization: `Bearer ${session?.user?.access_token}`,

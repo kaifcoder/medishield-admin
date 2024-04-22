@@ -35,6 +35,7 @@ import {
   AccordionTrigger,
 } from "../ui/accordion";
 import dynamic from "next/dynamic";
+import { useSearchParams } from "next/navigation";
 
 const MarkdownEditor = dynamic(() => import("./markdown-editor"), {
   ssr: false,
@@ -125,15 +126,18 @@ const formSchema = z.object({
 });
 
 interface ProductEditFormProps {
+  id: string;
   defaultValues?: z.infer<typeof formSchema>;
   handleRemoveChildProduct: (index: number) => void;
 }
 
 export function ProductUpdate({
   defaultValues,
+  id,
   handleRemoveChildProduct,
 }: ProductEditFormProps) {
   console.log(defaultValues);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues || {
@@ -160,16 +164,25 @@ export function ProductUpdate({
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const res = await fetch(`/api/product/${values.sku}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
-    const data = await res.json();
-    toast.success("Product updated successfully");
-    window.location.reload();
+    try {
+      console.log(values);
+      setLoading(true);
+      const res = await fetch(`/api/product/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+      console.log(values);
+      const data = await res.json();
+      console.log(data);
+      toast.success("Product updated successfully");
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      toast.error("Failed to update product");
+    }
   }
   const [loading, setLoading] = useState(false);
 

@@ -69,6 +69,7 @@ const page = ({ params: { slug } }: any) => {
       ) : (
         <div className="p-8">
           <ProductUpdate
+            id={product._id}
             defaultValues={values}
             handleRemoveChildProduct={handleRemoveChildProduct}
           />

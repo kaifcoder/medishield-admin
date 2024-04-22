@@ -129,7 +129,7 @@ const ProductCard = ({
         }}
       />
       <CardContent
-        onClick={() => router.push(`/dashboard/products/${slug}`)}
+        onClick={() => router.push(`/dashboard/products/${id}`)}
         className={cn(
           "flex flex-col flex-1  space-y-2 mt-4 items-start justify-center"
         )}
@@ -161,7 +161,7 @@ const ProductCard = ({
           />
         </div>
         <Button
-          onClick={() => router.push(`/dashboard/products/addProduct/${slug}`)}
+          onClick={() => router.push(`/dashboard/products/addProduct/${id}`)}
           size="sm"
           variant="outline"
         >

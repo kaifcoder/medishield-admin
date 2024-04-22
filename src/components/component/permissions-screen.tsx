@@ -14,7 +14,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "../ui/badge";
 import { useEffect, useState } from "react";
-import { FileEditIcon } from "lucide-react";
+import { FileEditIcon, Trash } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import PermissionEditDialog from "./permission-edit-dialog";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogTrigger,
+} from "../ui/alert-dialog";
 
 export function PermissionsScreen() {
   // Define Constants permission enum codes
@@ -52,10 +59,9 @@ export function PermissionsScreen() {
   // Define the state variables
 
   const [permissions, setPermissions] = useState([]) as any;
-  const [role, setRole] = useState("");
   const [loading, setLoading] = useState(false) as any;
   const [description, setDescription] = useState("");
-
+  const [role, setRole] = useState("");
   const [roles, setRoles] = useState([]) as any;
 
   const fetchRoles = async () => {
@@ -140,10 +146,55 @@ export function PermissionsScreen() {
                           </div>
                         </TableCell>
                         <TableCell>
-                          <Button size="icon" variant="ghost">
-                            <FileEditIcon className="h-4 w-4" />
-                            <span className="sr-only">Edit</span>
-                          </Button>
+                          <div
+                            className="flex items-center space-x-2"
+                            role="group"
+                          >
+                            <Dialog>
+                              <DialogTrigger>
+                                <Button size="icon" variant="ghost">
+                                  <FileEditIcon className="h-4 w-4" />
+                                  <span className="sr-only">Edit</span>
+                                </Button>
+                              </DialogTrigger>
+                              <DialogContent>
+                                <PermissionEditDialog
+                                  permission={role}
+                                  roles={roles}
+                                  setRoles={setRoles}
+                                  permissionCheckboxes={permissionCheckboxes}
+                                />
+                              </DialogContent>
+                            </Dialog>
+                            <AlertDialog>
+                              <AlertDialogTrigger>
+                                <Button size="icon" variant="destructive">
+                                  <Trash className="h-4 w-4" />
+                                  <span className="sr-only">Delete</span>
+                                </Button>
+                              </AlertDialogTrigger>
+                              <AlertDialogContent>
+                                <div className="p-6">
+                                  <h2 className="text-lg font-bold mb-4">
+                                    Delete Role
+                                  </h2>
+                                  <p className="mb-4">
+                                    Are you sure you want to delete the role{" "}
+                                    <strong>{role.role}</strong>?
+                                  </p>
+                                  <div className="flex justify-end">
+                                    <Button
+                                      variant="destructive"
+                                      className="mr-2"
+                                    >
+                                      Delete Role
+                                    </Button>
+                                    <Button variant="ghost">Cancel</Button>
+                                  </div>
+                                </div>
+                              </AlertDialogContent>
+                            </AlertDialog>
+                          </div>
                         </TableCell>
                       </TableRow>
                     ))
