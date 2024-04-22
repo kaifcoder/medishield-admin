@@ -1,5 +1,4 @@
 import { PermissionsScreen } from "@/components/component/permissions-screen";
-import { RolesPermission } from "@/components/component/roles-permission";
 import React from "react";
 
 type Props = {};

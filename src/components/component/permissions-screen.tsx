@@ -15,7 +15,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "../ui/badge";
 import { useEffect, useState } from "react";
 import { FileEditIcon } from "lucide-react";
-import { set } from "zod";
 
 export function PermissionsScreen() {
   // Define Constants permission enum codes
