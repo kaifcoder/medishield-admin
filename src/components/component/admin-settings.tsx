@@ -55,6 +55,7 @@ export function AdminSettings() {
   const [updateEmail, setUpdateEmail] = useState("");
   const [updatePassword, setUpdatePassword] = useState("");
   const [updatePermission, setUpdatePermission] = useState("");
+  const [updateId, setUpdateId] = useState("");
   const [updateLoading, setUpdateLoading] = useState(false);
 
   const fetchAdmins = async () => {
@@ -130,6 +131,15 @@ export function AdminSettings() {
     try {
       setLoading(true);
       console.log("Delete Admin", email);
+      // don't delete the last admin with all permissions
+      if (
+        admins.length === 1 &&
+        admins[0].permission.permissions.length === 5
+      ) {
+        toast.error("Cannot delete the last admin with all permissions.");
+        setLoading(false);
+        return;
+      }
       const res = await fetch(`/api/admin`, {
         body: JSON.stringify({ email }),
         method: "DELETE",
@@ -152,6 +162,7 @@ export function AdminSettings() {
     try {
       setUpdateLoading(true);
       const payload = {
+        id: updateId,
         firstname: updateName.split(" ")[0] || "",
         lastname: updateName.split(" ")[1] || "",
         email: updateEmail,
@@ -182,13 +193,13 @@ export function AdminSettings() {
       setAdmins(
         admins.map((admin: any) => {
           if (admin.email === updateEmail) {
-            return data.newUser;
+            return data;
           }
           return admin;
         })
       );
 
-      console.log("Update Admin", payload);
+      toast.success("Admin has been updated successfully.");
       // reset form
       setUpdateName("");
       setUpdateEmail("");
@@ -324,6 +335,7 @@ export function AdminSettings() {
                                 setUpdateEmail(admin.email);
                                 setUpdatePassword("");
                                 setUpdatePermission(admin?.permission?._id);
+                                setUpdateId(admin._id);
                               }}
                             >
                               <AlertDialog>
@@ -346,10 +358,11 @@ export function AdminSettings() {
                                         id="name"
                                         required
                                         value={
+                                          updateName ||
                                           admin.firstname + " " + admin.lastname
                                         }
                                         onChange={(e) =>
-                                          setName(e.target.value)
+                                          setUpdateName(e.target.value)
                                         }
                                         placeholder="Enter admin name"
                                         type="text"
@@ -359,10 +372,10 @@ export function AdminSettings() {
                                       <Label htmlFor="email">Email</Label>
                                       <Input
                                         required
-                                        value={admin.email}
+                                        value={updateEmail || admin.email}
                                         id="email"
                                         onChange={(e) =>
-                                          setEmail(e.target.value)
+                                          setUpdateEmail(e.target.value)
                                         }
                                         placeholder="Enter admin email"
                                         type="email"
@@ -371,10 +384,10 @@ export function AdminSettings() {
                                     <div>
                                       <Label htmlFor="password">Password</Label>
                                       <Input
-                                        value={password}
+                                        value={updatePassword}
                                         id="password"
                                         onChange={(e) =>
-                                          setPassword(e.target.value)
+                                          setUpdatePassword(e.target.value)
                                         }
                                         placeholder="Enter new admin password"
                                         type="password"
@@ -415,12 +428,7 @@ export function AdminSettings() {
                                     </AlertDialogCancel>
                                     <AlertDialogAction
                                       onClick={() => {
-                                        console.log("Update Admin", {
-                                          updateName,
-                                          updateEmail,
-                                          updatePassword,
-                                          updatePermission,
-                                        });
+                                        handleUpdateAdmin();
                                       }}
                                     >
                                       {loading

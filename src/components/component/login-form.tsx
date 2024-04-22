@@ -47,7 +47,8 @@ export function LoginForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     try {
-      await authenticateUser(values);
+      const res = await authenticateUser(values);
+      console.log(res);
     } catch (error) {
       toast.error("Invalid Credentials");
     }
@@ -117,6 +118,7 @@ async function authenticateUser(values: { email: string; password: string }) {
       redirect: false,
       callbackUrl: "/dashboard",
     });
+    return res;
   } catch (error) {
     toast.error("Invalid Credentials");
   }

@@ -131,7 +131,7 @@ export function PermissionsScreen() {
                   // Define the roles
                   !loading &&
                     roles.map((role: any) => (
-                      <TableRow key={role.id}>
+                      <TableRow key={role.role}>
                         <TableCell className="font-medium">
                           {role.role}
                         </TableCell>

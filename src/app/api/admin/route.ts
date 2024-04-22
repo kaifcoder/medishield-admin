@@ -47,9 +47,11 @@ export async function POST(request: Request) {
 export async function PUT(request: Request) {
   const session: any = await getServerSession(authOptions);
   try {
+    const body = JSON.parse(await request.text());
+    const id = body.id;
     const response = await axios.put(
-      `${process.env.API_URL}/api/user/admin-register`,
-      JSON.parse(await request.text()),
+      `${process.env.API_URL}/api/user/update-admin/${id}`,
+      body,
       {
         headers: {
           Authorization: `Bearer ${session?.user?.access_token}`,

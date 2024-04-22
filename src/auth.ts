@@ -38,6 +38,7 @@ export const authOptions: NextAuthOptions = {
             }
           );
           const { data } = response;
+
           return {
             id: data._id,
             email: data.email,
@@ -68,6 +69,7 @@ export const authOptions: NextAuthOptions = {
         return {
           ...token,
           id: u.id,
+          permissions: u.permissions,
           access_token: u.access_token,
         };
       }

@@ -53,6 +53,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
+import { Download, Link2, Link2Icon, LinkIcon } from "lucide-react";
 
 const formSchema = z.object({
   w: z.string(),
@@ -64,6 +65,7 @@ const formSchema = z.object({
 export function OrderDetails({ order }: any) {
   const [open, setOpen] = useState(false);
   console.log(order);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -134,10 +136,29 @@ export function OrderDetails({ order }: any) {
         <CardHeader>
           <CardTitle>Order summary</CardTitle>
           <CardDescription>
-            Order #{order._id} placed by
-            <Link className="text-blue-600 underline ml-2" href="#">
-              {order.orderby?.firstname} {order.orderby?.lastname}
-            </Link>
+            <div className="flex justify-between items-center">
+              <div>
+                Order #{order._id} placed by
+                <Link
+                  className="text-blue-600 underline ml-2"
+                  href={`mailto:${order.orderby?.email}`}
+                >
+                  {order.orderby?.firstname} {order.orderby?.lastname}
+                </Link>
+              </div>
+              <Button
+                size={"sm"}
+                variant={"outline"}
+                onClick={() => {
+                  window.open(
+                    `https://books.zoho.in/app/60028119279#/invoices/${order?.zohoInvoiceId}`,
+                    "_blank"
+                  );
+                }}
+              >
+                <LinkIcon className="mr-2" /> Show Invoice
+              </Button>
+            </div>
           </CardDescription>
         </CardHeader>
         <CardContent className="grid md:grid-cols-2 gap-4">
@@ -185,10 +206,6 @@ export function OrderDetails({ order }: any) {
             <div className="flex space-x-4">
               <div className="font-medium">Email</div>
               <div>{order.orderby?.email}</div>
-            </div>
-            <div className="flex space-x-4">
-              <div className="font-medium">Phone</div>
-              <div>{order.shippingAddress?.mobile}</div>
             </div>
             <div className="flex space-x-4">
               <div className="font-medium">Phone</div>
@@ -244,17 +261,32 @@ export function OrderDetails({ order }: any) {
           <div className="grid grid-cols-2 gap-1 text-sm">
             <div className="font-medium">Method</div>
             <div>Standard shipping</div>
-            <div className="font-medium">Tracking number (AWB code)</div>
+            <div className="font-medium">Status</div>
             <div>
-              {order?.trackingNumber ? order?.trackingNumber : "Not Alloted"}
+              {order.orderStatus === "Processing"
+                ? "Ready to Ship"
+                : order.orderStatus}
             </div>
             {order?.shipmentInfo?.payload?.shipment_id && (
               <>
+                <div className="font-medium">Tracking number (AWB code)</div>
+                <div>
+                  {order?.shipmentInfo.payload.awb_code
+                    ? order?.shipmentInfo.payload.awb_code
+                    : "Not Assigned"}
+                </div>
                 <div className="font-medium">Message</div>
                 <div>
                   {order?.shipmentInfo.payload.awb_assign_error
                     ? order?.shipmentInfo.payload.awb_assign_error
-                    : "None"}
+                    : ""}
+                  {order?.shipmentInfo.payload.error_message ? (
+                    <div className="text-red-500">
+                      {order?.shipmentInfo.payload.error_message}
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div className="font-medium">Courier</div>
                 <div>
@@ -274,8 +306,7 @@ export function OrderDetails({ order }: any) {
                       })
                     : "Not Assigned"}
                 </div>
-                <div className="font-medium">Applied Weight</div>
-                <div>{order?.shipmentInfo.payload.applied_weight}</div>
+
                 <div className="font-medium">shiprocket order id</div>
                 <div>
                   <Link
@@ -286,17 +317,19 @@ export function OrderDetails({ order }: any) {
                     {order?.shipmentInfo.payload.order_id}
                   </Link>
                 </div>
-                {order?.shipmentInfo.payload.label_url && (
-                  <Button>
-                    <Link
-                      href={order?.shipmentInfo.payload.label_url}
-                      target="_blank"
-                    >
-                      Download Shipping Label
-                    </Link>
-                  </Button>
-                )}
               </>
+            )}
+          </div>
+          <div className="w-full justify-end flex">
+            {order?.shipmentInfo.payload.label_url && (
+              <Button>
+                <Link
+                  href={order?.shipmentInfo.payload.label_url || "#"}
+                  target="_blank"
+                >
+                  Download Shipping Label
+                </Link>
+              </Button>
             )}
           </div>
         </CardContent>
