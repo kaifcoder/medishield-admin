@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Card, CardContent, CardFooter } from "../ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import Image from "next/image";
@@ -20,6 +20,8 @@ import { toast } from "sonner";
 import { useEdgeStore } from "@/lib/edgestore";
 import { Label } from "../ui/label";
 import { Switch } from "../ui/switch";
+import { Input } from "postcss";
+import { cn } from "@/lib/utils";
 
 interface ProductCardProps {
   title: string;
@@ -30,6 +32,8 @@ interface ProductCardProps {
   price: number;
   media_gallery: string[];
   product: any;
+  selectedProduct: any;
+  setSelectedProduct: any;
 }
 
 const ProductCard = ({
@@ -41,6 +45,8 @@ const ProductCard = ({
   price,
   media_gallery,
   product,
+  selectedProduct,
+  setSelectedProduct,
 }: ProductCardProps) => {
   const router = useRouter();
   const { edgestore } = useEdgeStore();
@@ -98,11 +104,38 @@ const ProductCard = ({
   };
 
   return (
-    <Card className="cursor-pointer">
+    <Card
+      className={cn(
+        "cursor-pointer relative group flex flex-col",
+        selectedProduct.includes(id) && "bg-gray-100  shadow-lg "
+      )}
+    >
+      <input
+        type="checkbox"
+        aria-label="Select product"
+        className="
+          absolute top-0 right-0 m-2
+           h-6 w-6
+          "
+        checked={selectedProduct.includes(id)}
+        onChange={(e) => {
+          if (e.target.checked) {
+            setSelectedProduct([...selectedProduct, id]);
+          } else {
+            setSelectedProduct(
+              selectedProduct.filter((item: any) => item !== id)
+            );
+          }
+        }}
+      />
       <CardContent
         onClick={() => router.push(`/dashboard/products/${slug}`)}
-        className="p-4 flex flex-col gap-2"
+        className={cn(
+          "flex flex-col flex-1  space-y-2 mt-4 items-start justify-center"
+        )}
       >
+        {/* select  */}
+
         <img
           alt="Image"
           className="aspect-video object-contain rounded-lg overflow-hidden border border-gray-200 w-full dark:border-gray-800"
@@ -118,7 +151,7 @@ const ProductCard = ({
           <span className="text-lg font-bold">₹ {price}</span>
         </div>
       </CardContent>
-      <CardFooter className="p-4 sm:flex  items-center justify-between">
+      <CardFooter className="p-4 md:flex   items-center hidden  justify-between bg-gray-200">
         <div className="flex items-center space-x-2">
           <Label htmlFor="published">Published</Label>
           <Switch

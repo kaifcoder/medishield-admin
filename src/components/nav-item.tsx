@@ -6,9 +6,6 @@ import CategoryIcon from "@mui/icons-material/Category";
 import GradingIcon from "@mui/icons-material/Grading";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { usePathname, useRouter } from "next/navigation";
-import ArtTrackIcon from "@mui/icons-material/ArtTrack";
-import GroupIcon from "@mui/icons-material/Group";
-import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import { LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
 
@@ -33,11 +30,23 @@ const routes = [
   //   icon: <CategoryIcon className="h-4 w-4 mr-2" />,
   //   href: `/dashboard/category`,
   // },
+
   {
     label: "Brands",
     icon: <CategoryIcon className="h-4 w-4 mr-2" />,
     href: `/dashboard/brands`,
   },
+  {
+    label: "Roles and Permissions",
+    icon: <CategoryIcon className="h-4 w-4 mr-2" />,
+    href: `/dashboard/roles`,
+  },
+  {
+    label: "Settings",
+    icon: <SettingsIcon className="h-4 w-4 mr-2" />,
+    href: `/dashboard/settings`,
+  },
+
   {
     label: "Logout",
     icon: <LogOut className="h-4 w-4 mr-2" />,

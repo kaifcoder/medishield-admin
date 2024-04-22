@@ -22,9 +22,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 
@@ -37,7 +34,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
-import MarkdownEditor from "./markdown-editor";
+import dynamic from "next/dynamic";
+
+const MarkdownEditor = dynamic(() => import("./markdown-editor"), {
+  ssr: false,
+});
 
 const childFormSchema = z.object({
   name: z.string().min(2, {

@@ -5,10 +5,28 @@ import { getServerSession } from "next-auth";
 export async function GET(request: Request) {
   const session: any = await getServerSession(authOptions);
   try {
-    const response = await axios.get(
-      `${process.env.API_URL}/api/product/get/getallproducts?${
-        request.url.split("?")[1]
-      }`,
+    const response = await axios.get(`${process.env.API_URL}/api/user/admins`, {
+      headers: {
+        Authorization: `Bearer ${session?.user?.access_token}`,
+      },
+    });
+
+    return new Response(JSON.stringify(response.data));
+  } catch (error) {
+    console.log(error);
+    return new Response("Error", {
+      status: 500,
+      statusText: "Internal Server Error",
+    });
+  }
+}
+
+export async function POST(request: Request) {
+  const session: any = await getServerSession(authOptions);
+  try {
+    const response = await axios.post(
+      `${process.env.API_URL}/api/user/admin-register`,
+      JSON.parse(await request.text()),
       {
         headers: {
           Authorization: `Bearer ${session?.user?.access_token}`,
@@ -26,12 +44,11 @@ export async function GET(request: Request) {
   }
 }
 
-// add
-export async function POST(request: Request) {
+export async function PUT(request: Request) {
   const session: any = await getServerSession(authOptions);
   try {
-    const response = await axios.post(
-      `${process.env.API_URL}/api/product`,
+    const response = await axios.put(
+      `${process.env.API_URL}/api/user/admin-register`,
       JSON.parse(await request.text()),
       {
         headers: {
@@ -42,6 +59,7 @@ export async function POST(request: Request) {
 
     return new Response(JSON.stringify(response.data));
   } catch (error) {
+    console.log(error);
     return new Response("Error", {
       status: 500,
       statusText: "Internal Server Error",
@@ -49,13 +67,13 @@ export async function POST(request: Request) {
   }
 }
 
-// bulk operations
-export async function PUT(request: Request) {
+export async function DELETE(request: Request) {
   const session: any = await getServerSession(authOptions);
   try {
-    const response = await axios.post(
-      `${process.env.API_URL}/api/product/bulk/bulkoperation`,
-      JSON.parse(await request.text()),
+    const email = JSON.parse(await request.text()).email;
+    const response = await axios.delete(
+      `${process.env.API_URL}/api/user/delete-user/${email}`,
+
       {
         headers: {
           Authorization: `Bearer ${session?.user?.access_token}`,
@@ -65,6 +83,7 @@ export async function PUT(request: Request) {
 
     return new Response(JSON.stringify(response.data));
   } catch (error) {
+    console.log(error);
     return new Response("Error", {
       status: 500,
       statusText: "Internal Server Error",

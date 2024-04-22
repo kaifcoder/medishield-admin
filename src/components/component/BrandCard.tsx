@@ -15,7 +15,7 @@ const BrandCard = ({ name, thumbnail }: BrandCardProps) => {
   return (
     <div
       onClick={() => {
-        router.push(`/dashboard/products?search=${name}`);
+        router.push(`/dashboard/products?brand=${name}`);
       }}
       className="flex  cursor-pointer  items-center gap-4 border p-4 rounded-xl shadow-md relative group"
     >

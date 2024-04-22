@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Loader2, PackageIcon } from "lucide-react";
+import { Loader2, PackageIcon, Search } from "lucide-react";
 import { Input } from "../ui/input";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -18,6 +18,18 @@ import {
 import { use, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import CSVReader from "react-csv-reader";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogClose,
+} from "../ui/dialog";
+import { Label } from "../ui/label";
+import { BulkOptionBar } from "./bulk-options";
 
 export function ProductCatalogue() {
   const [products, setProducts] = useState([]) as any;
@@ -28,9 +40,11 @@ export function ProductCatalogue() {
   const [exporting, setExporting] = useState(false);
   const [total, setTotal] = useState(0);
   const searchParams = useSearchParams();
-
+  const [selectedProduct, setSelectedProduct] = useState([]);
   const searchq = searchParams.get("search");
+  const brand = searchParams.get("brand");
   const published = searchParams.get("published");
+  const [importedData, setImportedData] = useState([]) as any;
 
   const fetchProducts = async (page: any) => {
     setLoading(true);
@@ -41,13 +55,26 @@ export function ProductCatalogue() {
     setLoading(false);
   };
 
+  const fetchbrandProducts = async (brand: any) => {
+    setLoading(true);
+    const response = await fetch(`/api/product/?brand=${brand}`);
+    const data = await response.json();
+    setProducts(data["data"]);
+    setTotal(data["count"]);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    if (searchq == null) {
+    if (brand) {
+      fetchbrandProducts(brand);
+    } else if (searchq == null) {
       fetchProducts(page);
     } else {
-      fetchSearchProducts(searchq);
+      if (searchq !== "") {
+        fetchSearchProducts(searchq);
+      }
     }
-  }, [page, searchq]);
+  }, [page, searchq, brand]);
 
   const fetchSearchProducts = async (searchq: string) => {
     setLoading(true);
@@ -61,6 +88,7 @@ export function ProductCatalogue() {
 
   const getAllProductsCSV = async () => {
     setExporting(true);
+
     const res = await fetch(`/api/product/export/all`);
     const data = await res.json();
     // download the file
@@ -71,6 +99,61 @@ export function ProductCatalogue() {
     document.body.appendChild(link);
     link.click();
     setExporting(false);
+  };
+
+  const transformData = (data: any) => {
+    const transformedData = data.slice(1).map((item: any) => {
+      return {
+        name: item[0],
+        sku: item[1],
+        price: {
+          minimalPrice: item[2],
+          maximalPrice: item[2],
+          regularPrice: item[2],
+        },
+        manufacturer: item[3],
+        max_sale_qty: item[4],
+        thumbnail_url: item[5],
+        short_description: item[6],
+        product_specs: {
+          description: item[7],
+          key_specifications: "",
+          packaging: "",
+          direction_to_use: "",
+          features: "",
+        },
+        meta_title: item[0],
+        meta_description: item[6] || "",
+        media_gallery_entries: [
+          {
+            file: item[5],
+          },
+        ],
+        categories: [
+          {
+            name: item[3],
+          },
+        ],
+        published: false,
+      };
+    });
+    return transformedData;
+  };
+
+  const handleCSVImport = async (data: any) => {
+    setImporting(true);
+    console.log(data);
+
+    const res = await fetch(`/api/product`, {
+      method: "PUT",
+      body: JSON.stringify({
+        operation: "import",
+        data: data,
+      }),
+    });
+    const response = await res.json();
+    console.log(response);
+    setImporting(false);
   };
 
   const router = useRouter();
@@ -84,20 +167,38 @@ export function ProductCatalogue() {
           </div>
           <div className="ml-auto flex items-center gap-4">
             <Input
-              className="w-96"
+              className="min-w-3xl"
               placeholder="Search..."
               type="search"
               onChange={async (e) => {
                 setSearch(e.target.value);
               }}
               onKeyPress={async (e) => {
-                if (e.key === "Enter") {
+                if (e.key === "Enter" && search === "") {
+                  router.push(`/dashboard/products`);
+                  fetchProducts(page);
+                }
+                if (e.key === "Enter" && search !== "") {
                   router.push(`/dashboard/products?search=${search}`);
                   fetchSearchProducts(search);
-                  setSearch("");
                 }
               }}
             />
+
+            <Search
+              className="h-16 cursor-pointer w-16 text-black"
+              onClick={async () => {
+                if (search === "") {
+                  router.push(`/dashboard/products`);
+                  fetchProducts(page);
+                }
+                if (search !== "") {
+                  router.push(`/dashboard/products?search=${search}`);
+                  fetchSearchProducts(search);
+                }
+              }}
+            />
+
             <Button
               onClick={() => router.replace("/dashboard/products/addProduct")}
               size="sm"
@@ -105,15 +206,127 @@ export function ProductCatalogue() {
               Add Product
             </Button>
 
-            <Button onClick={getAllProductsCSV} size="sm">
-              Export all Products
+            <Button variant={"outline"} size="sm" onClick={getAllProductsCSV}>
+              Export CSV
             </Button>
 
-            <Button size="sm">Import Products (CSV)</Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button size="sm" variant="outline">
+                  Import CSV
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[1000px] mx-auto">
+                <DialogHeader>
+                  <DialogTitle>Import Product (CSV)</DialogTitle>
+                  <DialogDescription>
+                    Select a CSV file to import into the database.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="flex flex-col">
+                  <div className="items-center ">
+                    <Label className="text-right" htmlFor="file">
+                      CSV File
+                    </Label>
+                    <CSVReader
+                      onFileLoaded={(data: any) => {
+                        console.log(data);
+                        setImportedData(data);
+                      }}
+                      onError={(err: any) => {
+                        console.log(err);
+                      }}
+                      parserOptions={{
+                        dynamicTyping: true,
+                        skipEmptyLines: true,
+                        transformHeader: (header: any) =>
+                          header.toLowerCase().replace(/\W/g, "_"),
+                      }}
+                    />
+
+                    {importedData.length > 0 && (
+                      <div className="flex flex-col">
+                        <p className="col-span-3 text-sm text-gray-500">
+                          {importedData.length} rows loaded
+                        </p>
+                        <div className="max-h-96 mb-10 overflow-scroll">
+                          <table className="table-auto w-full ">
+                            <thead>
+                              <tr
+                                className="
+                                text-left
+                                text-sm
+                                text-gray-900
+                                border-b
+                                border-gray-200
+                                "
+                              >
+                                {importedData[0].map((item: any) => (
+                                  <th
+                                    className="border-r border-gray-200
+                                    px-4 py-2
+                                    "
+                                    key={item}
+                                  >
+                                    {item}
+                                  </th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody className="text-sm text-gray-500">
+                              {importedData
+                                .slice(1, 100)
+                                .map((row: any, index: any) => (
+                                  <tr
+                                    className="border-b border-gray-200"
+                                    key={index}
+                                  >
+                                    {row.map((item: any) => (
+                                      <td
+                                        className="border-r border-gray-200
+                                                                             "
+                                        key={item}
+                                      >
+                                        {item}
+                                      </td>
+                                    ))}
+                                  </tr>
+                                ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <DialogFooter>
+                  <DialogClose asChild>
+                    <Button variant="ghost">Cancel</Button>
+                  </DialogClose>
+                  <Button
+                    className="ml-auto"
+                    type="button"
+                    disabled={importing}
+                    onClick={() => handleCSVImport(transformData(importedData))}
+                  >
+                    {importing ? "Importing..." : "Import"}
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </header>
-      <main className="flex-1 m-8 ">
+      <main className="flex-1 m-8">
+        {selectedProduct && selectedProduct.length > 0 && (
+          <div className="mb-4">
+            <BulkOptionBar
+              selectedProduct={selectedProduct}
+              setSelectedProduct={setSelectedProduct}
+              products={products}
+            />
+          </div>
+        )}
         {exporting && (
           <div className="flex items-center justify-center h-64">
             <Loader2
@@ -138,28 +351,37 @@ export function ProductCatalogue() {
         {loading ? (
           <p>Loading products...</p>
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-4">
-            {products.map((product: any) => (
-              <ProductCard
-                id={product._id}
-                key={product.sku}
-                title={product.name}
-                description={product.short_description}
-                image={
-                  product.thumbnail_url.startsWith("http")
-                    ? product.thumbnail_url
-                    : "https://images1.dentalkart.com/media/catalog/product" +
-                      product.thumbnail_url
-                }
-                price={product.price?.minimalPrice}
-                slug={product.sku}
-                media_gallery={product.media_gallery_entries.map(
-                  (file: any) => file.file
-                )}
-                product={product}
-              />
-            ))}
-          </div>
+          <>
+            {searchq && (
+              <p className="text-md mb-4 font-semibold">
+                Search results for: {searchq} ({total} results)
+              </p>
+            )}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-4">
+              {products.map((product: any) => (
+                <ProductCard
+                  id={product._id}
+                  key={product.sku}
+                  title={product.name}
+                  description={product.short_description}
+                  image={
+                    product.thumbnail_url.startsWith("http")
+                      ? product.thumbnail_url
+                      : "https://images1.dentalkart.com/media/catalog/product" +
+                        product.thumbnail_url
+                  }
+                  price={product.price?.minimalPrice}
+                  slug={product.sku}
+                  media_gallery={product.media_gallery_entries.map(
+                    (file: any) => file.file
+                  )}
+                  product={product}
+                  selectedProduct={selectedProduct}
+                  setSelectedProduct={setSelectedProduct}
+                />
+              ))}
+            </div>
+          </>
         )}
         <Pagination>
           <PaginationContent>
@@ -179,7 +401,9 @@ export function ProductCatalogue() {
             <PaginationItem>
               <PaginationNext
                 className="cursor-pointer"
-                onClick={() => setPage(page + 1)}
+                onClick={() => {
+                  if (page < Math.ceil(total / 10)) setPage(page + 1);
+                }}
               />
             </PaginationItem>
           </PaginationContent>
