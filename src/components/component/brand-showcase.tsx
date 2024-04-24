@@ -4,7 +4,7 @@ import { PackageIcon } from "lucide-react";
 import BrandCard from "./BrandCard";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { useRouter } from "next/navigation";
+
 import {
   Dialog,
   DialogContent,
@@ -15,9 +15,8 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 
-import { Label } from "../ui/label";
 import { useEffect, useState } from "react";
-import { z } from "zod";
+import { set, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import {
@@ -30,6 +29,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
+import { SingleImageDropzone } from "./single-image-upload";
+import { useEdgeStore } from "@/lib/edgestore";
+
 const formSchema = z.object({
   name: z.string(),
   logourl: z.string(),
@@ -38,6 +40,7 @@ const formSchema = z.object({
 export function BrandShowcase() {
   const [brand, setBrand] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
   const fetchBrands = async () => {
     setLoading(true);
     const res = await fetch("/api/brands");
@@ -47,20 +50,27 @@ export function BrandShowcase() {
   };
 
   const createBrand = async (brand: any) => {
-    setLoading(true);
-    const res = await fetch("/api/brands", {
-      method: "POST",
-      body: JSON.stringify(brand),
-    });
-    const data = await res.json();
-    setBrand(data["data"]);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const res = await fetch("/api/brands", {
+        method: "POST",
+        body: JSON.stringify(brand),
+      });
+      const data = await res.json();
+      fetchBrands();
+      setLoading(false);
+    } catch (error) {
+      console.error("Error:", error);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     fetchBrands();
   }, []);
   const [open, setOpen] = useState(false);
+  const [file, setFile] = useState<File>();
+  const { edgestore } = useEdgeStore();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -82,6 +92,19 @@ export function BrandShowcase() {
     setOpen(false);
   }
 
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    if (search === "") {
+      fetchBrands();
+    } else {
+      const filteredBrands = brand.filter((b: any) =>
+        b.name.toLowerCase().includes(search.toLowerCase())
+      );
+      setBrand(filteredBrands);
+    }
+  }, [search]);
+
   return (
     <div className="flex flex-col">
       <header className="border-b p-4">
@@ -90,6 +113,7 @@ export function BrandShowcase() {
             <PackageIcon className="w-6 h-6" />
             <span className="text-lg font-semibold">Brands</span>
           </div>
+
           <div className="ml-auto flex items-center gap-4">
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger>
@@ -116,9 +140,6 @@ export function BrandShowcase() {
                           <FormControl>
                             <Input placeholder="Brand Name" {...field} />
                           </FormControl>
-                          <FormDescription>
-                            Provide a name for the product.
-                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -130,9 +151,28 @@ export function BrandShowcase() {
                         <FormItem>
                           <FormLabel>Logo URL</FormLabel>
                           <FormControl>
-                            <Input
-                              placeholder="http://www.image.com"
-                              {...field}
+                            <SingleImageDropzone
+                              width={200}
+                              height={200}
+                              value={file}
+                              onChange={async (file) => {
+                                setFile(file);
+                                if (file) {
+                                  const res =
+                                    await edgestore.publicFiles.upload({
+                                      file,
+                                      onProgressChange: (progress) => {
+                                        // you can use this to show a progress bar
+                                        console.log(progress);
+                                        setUploading(true);
+                                        if (progress === 100) {
+                                          setUploading(false);
+                                        }
+                                      },
+                                    });
+                                  form.setValue("logourl", res.url);
+                                }
+                              }}
                             />
                           </FormControl>
                           <FormDescription>
@@ -142,7 +182,9 @@ export function BrandShowcase() {
                         </FormItem>
                       )}
                     />
-                    <Button type="submit">Save changes</Button>
+                    <Button disabled={uploading} type="submit">
+                      {uploading ? "Uploading..." : "Add Brand"}
+                    </Button>
                   </form>
                 </Form>
               </DialogContent>
@@ -150,6 +192,16 @@ export function BrandShowcase() {
           </div>
         </div>
       </header>
+      {/* search bar */}
+      <div className="flex items-center justify-center px-4 mt-2">
+        <Input
+          type="search"
+          placeholder="Search for brands"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full p-4"
+        />
+      </div>
       <div className="grid sm:grid-cols-2 p-8 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-start">
         {loading && (
           <div>
@@ -157,6 +209,8 @@ export function BrandShowcase() {
           </div>
         )}
         {!loading &&
+          brand &&
+          brand.length !== 0 &&
           brand.map((b: any) => {
             return <BrandCard key={b.name} name={b.name} thumbnail={b.logo} />;
           })}

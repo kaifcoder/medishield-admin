@@ -90,6 +90,7 @@ const ProductCard = ({
   };
 
   const handlePublish = async (id: string) => {
+    console.log("Publishing product", id);
     const res = await fetch(`/api/product/${id}`, {
       method: "PUT",
       body: JSON.stringify({ published: !isPublished }),
@@ -157,7 +158,7 @@ const ProductCard = ({
           <Switch
             id="published"
             checked={isPublished}
-            onCheckedChange={() => handlePublish(slug)}
+            onCheckedChange={() => handlePublish(id)}
           />
         </div>
         <Button

@@ -65,9 +65,10 @@ export async function PUT(request: Request) {
 
     return new Response(JSON.stringify(response.data));
   } catch (error) {
+    console.log(error);
     return new Response("Error", {
       status: 500,
-      statusText: "Internal Server Error",
+      statusText: "Internal Server Error" + error,
     });
   }
 }

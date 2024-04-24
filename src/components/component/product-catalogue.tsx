@@ -30,6 +30,7 @@ import {
 } from "../ui/dialog";
 import { Label } from "../ui/label";
 import { BulkOptionBar } from "./bulk-options";
+import { toast } from "sonner";
 
 export function ProductCatalogue() {
   const [products, setProducts] = useState([]) as any;
@@ -106,6 +107,7 @@ export function ProductCatalogue() {
       return {
         name: item[0],
         sku: item[1],
+        barcode: item[1],
         price: {
           minimalPrice: item[2],
           maximalPrice: item[2],
@@ -141,19 +143,29 @@ export function ProductCatalogue() {
   };
 
   const handleCSVImport = async (data: any) => {
-    setImporting(true);
     console.log(data);
+    try {
+      setImporting(true);
+      console.log(data);
 
-    const res = await fetch(`/api/product`, {
-      method: "PUT",
-      body: JSON.stringify({
-        operation: "import",
-        data: data,
-      }),
-    });
-    const response = await res.json();
-    console.log(response);
-    setImporting(false);
+      const res = await fetch(`/api/product`, {
+        method: "PUT",
+        body: JSON.stringify({
+          operation: "import",
+          data: data,
+        }),
+      });
+      const response = await res.json();
+      console.log(response);
+      setImporting(false);
+    } catch (error) {
+      console.error("Error:", JSON.stringify(error));
+      toast("Error", {
+        description: "An error occurred while importing the data.",
+        closeButton: true,
+      });
+      setImporting(false);
+    }
   };
 
   const router = useRouter();
@@ -281,11 +293,11 @@ export function ProductCatalogue() {
                                     className="border-b border-gray-200"
                                     key={index}
                                   >
-                                    {row.map((item: any) => (
+                                    {row.map((item: any, index: any) => (
                                       <td
                                         className="border-r border-gray-200
                                                                              "
-                                        key={item}
+                                        key={index}
                                       >
                                         {item}
                                       </td>
@@ -352,11 +364,14 @@ export function ProductCatalogue() {
           <p>Loading products...</p>
         ) : (
           <>
-            {searchq && (
-              <p className="text-md mb-4 font-semibold">
-                Search results for: {searchq} ({total} results)
-              </p>
-            )}
+            {searchq ||
+              (brand && (
+                <p className="text-md mb-4 font-semibold">
+                  {searchq
+                    ? `Search results for "${searchq}" found (${products.length}) products`
+                    : `Showing products for ${brand} found (${products.length}) products`}
+                </p>
+              ))}
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-4">
               {products.map((product: any) => (
                 <ProductCard
