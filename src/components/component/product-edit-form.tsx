@@ -182,6 +182,9 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
           "Content-Type": "application/json",
         },
       });
+      if (!response.ok) {
+        throw new Error("Error in adding product");
+      }
       form.reset();
       setImages([]);
       setCategory([]);
@@ -189,7 +192,9 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
       toast.success("Product added successfully");
       console.log(response);
     } catch (error) {
-      toast.error("Error in adding product");
+      toast.error(
+        "Error in adding product or product already exist with same sku"
+      );
     }
   }
   const [loading, setLoading] = useState(false);

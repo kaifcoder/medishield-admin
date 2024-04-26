@@ -40,6 +40,8 @@ export async function POST(request: Request) {
       }
     );
 
+    console.log(JSON.stringify(response.data));
+
     return new Response(JSON.stringify(response.data));
   } catch (error) {
     return new Response("Error", {
