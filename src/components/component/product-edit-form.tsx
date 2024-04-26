@@ -98,19 +98,16 @@ const formSchema = z.object({
       name: z.string(),
     })
   ),
-  manufacturer: z
-    .string()
-    .min(2, { message: "brand must be at least 2 characters." }),
+  manufacturer: z.string().min(1),
 });
 
 const childFormSchema = z.object({
   name: z.string().min(2, {
     message: "product name must be at least 2 characters.",
   }),
+
   sku: z.string().min(2, { message: "sku must be at least 2 characters." }),
-  image_url: z.string().min(2, {
-    message: "image_url must be at least 2 characters.",
-  }),
+
   price: z.object({
     minimalPrice: z.object({
       amount: z.object({

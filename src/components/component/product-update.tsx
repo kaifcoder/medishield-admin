@@ -36,6 +36,15 @@ import {
 } from "../ui/accordion";
 import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
+import { FileState, MultiImageDropzone } from "./multi-image-upload";
+import { useEdgeStore } from "@/lib/edgestore";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const MarkdownEditor = dynamic(() => import("./markdown-editor"), {
   ssr: false,
@@ -136,8 +145,6 @@ export function ProductUpdate({
   id,
   handleRemoveChildProduct,
 }: ProductEditFormProps) {
-  console.log(defaultValues);
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues || {
@@ -186,20 +193,65 @@ export function ProductUpdate({
   }
   const [loading, setLoading] = useState(false);
 
+  const [fileStates, setFileStates] = useState<FileState[]>(
+    defaultValues?.media_gallery_entries.map(
+      (file: { file: string }, index: number) => ({
+        key: index.toString(),
+        file: file.file.startsWith("http")
+          ? file.file
+          : "https://images1.dentalkart.com/media/catalog/product" + file.file,
+        progress: "COMPLETE",
+        url: file.file,
+      })
+    ) || []
+  );
+  const { edgestore } = useEdgeStore();
+
+  function updateFileProgress(key: string, progress: FileState["progress"]) {
+    setFileStates((fileStates) => {
+      const newFileStates = structuredClone(fileStates);
+      console.log(newFileStates);
+      const fileState = newFileStates.find(
+        (fileState) => fileState.key === key
+      );
+      if (fileState) {
+        fileState.progress = progress;
+      }
+      return newFileStates;
+    });
+  }
+
+  function updateFileStateUrl(key: string, url: string) {
+    setFileStates((fileStates) => {
+      const newFileStates = structuredClone(fileStates);
+
+      const fileState = newFileStates.find(
+        (fileState) => fileState.key === key
+      );
+      if (fileState) {
+        fileState.url = url;
+      }
+      return newFileStates;
+    });
+  }
+
   const handleAddImage = (imageUrl: string) => {
     const mediaEntry = { file: imageUrl };
+    console.log("Handle ADD Image", imageUrl, mediaEntry);
     const currentMediaEntries = form.getValues("media_gallery_entries");
     const updatedMediaEntries = [...currentMediaEntries, mediaEntry];
+    // add images to fileStates
+    setFileStates((fileStates) => [
+      ...fileStates,
+      {
+        key: fileStates.length.toString(),
+        file: imageUrl,
+        progress: "COMPLETE",
+        url: imageUrl,
+      },
+    ]);
     form.setValue("media_gallery_entries", updatedMediaEntries);
     console.log(form.getValues("media_gallery_entries"));
-  };
-
-  const handleRemoveImage = (index: number) => {
-    const currentMediaEntries = form.getValues("media_gallery_entries");
-    const updatedMediaEntries = currentMediaEntries.filter(
-      (_, i) => i !== index
-    );
-    form.setValue("media_gallery_entries", updatedMediaEntries);
   };
 
   const handleBarcodeChange = () => {
@@ -363,9 +415,35 @@ export function ProductUpdate({
                   name="thumbnail_url"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Thumbnail URL</FormLabel>
+                      <FormLabel>Thumbnail</FormLabel>
                       <FormControl>
-                        <Input placeholder="Thumbnail Image URL" {...field} />
+                        <Select
+                          onValueChange={(value) => {
+                            form.setValue("thumbnail_url", value);
+                          }}
+                        >
+                          <SelectTrigger className="w-[180px]">
+                            <SelectValue placeholder="Select a Thumbnail" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {form
+                              .getValues("media_gallery_entries")
+                              .map((entry: any, index: number) => (
+                                <SelectItem key={index} value={entry.file}>
+                                  <img
+                                    alt="thumbnail"
+                                    src={
+                                      entry.file.startsWith("http")
+                                        ? entry.file
+                                        : "https://images1.dentalkart.com/media/catalog/product" +
+                                          entry.file
+                                    }
+                                    className="w-10 h-10 object-cover rounded-lg"
+                                  />
+                                </SelectItem>
+                              ))}
+                          </SelectContent>
+                        </Select>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -376,58 +454,141 @@ export function ProductUpdate({
                   name="media_gallery_entries"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Images</FormLabel>
+                      <FormLabel>Images (Max 8 Images)</FormLabel>
                       <FormControl>
                         <div className="space-y-2">
-                          <Input
-                            type="text"
-                            id="image"
-                            placeholder="Image URL"
+                          <div className="flex space-x-1 pb-5 border-b border-gray-800">
+                            <Input
+                              type="text"
+                              id="image"
+                              placeholder="Image URL"
+                            />
+                            <Button
+                              type="button"
+                              onClick={() =>
+                                handleAddImage(
+                                  (
+                                    document.getElementById(
+                                      "image"
+                                    ) as HTMLInputElement
+                                  )?.value
+                                )
+                              }
+                            >
+                              Add Image
+                            </Button>
+                          </div>
+                          <div>OR </div>
+                          <MultiImageDropzone
+                            value={fileStates}
+                            dropzoneOptions={{
+                              maxFiles: 8,
+                            }}
+                            onChange={(files: any) => {
+                              setFileStates(files);
+                            }}
+                            onFilesAdded={async (addedFiles: any) => {
+                              setFileStates([...fileStates, ...addedFiles]);
+                              console.log(addedFiles);
+                              await Promise.all(
+                                addedFiles.map(async (addedFileState: any) => {
+                                  try {
+                                    console.log(
+                                      "Uploading file",
+                                      addedFileState
+                                    );
+                                    const res =
+                                      await edgestore.publicFiles.upload({
+                                        file: addedFileState.file,
+                                        onProgressChange: async (progress) => {
+                                          updateFileProgress(
+                                            addedFileState.key,
+                                            progress
+                                          );
+                                          if (progress === 100) {
+                                            await new Promise((resolve) =>
+                                              setTimeout(resolve, 1000)
+                                            );
+                                            updateFileProgress(
+                                              addedFileState.key,
+                                              "COMPLETE"
+                                            );
+                                            updateFileStateUrl(
+                                              addedFileState.key,
+                                              res.url
+                                            );
+                                            form.setValue(
+                                              "media_gallery_entries",
+                                              [
+                                                ...form.getValues(
+                                                  "media_gallery_entries"
+                                                ),
+                                                { file: res.url },
+                                              ]
+                                            );
+                                            toast.success("Image uploaded");
+                                          }
+                                        },
+                                      });
+                                  } catch (err) {
+                                    updateFileProgress(
+                                      addedFileState.key,
+                                      "ERROR"
+                                    );
+                                  }
+                                })
+                              );
+                            }}
+                            onFileRemove={async (removedFile: any) => {
+                              // remove image from edgestore
+                              try {
+                                if (
+                                  removedFile.url.startsWith(
+                                    "https://files.edgestore.dev/"
+                                  )
+                                ) {
+                                  let res = await edgestore.publicFiles.delete({
+                                    url: removedFile.url,
+                                  });
+                                }
+
+                                setFileStates((fileStates) =>
+                                  fileStates.filter(
+                                    (fileState) =>
+                                      fileState.key !== removedFile.key
+                                  )
+                                );
+                                // remove image from media_gallery_entries
+
+                                // remove image from media_gallery_entries
+                                const currentMediaEntries = form.getValues(
+                                  "media_gallery_entries"
+                                );
+                                console.log(currentMediaEntries);
+                                const updatedMediaEntries =
+                                  currentMediaEntries.filter(
+                                    (entry: any) =>
+                                      entry.file !== removedFile.url
+                                  );
+                                form.setValue(
+                                  "media_gallery_entries",
+                                  updatedMediaEntries
+                                );
+                                console.log(
+                                  "After remove ",
+                                  form.getValues("media_gallery_entries")
+                                );
+
+                                toast.success("Image removed successfully");
+                              } catch (error) {
+                                console.error(error);
+                                toast.error("Error in removing image");
+                              }
+                            }}
                           />
-                          {/* <Input type="file" id="file" /> */}
-                          <Button
-                            type="button"
-                            onClick={() =>
-                              handleAddImage(
-                                (
-                                  document.getElementById(
-                                    "image"
-                                  ) as HTMLInputElement
-                                )?.value
-                              )
-                            }
-                          >
-                            Add Image
-                          </Button>
                         </div>
                       </FormControl>
-                      {
-                        <div className="flex flex-col gap-2">
-                          {form
-                            .getValues("media_gallery_entries")
-                            .map((image, index) => (
-                              <div key={index} className="flex flex-col">
-                                <img
-                                  src={
-                                    image.file.startsWith("https://")
-                                      ? image.file
-                                      : "https://images1.dentalkart.com/media/catalog/product" +
-                                        image.file
-                                  }
-                                  alt="product"
-                                  className="h-24 w-24"
-                                />
-                                <span>{image.file}</span>
-                                <Button
-                                  type="button"
-                                  onClick={() => handleRemoveImage(index)}
-                                >
-                                  Remove
-                                </Button>
-                              </div>
-                            ))}
-                        </div>
-                      }
+
                       <FormMessage />
                     </FormItem>
                   )}
@@ -583,19 +744,7 @@ export function ProductUpdate({
                             </FormItem>
                           )}
                         />
-                        <FormField
-                          control={form.control}
-                          name={`childProducts.${index}.image_url`}
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Image URL</FormLabel>
-                              <FormControl>
-                                <Input placeholder="Image URL" {...field} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+
                         <FormField
                           control={form.control}
                           name={`childProducts.${index}.price.minimalPrice.amount.value`}
@@ -627,6 +776,10 @@ export function ProductUpdate({
                     </AccordionItem>
                   </Accordion>
                 ))}
+                <Button type="submit" variant="outline" className="mr-2">
+                  Save as Draft
+                </Button>
+
                 <Button type="submit">Submit</Button>
               </form>
             </Form>
