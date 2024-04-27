@@ -35,7 +35,6 @@ import {
   AccordionTrigger,
 } from "../ui/accordion";
 import dynamic from "next/dynamic";
-import { useSearchParams } from "next/navigation";
 import { FileState, MultiImageDropzone } from "./multi-image-upload";
 import { useEdgeStore } from "@/lib/edgestore";
 import {
@@ -45,6 +44,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { CategoryDropDown } from "./category-dropdown";
+import { Badge } from "../ui/badge";
 
 const MarkdownEditor = dynamic(() => import("./markdown-editor"), {
   ssr: false,
@@ -131,18 +132,26 @@ const formSchema = z.object({
       })
     )
     .min(1, { message: "media_gallery_entries must have at least 1 entry." }),
+  categories: z.array(
+    z.object({
+      name: z.string(),
+    })
+  ),
   childProducts: z.array(childFormSchema),
 });
 
 interface ProductEditFormProps {
   id: string;
   defaultValues?: z.infer<typeof formSchema>;
+
+  manufacturer: any;
   handleRemoveChildProduct: (index: number) => void;
 }
 
 export function ProductUpdate({
   defaultValues,
   id,
+
   handleRemoveChildProduct,
 }: ProductEditFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -169,6 +178,24 @@ export function ProductUpdate({
       childProducts: [],
     },
   });
+  const [categories, setCategories] = useState<any[]>([]);
+  const [category, setCategory] = useState(
+    defaultValues?.categories || []
+  ) as any;
+  const fetchCategories = async () => {
+    setLoading(true);
+    const response = await fetch("/api/category");
+    const data = await response.json();
+    console.log(data);
+    setLoading(false);
+    return data["categories"];
+  };
+
+  useEffect(() => {
+    fetchCategories().then((data) => {
+      setCategories(data);
+    });
+  }, []);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -184,6 +211,38 @@ export function ProductUpdate({
       console.log(values);
       const data = await res.json();
       console.log(data);
+      toast.success("Product updated successfully");
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      toast.error("Failed to update product");
+    }
+  }
+
+  async function onSaveDraft(values: z.infer<typeof formSchema>) {
+    try {
+      console.log("Saving draft", {
+        ...values,
+        published: true,
+      });
+
+      // check field validation
+      const isValid = formSchema.safeParse(values);
+      if (!isValid.success) {
+        console.log(isValid.error.errors);
+        toast.error("Please fill all required fields");
+        return;
+      }
+
+      setLoading(true);
+      const res = await fetch(`/api/product/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...values, published: true }),
+      });
+      const data = await res.json();
       toast.success("Product updated successfully");
       setLoading(false);
     } catch (error) {
@@ -252,6 +311,16 @@ export function ProductUpdate({
     ]);
     form.setValue("media_gallery_entries", updatedMediaEntries);
     console.log(form.getValues("media_gallery_entries"));
+  };
+
+  const handleAddCategory = (category: any) => {
+    form.resetField("categories");
+    const updatedCategories = [
+      ...(defaultValues?.categories || []),
+      ...category,
+    ];
+    form.setValue("categories", updatedCategories);
+    console.log(form.getValues("categories"));
   };
 
   const handleBarcodeChange = () => {
@@ -593,7 +662,44 @@ export function ProductUpdate({
                     </FormItem>
                   )}
                 />
-
+                <FormField
+                  control={form.control}
+                  name="categories"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Category</FormLabel>
+                      <FormControl>
+                        <div className="ml-2">
+                          {!loading && (
+                            <CategoryDropDown
+                              categoryList={categories}
+                              setCategory={setCategory}
+                              handleChange={handleAddCategory}
+                            />
+                          )}
+                        </div>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                {form.getValues("categories").length > 0 && (
+                  <>
+                    <div className="flex gap-2 flex-wrap">
+                      <p className="text-md font-semibold">Categories: </p>
+                      {form
+                        .getValues("categories")
+                        .map((cat: any, index: any) => (
+                          <Badge
+                            key={index}
+                            className="bg-blue-500 text-white text-md"
+                          >
+                            <span>{cat.name}</span>
+                          </Badge>
+                        ))}
+                    </div>
+                  </>
+                )}
                 <FormField
                   control={form.control}
                   name="product_specs.description"
@@ -776,11 +882,20 @@ export function ProductUpdate({
                     </AccordionItem>
                   </Accordion>
                 ))}
-                <Button type="submit" variant="outline" className="mr-2">
+
+                <Button variant="outline" type="submit">
                   Save as Draft
                 </Button>
-
-                <Button type="submit">Submit</Button>
+                <Button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onSaveDraft(form.getValues());
+                  }}
+                  className="ml-4"
+                >
+                  Publish Product
+                </Button>
               </form>
             </Form>
           </CardContent>

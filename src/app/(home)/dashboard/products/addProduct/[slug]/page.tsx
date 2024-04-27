@@ -28,7 +28,7 @@ const page = ({ params: { slug } }: any) => {
       maximalPrice: product!.price?.maximalPrice,
       regularPrice: product!.price?.regularPrice,
     },
-
+    categories: product!.categories,
     short_description: product!.short_description,
     max_sale_qty: product!.max_sale_qty,
     product_specs: {
@@ -70,6 +70,7 @@ const page = ({ params: { slug } }: any) => {
         <div className="p-8">
           <ProductUpdate
             id={product._id}
+            manufacturer={product!.manufacturer}
             defaultValues={values}
             handleRemoveChildProduct={handleRemoveChildProduct}
           />
