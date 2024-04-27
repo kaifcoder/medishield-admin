@@ -44,6 +44,12 @@ const routes = [
     permission: ["manage_brands"],
   },
   {
+    label: "Banners",
+    icon: <CategoryIcon className="h-4 w-4 mr-2" />,
+    href: `/dashboard/banners`,
+    permission: ["manage_products", "manage_brands"],
+  },
+  {
     label: "Roles and Permissions",
     icon: <CategoryIcon className="h-4 w-4 mr-2" />,
     href: `/dashboard/roles`,

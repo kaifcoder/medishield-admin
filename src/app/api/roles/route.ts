@@ -46,10 +46,13 @@ export async function POST(request: Request) {
 
 export async function PUT(request: Request) {
   const session: any = await getServerSession(authOptions);
+
   try {
+    const body = JSON.parse(await request.text());
+    const id = body.id;
     const response = await axios.put(
-      `${process.env.API_URL}/api/user/admin-register`,
-      JSON.parse(await request.text()),
+      `${process.env.API_URL}/api/roles/${id}`,
+      body,
       {
         headers: {
           Authorization: `Bearer ${session?.user?.access_token}`,
@@ -70,9 +73,11 @@ export async function PUT(request: Request) {
 export async function DELETE(request: Request) {
   const session: any = await getServerSession(authOptions);
   try {
-    const email = JSON.parse(await request.text()).email;
+    const body = JSON.parse(await request.text());
+    const id = body.id;
+
     const response = await axios.delete(
-      `${process.env.API_URL}/api/user/delete-user/${email}`,
+      `${process.env.API_URL}/api/roles/${id}`,
 
       {
         headers: {
@@ -82,11 +87,10 @@ export async function DELETE(request: Request) {
     );
 
     return new Response(JSON.stringify(response.data));
-  } catch (error) {
-    console.log(error);
+  } catch (error: any) {
     return new Response("Error", {
-      status: 500,
-      statusText: "Internal Server Error",
+      status: error?.response.status,
+      statusText: error?.response.data.message,
     });
   }
 }

@@ -7,6 +7,7 @@ import { Textarea } from "../ui/textarea";
 import { Checkbox } from "../ui/checkbox";
 import { Button } from "../ui/button";
 import { DialogClose } from "../ui/dialog";
+import { toast } from "sonner";
 
 type Props = {
   permission: any;
@@ -29,6 +30,12 @@ const PermissionEditDialog = ({
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    if (role === "Super Admin") {
+      alert("You cannot edit the Super Admin role");
+      return;
+    }
+
     const roleData = {
       id: permission._id,
       role: role,
@@ -36,17 +43,22 @@ const PermissionEditDialog = ({
       permissions: permissions,
     };
 
-    // const response = await fetch("/api/roles", {
-    //   method: "POST",
-    //   body: JSON.stringify(roleData),
-    // });
+    const response = await fetch("/api/roles", {
+      method: "PUT",
+      body: JSON.stringify(roleData),
+    });
 
-    // const data = await response.json();
+    const data = await response.json();
 
-    // console.log(data);
-    // setRoles([...roles, data]);
+    console.log(data);
+    if (data.error) {
+      alert(data.error);
+      return;
+    }
+    toast.success("Role updated successfully");
 
-    console.log(roleData);
+    // Update the roles state
+    window.location.reload();
   };
 
   return (

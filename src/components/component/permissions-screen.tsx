@@ -19,9 +19,13 @@ import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import PermissionEditDialog from "./permission-edit-dialog";
 import {
   AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogFooter,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
+import { toast } from "sonner";
 
 export function PermissionsScreen() {
   // Define Constants permission enum codes
@@ -80,6 +84,42 @@ export function PermissionsScreen() {
   useEffect(() => {
     fetchRoles();
   }, []);
+  const handleDeletePermission = async (id: any, role: any) => {
+    try {
+      if (role === "Super Admin") {
+        console.log("Super Admin cannot be deleted");
+        toast("Super Admin cannot be deleted", {
+          description: "The Super Admin role cannot be deleted.",
+          closeButton: true,
+          position: "top-center",
+        });
+        return;
+      }
+      setLoading(true);
+      const response = await fetch(`/api/roles/`, {
+        body: JSON.stringify({ id: id }),
+        method: "DELETE",
+      });
+      const data = await response.json();
+      console.log(data);
+      setRoles(roles.filter((role: any) => role._id !== id));
+      toast("Role deleted", {
+        description: "The role has been deleted successfully.",
+        closeButton: true,
+        position: "top-center",
+      });
+      setLoading(false);
+    } catch (error) {
+      console.log("error occured");
+      setLoading(false);
+      toast("Error occured", {
+        description:
+          "There was an error deleting the role. Either the role does not exist or it is Associated with a user.",
+        closeButton: true,
+        position: "top-center",
+      });
+    }
+  };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -174,7 +214,7 @@ export function PermissionsScreen() {
                                 </Button>
                               </AlertDialogTrigger>
                               <AlertDialogContent>
-                                <div className="p-6">
+                                <div>
                                   <h2 className="text-lg font-bold mb-4">
                                     Delete Role
                                   </h2>
@@ -182,16 +222,20 @@ export function PermissionsScreen() {
                                     Are you sure you want to delete the role{" "}
                                     <strong>{role.role}</strong>?
                                   </p>
-                                  <div className="flex justify-end">
-                                    <Button
-                                      variant="destructive"
-                                      className="mr-2"
-                                    >
-                                      Delete Role
-                                    </Button>
-                                    <Button variant="ghost">Cancel</Button>
-                                  </div>
                                 </div>
+                                <AlertDialogFooter>
+                                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                  <AlertDialogAction
+                                    onClick={() =>
+                                      handleDeletePermission(
+                                        role._id,
+                                        role.role
+                                      )
+                                    }
+                                  >
+                                    Delete
+                                  </AlertDialogAction>
+                                </AlertDialogFooter>
                               </AlertDialogContent>
                             </AlertDialog>
                           </div>
