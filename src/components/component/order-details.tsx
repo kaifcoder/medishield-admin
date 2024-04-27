@@ -271,18 +271,18 @@ export function OrderDetails({ order }: any) {
               <>
                 <div className="font-medium">Tracking number (AWB code)</div>
                 <div>
-                  {order?.shipmentInfo.payload.awb_code
-                    ? order?.shipmentInfo.payload.awb_code
+                  {order?.shipmentInfo?.payload.awb_code
+                    ? order?.shipmentInfo?.payload.awb_code
                     : "Not Assigned"}
                 </div>
                 <div className="font-medium">Message</div>
                 <div>
-                  {order?.shipmentInfo.payload.awb_assign_error
-                    ? order?.shipmentInfo.payload.awb_assign_error
+                  {order?.shipmentInfo?.payload.awb_assign_error
+                    ? order?.shipmentInfo?.payload.awb_assign_error
                     : ""}
-                  {order?.shipmentInfo.payload.error_message ? (
+                  {order?.shipmentInfo?.payload.error_message ? (
                     <div className="text-red-500">
-                      {order?.shipmentInfo.payload.error_message}
+                      {order?.shipmentInfo?.payload.error_message}
                     </div>
                   ) : (
                     ""
@@ -290,15 +290,15 @@ export function OrderDetails({ order }: any) {
                 </div>
                 <div className="font-medium">Courier</div>
                 <div>
-                  {order?.shipmentInfo.payload.courier_name !== ""
-                    ? order?.shipmentInfo.payload.courier_name
+                  {order?.shipmentInfo?.payload.courier_name !== ""
+                    ? order?.shipmentInfo?.payload.courier_name
                     : "Not Assigned"}
                 </div>
                 <div className="font-medium">Pickup Date</div>
                 <div>
-                  {order?.shipmentInfo.payload.pickup_scheduled_date
+                  {order?.shipmentInfo?.payload.pickup_scheduled_date
                     ? new Date(
-                        order?.shipmentInfo.payload.pickup_scheduled_date
+                        order?.shipmentInfo?.payload.pickup_scheduled_date
                       ).toLocaleDateString("en-US", {
                         year: "numeric",
                         month: "long",
@@ -310,21 +310,21 @@ export function OrderDetails({ order }: any) {
                 <div className="font-medium">shiprocket order id</div>
                 <div>
                   <Link
-                    href={`https://app.shiprocket.in/seller/orders/details/${order?.shipmentInfo.payload.order_id}`}
+                    href={`https://app.shiprocket.in/seller/orders/details/${order?.shipmentInfo?.payload.order_id}`}
                     className="text-blue-600 underline"
                     target="_blank"
                   >
-                    {order?.shipmentInfo.payload.order_id}
+                    {order?.shipmentInfo?.payload.order_id}
                   </Link>
                 </div>
               </>
             )}
           </div>
           <div className="w-full justify-end flex">
-            {order?.shipmentInfo.payload.label_url && (
+            {order?.shipmentInfo?.payload.label_url && (
               <Button>
                 <Link
-                  href={order?.shipmentInfo.payload.label_url || "#"}
+                  href={order?.shipmentInfo?.payload.label_url || "#"}
                   target="_blank"
                 >
                   Download Shipping Label
