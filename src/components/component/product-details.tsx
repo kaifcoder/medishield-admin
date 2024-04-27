@@ -11,24 +11,28 @@ import { useRouter } from "next/navigation";
 
 interface ProductDetailsProps {
   product: any;
+  isView?: boolean;
 }
 
-export function ProductDetails({ product }: ProductDetailsProps) {
+export function ProductDetails({ product, isView }: ProductDetailsProps) {
   const router = useRouter();
+  isView = isView || false;
   console.log(product);
   return (
     <div className="grid gap-4 lg:gap-12 max-w-6xl px-2  py-6">
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Product Details</h1>
-        <Button
-          onClick={() =>
-            router.push(`/dashboard/products/addProduct/${product._id}`)
-          }
-          size="sm"
-          variant="default"
-        >
-          Edit
-        </Button>
+        {isView ? null : (
+          <Button
+            onClick={() =>
+              router.push(`/dashboard/products/addProduct/${product._id}`)
+            }
+            size="sm"
+            variant="default"
+          >
+            Edit
+          </Button>
+        )}
       </div>
       <div className="grid gap-2 md:items-start">
         <div className="md:flex md:space-x-20 items-center md:items-start">
