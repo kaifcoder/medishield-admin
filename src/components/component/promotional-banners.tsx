@@ -17,7 +17,6 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -26,16 +25,16 @@ import {
 import { toast } from "sonner";
 import { SingleImageDropzone } from "./single-image-upload";
 import { useEdgeStore } from "@/lib/edgestore";
-import { z } from "zod";
+import { set, z } from "zod";
 import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export function PromotionalBanners() {
   const formSchema = z.object({
-    title: z.string(),
-    mobile_image: z.string(),
-    id: z.string(),
+    title: z.string().min(1),
+    mobile_image: z.string().min(1),
+    id: z.string().min(1),
   });
 
   const [banners, setBanners] = useState([]) as any;
@@ -60,6 +59,7 @@ export function PromotionalBanners() {
   }
 
   const [file, setFile] = useState<File>();
+  const [id, setId] = useState<string>("" as any);
   const [uploading, setUploading] = useState(false);
   const { edgestore } = useEdgeStore();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -70,6 +70,47 @@ export function PromotionalBanners() {
       id: "",
     },
   });
+
+  async function handleSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      setUploading(true);
+      // validate form
+      console.log(id);
+      await edgestore.publicFiles.confirmUpload({
+        url: values.mobile_image,
+      });
+      console.log("file uploaded");
+      console.log({ ...values, _id: id });
+      const response = await fetch("/api/banners", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...values, _id: id }),
+      });
+      const result = await response.json();
+      if (response.ok) {
+        toast.success(result.message);
+        fetchBanners();
+        form.reset();
+        setUploading(false);
+      } else {
+        toast.error(result.message);
+        setUploading(false);
+      }
+
+      setUploading(false);
+      setId("");
+      form.reset();
+      setFile(undefined);
+    } catch (error) {
+      setUploading(false);
+      form.reset();
+      setId("");
+      setFile(undefined);
+      console.error(error);
+    }
+  }
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
@@ -97,7 +138,12 @@ export function PromotionalBanners() {
                 <div className="flex items-center justify-between mt-4">
                   <div className="flex items-center gap-2">
                     <Dialog>
-                      <DialogTrigger asChild>
+                      <DialogTrigger
+                        onClick={() => {
+                          setId(banner._id);
+                        }}
+                        asChild
+                      >
                         <Button size="icon" variant="outline">
                           <FileEditIcon className="h-4 w-4" />
                         </Button>
@@ -110,7 +156,7 @@ export function PromotionalBanners() {
                           </DialogDescription>
                         </DialogHeader>
                         <Form {...form}>
-                          <form action="">
+                          <form onSubmit={form.handleSubmit(handleSubmit)}>
                             <FormField
                               control={form.control}
                               name="title"
@@ -143,6 +189,9 @@ export function PromotionalBanners() {
                                         if (file) {
                                           const res =
                                             await edgestore.publicFiles.upload({
+                                              options: {
+                                                temporary: true,
+                                              },
                                               file,
                                               onProgressChange: (progress) => {
                                                 // you can use this to show a progress bar
@@ -182,16 +231,18 @@ export function PromotionalBanners() {
                                 </FormItem>
                               )}
                             />
+                            <DialogFooter className="mt-8">
+                              <DialogClose>
+                                <Button variant="outline">Cancel</Button>
+                              </DialogClose>
+                              <DialogClose>
+                                <Button type="submit" disabled={uploading}>
+                                  Save
+                                </Button>
+                              </DialogClose>
+                            </DialogFooter>
                           </form>
                         </Form>
-                        <DialogFooter>
-                          <DialogClose>
-                            <Button variant="outline">Cancel</Button>
-                          </DialogClose>
-                          <DialogClose>
-                            <Button>Save</Button>
-                          </DialogClose>
-                        </DialogFooter>
                       </DialogContent>
                     </Dialog>
                   </div>
