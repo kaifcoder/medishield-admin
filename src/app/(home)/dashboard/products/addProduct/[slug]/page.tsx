@@ -52,6 +52,7 @@ const page = ({ params: { slug } }: any) => {
             name: child.name,
             price: child.price,
             image_url: child.image_url,
+            max_sale_qty: child?.max_sale_qty || 0,
           }))
         : [],
   };

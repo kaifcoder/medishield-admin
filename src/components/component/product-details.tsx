@@ -85,17 +85,6 @@ export function ProductDetails({ product, isView }: ProductDetailsProps) {
                   className="flex border p-2 rounded-md border-neutral-200 shadow-sm space-x-4"
                 >
                   <div className="flex space-x-2 items-start">
-                    <img
-                      src={
-                        child.image_url &&
-                        child.image_url.startsWith("https://")
-                          ? child.image_url
-                          : "https://images1.dentalkart.com/media/catalog/product" +
-                            child.image_url
-                      }
-                      alt={"product image not available"}
-                      className="object-cover  h-20 rounded-md"
-                    />
                     <div>
                       <h1 className="font-bold">
                         {child.name}{" "}
@@ -107,6 +96,9 @@ export function ProductDetails({ product, isView }: ProductDetailsProps) {
                       <p className="font-semibold">
                         {" "}
                         ₹ {child.price.minimalPrice.amount.value}
+                      </p>
+                      <p className="font-semibold">
+                        {"Stock "} {child?.max_sale_qty ?? 0}{" "}
                       </p>
                     </div>
                   </div>

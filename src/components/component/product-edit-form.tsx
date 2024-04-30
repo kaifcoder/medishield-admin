@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 
 import { CategoryDropDown } from "./category-dropdown";
-import { z } from "zod";
+import { set, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
@@ -43,6 +43,7 @@ import { FileState, MultiImageDropzone } from "./multi-image-upload";
 import { useEdgeStore } from "@/lib/edgestore";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import { VarientsAddTable } from "./varients-add-table";
 
 const MarkdownEditor = dynamic(() => import("./markdown-editor"), {
   ssr: false,
@@ -101,41 +102,6 @@ const formSchema = z.object({
   manufacturer: z.string().min(1),
 });
 
-const childFormSchema = z.object({
-  name: z.string().min(2, {
-    message: "product name must be at least 2 characters.",
-  }),
-
-  sku: z.string().min(2, { message: "sku must be at least 2 characters." }),
-
-  price: z.object({
-    minimalPrice: z.object({
-      amount: z.object({
-        currency: z.string(),
-        value: z.coerce.number().min(0, {
-          message: "price must be greater than 0.",
-        }),
-      }),
-    }),
-    maximalPrice: z.object({
-      amount: z.object({
-        currency: z.string(),
-        value: z.coerce.number().min(0, {
-          message: "price must be greater than 0.",
-        }),
-      }),
-    }),
-    regularPrice: z.object({
-      amount: z.object({
-        currency: z.string(),
-        value: z.coerce.number().min(0, {
-          message: "price must be greater than 0.",
-        }),
-      }),
-    }),
-  }),
-});
-
 interface ProductEditFormProps {
   defaultValues?: z.infer<typeof formSchema>;
 }
@@ -154,6 +120,7 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
         maximalPrice: 0,
         regularPrice: 0,
       },
+      barcode: "",
       max_sale_qty: 0,
       short_description: "",
       product_specs: {
@@ -171,13 +138,48 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
     },
   });
   // 2. Define a submit handler.
+  async function onSaveDraft(values: z.infer<typeof formSchema>) {
+    try {
+      console.log("Saving draft", {
+        ...values,
+        published: true,
+        childProducts: childProduct,
+      });
 
+      // check field validation
+      const isValid = formSchema.safeParse(values);
+      if (!isValid.success) {
+        console.log(isValid.error.errors);
+        toast.error("Please fill all required fields");
+        return;
+      }
+
+      setLoading(true);
+      const res = await fetch(`/api/product/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...values,
+          published: true,
+          childProducts: childProduct,
+        }),
+      });
+      const data = await res.json();
+      toast.success("Product added successfully");
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      toast.error("Failed to add product");
+    }
+  }
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      console.log(values);
+      console.log({ ...values, childProducts: childProduct });
       const response = await fetch("/api/product", {
         method: "POST",
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values, childProducts: childProduct }),
         headers: {
           "Content-Type": "application/json",
         },
@@ -189,8 +191,10 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
       setImages([]);
       setCategory([]);
       setFileStates([]);
+      setChildProduct([]);
+
       toast.success("Product added successfully");
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       toast.error(
         "Error in adding product or product already exist with same sku"
@@ -200,12 +204,13 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
   const [loading, setLoading] = useState(false);
   const [images, setImages] = useState<string[]>([]);
   const [category, setCategory] = useState<[]>([]);
-
+  const [childProduct, setChildProduct] = useState<[]>([]);
   const [brands, setBrands] = useState<any[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
 
   const [fileStates, setFileStates] = useState<FileState[]>([]);
   const { edgestore } = useEdgeStore();
+
   function updateFileProgress(key: string, progress: FileState["progress"]) {
     setFileStates((fileStates) => {
       const newFileStates = structuredClone(fileStates);
@@ -286,6 +291,29 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
     console.log(brands);
   }, []);
 
+  const handleBarcodeChange = () => {
+    let interval: NodeJS.Timeout | null = null;
+    var barcode = "";
+    if (typeof document === "undefined") return;
+    document.addEventListener("keydown", (e) => {
+      if (interval) clearInterval(interval);
+      if (e.key === "Enter") {
+        e.preventDefault();
+        if (barcode) {
+          form.setValue("barcode", barcode);
+        }
+        barcode = "";
+        return;
+      }
+      if (e.key !== "Shift") {
+        barcode += e.key;
+      }
+      interval = setInterval(() => (barcode = ""), 60);
+    });
+  };
+
+  handleBarcodeChange();
+
   useDisableNumberInputScroll();
 
   return (
@@ -293,10 +321,8 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
       <div className="mx-3">
         <Card className="max-w-4xl mx-auto">
           <CardHeader>
-            <CardTitle>Add or Update Product</CardTitle>
-            <CardDescription>
-              Add or update a product in your catalog.
-            </CardDescription>
+            <CardTitle>Add Product</CardTitle>
+            <CardDescription>Add a product in your catalog.</CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -441,6 +467,7 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                               await Promise.all(
                                 addedFiles.map(async (addedFileState: any) => {
                                   try {
+                                    setLoading(true);
                                     const res =
                                       await edgestore.publicFiles.upload({
                                         file: addedFileState.file,
@@ -468,7 +495,9 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                                       });
                                     console.log(res);
                                     handleAddImage(res.url);
+                                    setLoading(false);
                                   } catch (err) {
+                                    setLoading(false);
                                     updateFileProgress(
                                       addedFileState.key,
                                       "ERROR"
@@ -480,6 +509,7 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                             onFileRemove={async (removedFile: any) => {
                               // remove image from edgestore
                               try {
+                                setLoading(true);
                                 const res = await edgestore.publicFiles.delete({
                                   url: removedFile.url,
                                 });
@@ -504,7 +534,9 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                                   "media_gallery_entries",
                                   updatedMediaEntries
                                 );
+                                setLoading(false);
                               } catch (error) {
+                                setLoading(false);
                                 console.error(error);
                                 toast.error("Error in removing image");
                               }
@@ -717,8 +749,36 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                     </FormItem>
                   )}
                 />
-                {}
-                <Button type="submit">Submit</Button>
+
+                <VarientsAddTable
+                  childProducts={childProduct}
+                  setChildProducts={setChildProduct}
+                />
+
+                {/* <Button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    console.log(childProduct);
+                  }}
+                >
+                  Test
+                </Button> */}
+
+                <Button disabled={loading} variant="outline" type="submit">
+                  Save as Draft
+                </Button>
+                <Button
+                  disabled={loading}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onSaveDraft(form.getValues());
+                  }}
+                  className="ml-4"
+                >
+                  Publish Product
+                </Button>
               </form>
             </Form>
           </CardContent>

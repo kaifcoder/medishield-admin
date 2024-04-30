@@ -56,9 +56,9 @@ const childFormSchema = z.object({
     message: "product name must be at least 2 characters.",
   }),
   sku: z.string().min(2, { message: "sku must be at least 2 characters." }),
-  image_url: z.string().min(2, {
-    message: "image_url must be at least 2 characters.",
-  }),
+  max_sale_qty: z.coerce
+    .number()
+    .min(0, { message: "stock must be greater than 0." }),
   price: z.object({
     minimalPrice: z.object({
       amount: z.object({
@@ -845,6 +845,22 @@ export function ProductUpdate({
                               </FormControl>
                               <FormDescription>
                                 Enter Product SKU (Stock Keeping Unit)
+                              </FormDescription>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name={`childProducts.${index}.max_sale_qty`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Stock</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Stock" {...field} />
+                              </FormControl>
+                              <FormDescription>
+                                Stock of the product
                               </FormDescription>
                               <FormMessage />
                             </FormItem>
