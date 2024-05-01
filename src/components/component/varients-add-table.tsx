@@ -25,34 +25,25 @@ const childFormSchema = z.object({
   name: z.string().min(2, {
     message: "product name must be at least 2 characters.",
   }),
-
   sku: z.string().min(2, { message: "sku must be at least 2 characters." }),
-  max_sale_qty: z.coerce
-    .number()
-    .min(0, { message: "stock must be greater than 0." }),
+  max_sale_qty: z.any(),
   price: z.object({
     minimalPrice: z.object({
       amount: z.object({
         currency: z.string(),
-        value: z.coerce.number().min(0, {
-          message: "price must be greater than 0.",
-        }),
+        value: z.any(),
       }),
     }),
     maximalPrice: z.object({
       amount: z.object({
         currency: z.string(),
-        value: z.coerce.number().min(0, {
-          message: "price must be greater than 0.",
-        }),
+        value: z.any(),
       }),
     }),
     regularPrice: z.object({
       amount: z.object({
         currency: z.string(),
-        value: z.coerce.number().min(0, {
-          message: "price must be greater than 0.",
-        }),
+        value: z.any(),
       }),
     }),
   }),
@@ -99,7 +90,10 @@ export function VarientsAddTable({
         <Button
           onClick={() => {
             let values = form.getValues();
-
+            values.max_sale_qty = parseInt(values.max_sale_qty);
+            values.price.minimalPrice.amount.value = parseInt(
+              values.price.minimalPrice.amount.value
+            );
             setChildProducts([...childProducts, values]);
 
             form.reset();
@@ -216,14 +210,14 @@ export function VarientsAddTable({
                     <p>
                       {childProduct.price?.minimalPrice?.amount?.value
                         ? childProduct.price.minimalPrice.amount.value
-                        : "0"}
+                        : 0}
                     </p>
                   </td>
                   <td className="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-50">
                     <p>
                       {childProduct.max_sale_qty
                         ? childProduct.max_sale_qty
-                        : "0"}
+                        : 0}
                     </p>
                   </td>
                   <td className="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-50">
