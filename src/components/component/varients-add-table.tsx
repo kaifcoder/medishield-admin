@@ -176,7 +176,7 @@ export function VarientsAddTable({
                         <FormControl>
                           <Input type="number" placeholder="Price" {...field} />
                         </FormControl>
-
+                        <FormDescription>Price</FormDescription>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -191,7 +191,7 @@ export function VarientsAddTable({
                         <FormControl>
                           <Input type="number" placeholder="Stock" {...field} />
                         </FormControl>
-
+                        <FormDescription>Stock</FormDescription>
                         <FormMessage />
                       </FormItem>
                     )}
