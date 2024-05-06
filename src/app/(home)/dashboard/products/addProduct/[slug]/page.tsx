@@ -51,7 +51,6 @@ const page = ({ params: { slug } }: any) => {
             sku: child.sku,
             name: child.name,
             price: child.price,
-            image_url: child.image_url,
             max_sale_qty: child?.max_sale_qty || 0,
           }))
         : [],
@@ -60,6 +59,7 @@ const page = ({ params: { slug } }: any) => {
   const handleRemoveChildProduct = (index: number) => {
     const newChildProducts = [...childProducts];
     newChildProducts.splice(index, 1); // Remove the child product at the given index
+    console.log(newChildProducts);
     setChildProducts(newChildProducts);
   };
 

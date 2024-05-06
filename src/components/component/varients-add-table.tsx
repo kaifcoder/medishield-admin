@@ -14,6 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { toast } from "sonner";
 
 interface VarientsAddTableProps {
   children?: React.ReactNode;
@@ -90,6 +91,12 @@ export function VarientsAddTable({
         <Button
           onClick={() => {
             let values = form.getValues();
+            const isValid = childFormSchema.safeParse(values);
+            if (!isValid.success) {
+              console.log(isValid.error.errors);
+              toast.error("Please fill all required fields");
+              return;
+            }
             values.max_sale_qty = parseInt(values.max_sale_qty);
             values.price.minimalPrice.amount.value = parseInt(
               values.price.minimalPrice.amount.value
