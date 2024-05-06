@@ -227,6 +227,9 @@ export function ProductUpdate({
       });
 
       // check field validation
+
+      console.log("Form values", values);
+
       const isValid = formSchema.safeParse(values);
       if (!isValid.success) {
         console.log(isValid.error.errors);

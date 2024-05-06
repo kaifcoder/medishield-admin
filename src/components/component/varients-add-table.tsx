@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TrashIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { set, z } from "zod";
+import { z } from "zod";
 import {
   Form,
   FormControl,
