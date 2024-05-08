@@ -123,6 +123,7 @@ export function PermissionsScreen() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
     const roleData = {
       role: role,
       description: description,

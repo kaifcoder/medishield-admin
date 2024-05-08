@@ -67,12 +67,49 @@ export function AdminSettings() {
     setFetching(false);
   };
 
+  const [userPermission, setUserPermission] = useState([]) as any;
+
+  const userPermissions = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch("/api/permissions");
+      const data = await response.json();
+
+      setUserPermission(data.permission);
+
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+    }
+  };
+  // fetch current user permissions
+  useEffect(() => {
+    userPermissions();
+  }, []);
+
   const fetchRoles = async () => {
     try {
       setFetching(true);
       const response = await fetch("/api/roles");
       const data = await response.json();
+
       setRoles(data);
+      // if the user has all permissions, show all roles in the dropdown
+      if (
+        userPermission.length === 5 ||
+        userPermission.includes("Super Admin")
+      ) {
+        setRoles(data);
+      } else {
+        // hide super admin role from the dropdown
+
+        const filteredRoles = data.filter(
+          (role: any) => role.role !== "Super Admin"
+        );
+
+        setRoles(filteredRoles);
+      }
       setFetching(false);
     } catch (error) {
       setFetching(false);

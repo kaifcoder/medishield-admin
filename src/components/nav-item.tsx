@@ -53,7 +53,7 @@ const routes = [
     label: "Roles and Permissions",
     icon: <CategoryIcon className="h-4 w-4 mr-2" />,
     href: `/dashboard/roles`,
-    permission: ["manage_roles", "manage_accounts"],
+    permission: ["manage_roles"],
   },
   {
     label: "Settings",
@@ -90,7 +90,6 @@ const NavItem = () => {
       const data = await response.json();
 
       setPermissions(data.permission);
-      console.log(data.permission);
       const filteredRoutes = routes.filter((route) =>
         data.permission.some((permission: any) =>
           route.permission.includes(permission)
@@ -107,10 +106,6 @@ const NavItem = () => {
   useEffect(() => {
     userPermissions();
   }, []);
-
-  // fetch current user permissions
-
-  // filter out current route based on user permissions
 
   const onClickHandler = (href: string) => {
     if (href === "/") {
