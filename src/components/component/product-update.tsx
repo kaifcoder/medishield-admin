@@ -46,6 +46,7 @@ import {
 } from "@/components/ui/select";
 import { CategoryDropDown } from "./category-dropdown";
 import { Badge } from "../ui/badge";
+import { XIcon } from "lucide-react";
 
 const MarkdownEditor = dynamic(() => import("./markdown-editor"), {
   ssr: false,
@@ -199,6 +200,8 @@ export function ProductUpdate({
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
+      form.setValue("price.maximalPrice", values.price.regularPrice);
+
       console.log(values);
       setLoading(true);
       const res = await fetch(`/api/product/${id}`, {
@@ -221,6 +224,8 @@ export function ProductUpdate({
 
   async function onSaveDraft(values: z.infer<typeof formSchema>) {
     try {
+      form.setValue("price.maximalPrice", values.price.regularPrice);
+
       console.log("Saving draft", {
         ...values,
         published: true,
@@ -440,6 +445,23 @@ export function ProductUpdate({
                         <Input
                           type="number"
                           placeholder="Price of the product in INR"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="price.regularPrice"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Regular Price (MRP)</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          placeholder="Product's MRP"
                           {...field}
                         />
                       </FormControl>
@@ -698,6 +720,20 @@ export function ProductUpdate({
                             className="bg-blue-500 text-white text-md"
                           >
                             <span>{cat.name}</span>
+                            <XIcon
+                              className="w-4 h-4 ml-1 cursor-pointer"
+                              onClick={() => {
+                                const updatedCategories = form
+                                  .getValues("categories")
+                                  .filter(
+                                    (category: any) =>
+                                      category.name !== cat.name
+                                  );
+                                setCategory(updatedCategories);
+                                form.setValue("categories", updatedCategories);
+                                console.log(form.getValues());
+                              }}
+                            />
                           </Badge>
                         ))}
                     </div>

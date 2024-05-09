@@ -28,7 +28,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { cn } from "@/lib/utils";
-import { Check, ChevronsUpDown, Cross, Delete } from "lucide-react";
+import { Check, ChevronsUpDown, Cross, Delete, XIcon } from "lucide-react";
 import {
   Command,
   CommandEmpty,
@@ -44,6 +44,7 @@ import { useEdgeStore } from "@/lib/edgestore";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { VarientsAddTable } from "./varients-add-table";
+import { Badge } from "../ui/badge";
 
 const MarkdownEditor = dynamic(() => import("./markdown-editor"), {
   ssr: false,
@@ -140,6 +141,7 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
   // 2. Define a submit handler.
   async function onSaveDraft(values: z.infer<typeof formSchema>) {
     try {
+      form.setValue("price.maximalPrice", values.price.regularPrice);
       console.log("Saving draft", {
         ...values,
         published: true,
@@ -176,6 +178,8 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
   }
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
+      form.setValue("price.maximalPrice", values.price.regularPrice);
+
       console.log({ ...values, childProducts: childProduct });
       const response = await fetch("/api/product", {
         method: "POST",
@@ -404,6 +408,23 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                         <Input
                           type="number"
                           placeholder="Price of the product in INR"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="price.regularPrice"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Regular Price (MRP)</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          placeholder="Product's MRP"
                           {...field}
                         />
                       </FormControl>
@@ -643,12 +664,24 @@ export function ProductEditForm({ defaultValues }: ProductEditFormProps) {
                   <>
                     <div className="flex gap-2">
                       {category.map((cat: any, index) => (
-                        <div
+                        <Badge
                           key={index}
-                          className="flex border p-1 rounded-sm shadow-sm"
+                          className="bg-blue-500 text-white text-md"
                         >
                           <span>{cat.name}</span>
-                        </div>
+                          <XIcon
+                            className="w-4 h-4 ml-1 cursor-pointer"
+                            onClick={() => {
+                              setCategory(
+                                // @ts-ignore
+                                category.filter((c) => c.name !== cat.name)
+                              );
+                              form.setValue("categories", category);
+
+                              console.log(form.getValues());
+                            }}
+                          />
+                        </Badge>
                       ))}
                     </div>
                   </>

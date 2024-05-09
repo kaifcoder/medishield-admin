@@ -1,6 +1,6 @@
 "use client";
 import { ProductUpdate } from "@/components/component/product-update";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const page = ({ params: { slug } }: any) => {
   const [product, setproduct] = useState({}) as any;
