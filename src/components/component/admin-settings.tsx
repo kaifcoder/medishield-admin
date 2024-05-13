@@ -327,7 +327,6 @@ export function AdminSettings() {
                 <TableRow>
                   <TableHead>Name</TableHead>
                   <TableHead>Email</TableHead>
-
                   <TableHead>Role</TableHead>
                   <TableHead>Actions</TableHead>
                 </TableRow>
@@ -377,7 +376,7 @@ export function AdminSettings() {
                             >
                               <AlertDialog>
                                 <AlertDialogTrigger asChild>
-                                  <p>Edit</p>
+                                  <p className="w-full h-full">Edit</p>
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
                                   <AlertDialogHeader>
@@ -394,13 +393,11 @@ export function AdminSettings() {
                                       <Input
                                         id="name"
                                         required
-                                        value={
-                                          updateName ||
-                                          admin.firstname + " " + admin.lastname
-                                        }
-                                        onChange={(e) =>
-                                          setUpdateName(e.target.value)
-                                        }
+                                        value={updateName}
+                                        onChange={(e) => {
+                                          e.preventDefault();
+                                          setUpdateName(e.target.value);
+                                        }}
                                         placeholder="Enter admin name"
                                         type="text"
                                       />
@@ -409,11 +406,12 @@ export function AdminSettings() {
                                       <Label htmlFor="email">Email</Label>
                                       <Input
                                         required
-                                        value={updateEmail || admin.email}
+                                        value={updateEmail}
                                         id="email"
-                                        onChange={(e) =>
-                                          setUpdateEmail(e.target.value)
-                                        }
+                                        onChange={(e) => {
+                                          e.preventDefault();
+                                          setUpdateEmail(e.target.value);
+                                        }}
                                         placeholder="Enter admin email"
                                         type="email"
                                       />
@@ -423,9 +421,10 @@ export function AdminSettings() {
                                       <Input
                                         value={updatePassword}
                                         id="password"
-                                        onChange={(e) =>
-                                          setUpdatePassword(e.target.value)
-                                        }
+                                        onChange={(e) => {
+                                          e.preventDefault();
+                                          setUpdatePassword(e.target.value);
+                                        }}
                                         placeholder="Enter new admin password"
                                         type="password"
                                       />
@@ -483,7 +482,7 @@ export function AdminSettings() {
                             >
                               <AlertDialog>
                                 <AlertDialogTrigger asChild>
-                                  <p>Delete</p>
+                                  <p className="w-full h-full">Delete</p>
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
                                   <AlertDialogHeader>

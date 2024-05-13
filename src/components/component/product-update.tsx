@@ -64,7 +64,7 @@ const childFormSchema = z.object({
     minimalPrice: z.object({
       amount: z.object({
         currency: z.string(),
-        value: z.coerce.number().min(0, {
+        value: z.coerce.number().int().min(0, {
           message: "price must be greater than 0.",
         }),
       }),
@@ -924,6 +924,7 @@ export function ProductUpdate({
                           )}
                         />
                         {/* remove button */}
+
                         <Button
                           onClick={(e) => {
                             e.preventDefault();
