@@ -147,12 +147,13 @@ interface ProductEditFormProps {
 
   manufacturer: any;
   handleRemoveChildProduct: (index: number) => void;
+  handleAddChildProduct: () => void;
 }
 
 export function ProductUpdate({
   defaultValues,
   id,
-
+  handleAddChildProduct,
   handleRemoveChildProduct,
 }: ProductEditFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -835,7 +836,16 @@ export function ProductUpdate({
                     </FormItem>
                   )}
                 />
-
+                {/* option to add new childproducts */}
+                <Button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleAddChildProduct();
+                  }}
+                  className="bg-blue-500 hover:bg-blue-600 text-white w-full mt-5"
+                >
+                  Add Child Product (Variant)
+                </Button>
                 {defaultValues?.childProducts &&
                   defaultValues?.childProducts?.length > 0 && (
                     <div>
@@ -854,7 +864,9 @@ export function ProductUpdate({
                     type="single"
                   >
                     <AccordionItem value="more-info">
-                      <AccordionTrigger>{childProduct.name}</AccordionTrigger>
+                      <AccordionTrigger>
+                        {form.getValues("childProducts")[index].name}
+                      </AccordionTrigger>
                       <AccordionContent className="p-2">
                         <FormField
                           key={index}

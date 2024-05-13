@@ -1,11 +1,12 @@
 "use client";
 import { ProductUpdate } from "@/components/component/product-update";
+import { Maximize } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 const page = ({ params: { slug } }: any) => {
   const [product, setproduct] = useState({}) as any;
   const [loading, setLoading] = useState(true);
-  const [childProducts, setChildProducts] = useState([]);
+  const [childProducts, setChildProducts] = useState([]) as any[];
   const fetchProduct = async () => {
     setLoading(true);
     const response = await fetch(`/api/product/${slug}`);
@@ -63,6 +64,37 @@ const page = ({ params: { slug } }: any) => {
     setChildProducts(newChildProducts);
   };
 
+  const handleAddChildProduct = () => {
+    setChildProducts([
+      ...childProducts,
+      {
+        sku: "",
+        name: "",
+        price: {
+          minimalPrice: {
+            amount: {
+              value: 0,
+              currency: "INR",
+            },
+          },
+          maximalPrice: {
+            amount: {
+              value: 0,
+              currency: "INR",
+            },
+          },
+          regularPrice: {
+            amount: {
+              value: 0,
+              currency: "INR",
+            },
+          },
+        },
+        max_sale_qty: 0,
+      },
+    ]);
+  };
+
   return (
     <>
       {loading ? (
@@ -74,6 +106,7 @@ const page = ({ params: { slug } }: any) => {
             manufacturer={product!.manufacturer}
             defaultValues={values}
             handleRemoveChildProduct={handleRemoveChildProduct}
+            handleAddChildProduct={handleAddChildProduct}
           />
         </div>
       )}
