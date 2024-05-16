@@ -1,6 +1,5 @@
 "use client";
 import { ProductUpdate } from "@/components/component/product-update";
-import { Maximize } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 const page = ({ params: { slug } }: any) => {
@@ -62,6 +61,8 @@ const page = ({ params: { slug } }: any) => {
     newChildProducts.splice(index, 1); // Remove the child product at the given index
     console.log(newChildProducts);
     setChildProducts(newChildProducts);
+    // update defaultValues
+    values.childProducts = newChildProducts;
   };
 
   const handleAddChildProduct = () => {
