@@ -1,6 +1,7 @@
 "use client";
 import { ProductUpdate } from "@/components/component/product-update";
 import React, { useEffect, useState } from "react";
+import { array, set } from "zod";
 
 const page = ({ params: { slug } }: any) => {
   const [product, setproduct] = useState({}) as any;
@@ -64,6 +65,62 @@ const page = ({ params: { slug } }: any) => {
   };
 
   const handleAddChildProduct = () => {
+    if (childProducts.lenght === 0) {
+      setChildProducts([
+        {
+          sku: "",
+          name: "",
+          price: {
+            minimalPrice: {
+              amount: {
+                value: 0,
+                currency: "INR",
+              },
+            },
+            maximalPrice: {
+              amount: {
+                value: 0,
+                currency: "INR",
+              },
+            },
+            regularPrice: {
+              amount: {
+                value: 0,
+                currency: "INR",
+              },
+            },
+          },
+          max_sale_qty: 0,
+        },
+        {
+          sku: "",
+          name: "",
+          price: {
+            minimalPrice: {
+              amount: {
+                value: 0,
+                currency: "INR",
+              },
+            },
+            maximalPrice: {
+              amount: {
+                value: 0,
+                currency: "INR",
+              },
+            },
+            regularPrice: {
+              amount: {
+                value: 0,
+                currency: "INR",
+              },
+            },
+          },
+          max_sale_qty: 0,
+        },
+      ]);
+      values.childProducts.push(childProducts);
+      return;
+    }
     setChildProducts([
       ...childProducts,
       {
