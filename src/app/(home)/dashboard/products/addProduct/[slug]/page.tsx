@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 const page = ({ params: { slug } }: any) => {
   const [product, setproduct] = useState({}) as any;
   const [loading, setLoading] = useState(true);
+
   const [childProducts, setChildProducts] = useState([]) as any[];
   const fetchProduct = async () => {
     setLoading(true);
@@ -19,7 +20,7 @@ const page = ({ params: { slug } }: any) => {
     fetchProduct();
   }, [slug]);
 
-  const values = {
+  let values = {
     name: product!.name,
     sku: product!.sku,
     barcode: product!.barcode,

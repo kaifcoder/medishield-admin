@@ -53,10 +53,10 @@ const MarkdownEditor = dynamic(() => import("./markdown-editor"), {
 });
 
 const childFormSchema = z.object({
-  name: z.string().min(2, {
+  name: z.string().min(1, {
     message: "product name must be at least 2 characters.",
   }),
-  sku: z.string().min(2, { message: "sku must be at least 2 characters." }),
+  sku: z.string().min(1, { message: "sku must be at least 2 characters." }),
   max_sale_qty: z.coerce
     .number()
     .min(0, { message: "stock must be greater than 0." }),
@@ -159,6 +159,9 @@ export function ProductUpdate({
   handleAddChildProduct,
   handleRemoveChildProduct,
 }: ProductEditFormProps) {
+  console.log("Default Values", defaultValues);
+  // add child to defaultValues with updated values
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues || {
@@ -183,6 +186,7 @@ export function ProductUpdate({
       childProducts: [],
     },
   });
+
   const [categories, setCategories] = useState<any[]>([]);
   const [category, setCategory] = useState(
     defaultValues?.categories || []
@@ -195,7 +199,9 @@ export function ProductUpdate({
     setLoading(false);
     return data["categories"];
   };
-
+  useEffect(() => {
+    form.setValue("childProducts", child);
+  }, [child]);
   useEffect(() => {
     fetchCategories().then((data) => {
       setCategories(data);
@@ -938,7 +944,6 @@ export function ProductUpdate({
                             </FormItem>
                           )}
                         />
-                        {/* set maximalPrice and regularPrice same as minimalPrice */}
 
                         <Button
                           onClick={(e) => {
@@ -968,6 +973,7 @@ export function ProductUpdate({
                   type="button"
                   onClick={(e) => {
                     e.preventDefault();
+                    console.log(child);
                     onSaveDraft(form.getValues());
                   }}
                   className="ml-4"
