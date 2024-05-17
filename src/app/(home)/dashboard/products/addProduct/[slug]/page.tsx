@@ -59,10 +59,7 @@ const page = ({ params: { slug } }: any) => {
   const handleRemoveChildProduct = (index: number) => {
     const newChildProducts = [...childProducts];
     newChildProducts.splice(index, 1); // Remove the child product at the given index
-    console.log(newChildProducts);
     setChildProducts(newChildProducts);
-    // update defaultValues
-    values.childProducts = newChildProducts;
   };
 
   const handleAddChildProduct = () => {
@@ -94,6 +91,31 @@ const page = ({ params: { slug } }: any) => {
         max_sale_qty: 0,
       },
     ]);
+    values.childProducts.push({
+      sku: "",
+      name: "",
+      price: {
+        minimalPrice: {
+          amount: {
+            value: 0,
+            currency: "INR",
+          },
+        },
+        maximalPrice: {
+          amount: {
+            value: 0,
+            currency: "INR",
+          },
+        },
+        regularPrice: {
+          amount: {
+            value: 0,
+            currency: "INR",
+          },
+        },
+      },
+      max_sale_qty: 0,
+    });
   };
 
   return (
@@ -108,6 +130,8 @@ const page = ({ params: { slug } }: any) => {
             defaultValues={values}
             handleRemoveChildProduct={handleRemoveChildProduct}
             handleAddChildProduct={handleAddChildProduct}
+            child={childProducts}
+            setChild={setChildProducts}
           />
         </div>
       )}

@@ -144,8 +144,9 @@ const formSchema = z.object({
 interface ProductEditFormProps {
   id: string;
   defaultValues?: z.infer<typeof formSchema>;
-
+  child: any;
   manufacturer: any;
+  setChild: any;
   handleRemoveChildProduct: (index: number) => void;
   handleAddChildProduct: () => void;
 }
@@ -153,6 +154,8 @@ interface ProductEditFormProps {
 export function ProductUpdate({
   defaultValues,
   id,
+  child,
+  setChild,
   handleAddChildProduct,
   handleRemoveChildProduct,
 }: ProductEditFormProps) {
@@ -202,6 +205,7 @@ export function ProductUpdate({
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       form.setValue("price.maximalPrice", values.price.regularPrice);
+      // set maximalPrice and regularPrice same as minimalPrice in childProducts
 
       console.log(values);
       setLoading(true);
@@ -865,7 +869,7 @@ export function ProductUpdate({
                   >
                     <AccordionItem value="more-info">
                       <AccordionTrigger>
-                        {form.getValues("childProducts")[index].name}
+                        {form.getValues("childProducts")[index]?.name}
                       </AccordionTrigger>
                       <AccordionContent className="p-2">
                         <FormField
@@ -917,7 +921,6 @@ export function ProductUpdate({
                             </FormItem>
                           )}
                         />
-
                         <FormField
                           control={form.control}
                           name={`childProducts.${index}.price.minimalPrice.amount.value`}
@@ -935,12 +938,19 @@ export function ProductUpdate({
                             </FormItem>
                           )}
                         />
-                        {/* remove button */}
+                        {/* set maximalPrice and regularPrice same as minimalPrice */}
 
                         <Button
                           onClick={(e) => {
                             e.preventDefault();
                             handleRemoveChildProduct(index);
+                            console.log("Child", child);
+                            let newchild = child.filter(
+                              (child: any, i: number) => i !== index
+                            );
+
+                            form.setValue("childProducts", newchild);
+                            console.log(form.getValues("childProducts"));
                           }}
                           className="bg-red-500 hover:bg-red-600 text-white w-full mt-5"
                         >

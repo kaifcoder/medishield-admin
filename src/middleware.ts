@@ -11,7 +11,6 @@ export const config = {
     "/dashboard/products/addProduct/[slug]",
     "/dashboard/users",
     "/dashboard/products/addProduct",
-
     "/dashboard/settings",
     "/dashboard/roles",
   ],
