@@ -201,6 +201,11 @@ export function ProductUpdate({
   };
   useEffect(() => {
     form.setValue("childProducts", child);
+    if (child.length == 1) {
+      console.log("Child", child);
+      let newchild = child.filter((child: any, i: number) => i !== 0);
+      form.setValue("childProducts", newchild);
+    }
   }, [child]);
   useEffect(() => {
     fetchCategories().then((data) => {
@@ -239,7 +244,7 @@ export function ProductUpdate({
 
       console.log("Saving draft", {
         ...values,
-        published: true,
+        published: false,
       });
 
       // check field validation
