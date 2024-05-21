@@ -18,6 +18,13 @@ const Page = ({ params: { slug } }: any) => {
     fetchProduct();
   }, [slug]);
 
+  useEffect(() => {
+    document.title = product.name;
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", product.short_description);
+  }, [product]);
+
   return (
     <div className="p-8 h-full flex justify-center">
       {!loading ? (
