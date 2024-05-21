@@ -3,11 +3,6 @@ import { ProductDetails } from "@/components/component/product-details";
 import { Metadata } from "next";
 import React, { useEffect, useState } from "react";
 
-export const metadata: Metadata = {
-  title: "Product info",
-  description: "Product details",
-};
-
 const Page = ({ params: { slug } }: any) => {
   const [product, setproduct] = useState({}) as any;
   const [loading, setLoading] = useState(true);
