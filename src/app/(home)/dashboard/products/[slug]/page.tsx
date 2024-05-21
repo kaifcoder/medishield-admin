@@ -28,13 +28,19 @@ const Page = ({ params: { slug } }: any) => {
   }, [slug]);
 
   return (
-    <div className="p-8">
-      {!loading ? (
-        <ProductDetails key={product.sku} product={product} />
-      ) : (
-        <p>Loading product details...</p>
-      )}
-    </div>
+    <>
+      <head>
+        <title>{product.name}</title>
+        <meta name="description" content={product.short_description} />
+      </head>
+      <div className="p-8">
+        {!loading ? (
+          <ProductDetails key={product.sku} product={product} />
+        ) : (
+          <p>Loading product details...</p>
+        )}
+      </div>
+    </>
   );
 };
 
