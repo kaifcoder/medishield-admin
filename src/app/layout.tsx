@@ -6,11 +6,6 @@ import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "MediShield Admin",
-  description: "Admin panel for MediShield",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
