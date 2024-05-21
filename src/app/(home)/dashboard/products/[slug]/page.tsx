@@ -1,6 +1,12 @@
 "use client";
 import { ProductDetails } from "@/components/component/product-details";
+import { Metadata } from "next";
 import React, { useEffect, useState } from "react";
+
+export const metadata: Metadata = {
+  title: "Product info",
+  description: "Product details",
+};
 
 const Page = ({ params: { slug } }: any) => {
   const [product, setproduct] = useState({}) as any;
@@ -13,6 +19,14 @@ const Page = ({ params: { slug } }: any) => {
     setproduct(data["findProduct"]);
     setLoading(false);
   };
+
+  //dynamic meta tags
+  useEffect(() => {
+    document.title = product.name;
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", product.short_description);
+  }, [product]);
 
   useEffect(() => {
     fetchProduct();
