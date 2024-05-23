@@ -12,11 +12,12 @@ const Page = ({ params: { slug } }: any) => {
 
   const data: any = fetchProduct();
 
+  console.log(data);
+
   return (
     <>
       <head>
         <title>Product Share </title>
-        <meta name="description" content="Product Share" />
       </head>
       <ProductShare params={{ slug }} />
     </>
