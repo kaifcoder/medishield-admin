@@ -7,12 +7,11 @@ const Page = ({ params: { slug } }: any) => {
       `${process.env.API_URL}/api/product/getproductwithid/${slug}`
     );
     const data = await response.json();
+    console.log(data);
     return data;
   };
 
-  const data: any = fetchProduct();
-
-  console.log(data);
+  fetchProduct();
 
   return (
     <>
