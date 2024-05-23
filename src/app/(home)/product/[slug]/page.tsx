@@ -3,7 +3,9 @@ import React from "react";
 
 const Page = ({ params: { slug } }: any) => {
   const fetchProduct = async () => {
-    const response = await fetch(`/api/product/${slug}`);
+    const response = await fetch(
+      `${process.env.API_URL}/api/product/getproductwithid/${slug}`
+    );
     const data = await response.json();
     return data;
   };
