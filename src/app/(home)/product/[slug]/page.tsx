@@ -26,19 +26,25 @@ const Page = ({ params: { slug } }: any) => {
   }, [product]);
 
   return (
-    <div className="p-8 h-full flex justify-center">
-      {!loading ? (
-        <ProductDetails key={product.sku} isView={true} product={product} />
-      ) : (
-        <div
-          className="
+    <>
+      <head>
+        <title>{product.name || "Check out this Product"}</title>
+        <meta name="description" content={product.short_description || ""} />
+      </head>
+      <div className="p-8 h-full flex justify-center">
+        {!loading ? (
+          <ProductDetails key={product.sku} isView={true} product={product} />
+        ) : (
+          <div
+            className="
         flex h-full items-center justify-center
         "
-        >
-          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
-        </div>
-      )}
-    </div>
+          >
+            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
