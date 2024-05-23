@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "MediShield",
+  title: "Checkout this product on Medishield",
   description: "MediShield - A dental supplies store",
 };
 
