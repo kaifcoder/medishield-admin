@@ -15,7 +15,7 @@ const Page = ({ params: { slug } }: any) => {
   return (
     <>
       <head>
-        <title>Product Share {data["findProduct"].name}</title>
+        <title>Product Share </title>
         <meta name="description" content="Product Share" />
       </head>
       <ProductShare params={{ slug }} />
