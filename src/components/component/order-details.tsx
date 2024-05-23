@@ -64,6 +64,7 @@ const formSchema = z.object({
 
 export function OrderDetails({ order }: any) {
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   console.log(order);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -78,6 +79,7 @@ export function OrderDetails({ order }: any) {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
+    setLoading(true);
     const payload = {
       ...values,
       status: "Shipped",
@@ -91,10 +93,16 @@ export function OrderDetails({ order }: any) {
 
     if (!response.ok) {
       // Handle the error
+      setLoading(false);
+      toast("Error", {
+        description: "Something went wrong.",
+        closeButton: true,
+      });
       console.error(response.statusText);
       return;
     }
 
+    setLoading(false);
     toast("Order Shipped", {
       description: "The order has been shipped.",
       closeButton: true,
@@ -438,7 +446,9 @@ export function OrderDetails({ order }: any) {
                         </FormItem>
                       )}
                     />
-                    <Button type="submit">Save changes</Button>
+                    <Button disabled={loading} type="submit">
+                      {loading ? "Loading..." : "Ship Order"}
+                    </Button>
                   </form>
                 </Form>
               </DialogContent>
