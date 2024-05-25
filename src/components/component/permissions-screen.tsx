@@ -35,6 +35,7 @@ export function PermissionsScreen() {
     MANAGE_ORDERS: "manage_orders",
     MANAGE_BRANDS: "manage_brands",
     MANAGE_ROLES: "manage_roles",
+    MANAGE_COUPONS: "manage_coupons",
   };
 
   const permissionCheckboxes = [
@@ -57,6 +58,10 @@ export function PermissionsScreen() {
     {
       code: permissionsCodes.MANAGE_ROLES,
       label: "Manage Roles",
+    },
+    {
+      code: permissionsCodes.MANAGE_COUPONS,
+      label: "Manage Coupons",
     },
   ];
 

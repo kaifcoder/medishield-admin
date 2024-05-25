@@ -97,7 +97,7 @@ export function AdminSettings() {
       setRoles(data);
       // if the user has all permissions, show all roles in the dropdown
       if (
-        userPermission.length === 5 ||
+        userPermission.length === 6 ||
         userPermission.includes("Super Admin")
       ) {
         setRoles(data);

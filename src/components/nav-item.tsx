@@ -6,7 +6,7 @@ import CategoryIcon from "@mui/icons-material/Category";
 import GradingIcon from "@mui/icons-material/Grading";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { usePathname, useRouter } from "next/navigation";
-import { LogOut } from "lucide-react";
+import { GiftIcon, LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 const permissionsCodes = {
@@ -15,6 +15,7 @@ const permissionsCodes = {
   MANAGE_ORDERS: "manage_orders",
   MANAGE_BRANDS: "manage_brands",
   MANAGE_ROLES: "manage_roles",
+  MANAGE_COUPONS: "manage_coupons",
 };
 
 const routes = [
@@ -50,6 +51,12 @@ const routes = [
     permission: ["manage_products", "manage_brands"],
   },
   {
+    label: "Coupons ",
+    icon: <GiftIcon className="h-4 w-4 mr-2" />,
+    href: `/dashboard/coupons`,
+    permission: ["manage_coupons"],
+  },
+  {
     label: "Roles and Permissions",
     icon: <CategoryIcon className="h-4 w-4 mr-2" />,
     href: `/dashboard/roles`,
@@ -72,6 +79,7 @@ const routes = [
       "manage_products",
       "manage_brands",
       "manage_orders",
+      "manage_coupons",
     ],
   },
 ];
