@@ -15,7 +15,7 @@ const CouponTableMain = (props: Props) => {
     const res = await fetch("/api/coupons");
     const data = await res.json();
 
-    setCoupon(data);
+    setCoupon(data["data"]);
     setLoading(false);
   };
 
