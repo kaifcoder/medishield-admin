@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.medishieldhealthcare.medishield",
+            "sha256_cert_fingerprints": [
+                "C1:55:F7:97:B5:F2:59:9F:26:90:9C:D0:A1:E8:58:53:1F:5C:85:81:BE:69:1E:D4:33:1C:9C:35:78:2A:B0:87"
+            ]
+        }
+    }
+]
