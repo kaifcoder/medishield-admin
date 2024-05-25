@@ -115,6 +115,31 @@ export function OrderDetails({ order }: any) {
     window.location.reload();
   }
 
+  async function handleMarkPicked() {
+    const payload = {
+      status: "picked",
+    };
+
+    const response = await fetch(`/api/orders/${order._id}`, {
+      method: "PUT",
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      // Handle the error
+      console.error(response.statusText);
+      return;
+    }
+
+    toast("Order Picked", {
+      description: "The order has been marked as picked.",
+      closeButton: true,
+    });
+
+    // refresh the page
+    window.location.reload();
+  }
+
   async function handleCancelOrder() {
     // console.log(id);
     console.log(order._id);
@@ -365,97 +390,120 @@ export function OrderDetails({ order }: any) {
           <CardHeader>
             <CardTitle>Actions</CardTitle>
           </CardHeader>
-          <CardContent className="space-x-2">
-            <Dialog open={open} onOpenChange={setOpen}>
-              <DialogTrigger>
-                <Button variant="default">Mark as Shipped</Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px]">
-                <DialogHeader>
-                  <DialogTitle>Ship Order #{order._id}</DialogTitle>
-                  <DialogDescription>
-                    Provide the tracking number for the order.
-                  </DialogDescription>
-                </DialogHeader>
-                <Form {...form}>
-                  <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-8"
-                  >
-                    <FormField
-                      control={form.control}
-                      name="w"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Weight of Package</FormLabel>
-                          <FormControl>
-                            <Input placeholder="0.5 Kg" {...field} />
-                          </FormControl>
-                          <FormDescription>
-                            Provide the weight of the package.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="h"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Height of Package</FormLabel>
-                          <FormControl>
-                            <Input placeholder="10 cm" {...field} />
-                          </FormControl>
-                          <FormDescription>
-                            Provide the height of the package.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="l"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Length of Package</FormLabel>
-                          <FormControl>
-                            <Input placeholder="10 cm" {...field} />
-                          </FormControl>
-                          <FormDescription>
-                            Provide the length of the package.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="b"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Breadth of Package</FormLabel>
-                          <FormControl>
-                            <Input placeholder="10 cm" {...field} />
-                          </FormControl>
-                          <FormDescription>
-                            Provide the breadth of the package.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <Button disabled={loading} type="submit">
-                      {loading ? "Loading..." : "Ship Order"}
-                    </Button>
-                  </form>
-                </Form>
-              </DialogContent>
-            </Dialog>
+          <CardContent className="flex items-center justify-between ">
+            <div className="space-x-2">
+              <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger>
+                  <Button variant="default">Mark as Shipped</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <DialogHeader>
+                    <DialogTitle>Ship Order #{order._id}</DialogTitle>
+                    <DialogDescription>
+                      Provide the tracking number for the order.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <Form {...form}>
+                    <form
+                      onSubmit={form.handleSubmit(onSubmit)}
+                      className="space-y-8"
+                    >
+                      <FormField
+                        control={form.control}
+                        name="w"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Weight of Package</FormLabel>
+                            <FormControl>
+                              <Input placeholder="0.5 Kg" {...field} />
+                            </FormControl>
+                            <FormDescription>
+                              Provide the weight of the package.
+                            </FormDescription>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="h"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Height of Package</FormLabel>
+                            <FormControl>
+                              <Input placeholder="10 cm" {...field} />
+                            </FormControl>
+                            <FormDescription>
+                              Provide the height of the package.
+                            </FormDescription>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="l"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Length of Package</FormLabel>
+                            <FormControl>
+                              <Input placeholder="10 cm" {...field} />
+                            </FormControl>
+                            <FormDescription>
+                              Provide the length of the package.
+                            </FormDescription>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="b"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Breadth of Package</FormLabel>
+                            <FormControl>
+                              <Input placeholder="10 cm" {...field} />
+                            </FormControl>
+                            <FormDescription>
+                              Provide the breadth of the package.
+                            </FormDescription>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <Button disabled={loading} type="submit">
+                        {loading ? "Loading..." : "Ship Order"}
+                      </Button>
+                    </form>
+                  </Form>
+                </DialogContent>
+              </Dialog>
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button>Order Picked up</Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>
+                      Are you absolutely sure?
+                    </AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action will mark the order as picked up / shipped.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction onClick={() => handleMarkPicked()}>
+                      Continue
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            </div>
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="outline">Cancel Order</Button>
+                <Button variant="destructive">Cancel Order</Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
