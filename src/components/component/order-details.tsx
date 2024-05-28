@@ -208,17 +208,27 @@ export function OrderDetails({ order }: any) {
             </div>
             <div className="font-medium">Status</div>
             <div>{order.orderStatus}</div>
-
+            {
+              // Show the coupon code if applied
+              order?.couponCodeApplied?.couponCode ? (
+                <>
+                  <div className="font-medium">Coupon Code</div>
+                  <div>{order?.couponCodeApplied?.couponCode}</div>
+                </>
+              ) : (
+                ""
+              )
+            }
             <div className="font-medium">Sub Total</div>
             <div>
               ₹{" "}
               {order.paymentIntent?.amount -
                 order.paymentIntent?.shipping +
-                order.paymentIntent?.msc}
+                (order?.couponCodeApplied?.discount || 0)}
             </div>
 
             <div className="font-medium">Discount</div>
-            <div>₹ {order.paymentIntent?.msc}</div>
+            <div>₹ {order?.couponCodeApplied?.discount || 0}</div>
             <div className="font-medium">Total after Discount</div>
             <div>
               ₹ {order.paymentIntent?.amount - order.paymentIntent?.shipping}
