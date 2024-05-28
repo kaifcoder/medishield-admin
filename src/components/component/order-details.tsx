@@ -210,10 +210,12 @@ export function OrderDetails({ order }: any) {
             <div>{order.orderStatus}</div>
             {
               // Show the coupon code if applied
-              order?.couponCodeApplied?.couponCode ? (
+              order?.couponCode ? (
                 <>
                   <div className="font-medium">Coupon Code</div>
-                  <div>{order?.couponCodeApplied?.couponCode}</div>
+                  <div>{order?.couponCode}</div>
+                  <div className="font-medium">Coupon Discount Type</div>
+                  <div>{order?.couponType}</div>
                 </>
               ) : (
                 ""
@@ -224,11 +226,11 @@ export function OrderDetails({ order }: any) {
               ₹{" "}
               {order.paymentIntent?.amount -
                 order.paymentIntent?.shipping +
-                (order?.couponCodeApplied?.discount || 0)}
+                order.paymentIntent?.discount || 0}
             </div>
 
             <div className="font-medium">Discount</div>
-            <div>₹ {order?.couponCodeApplied?.discount || 0}</div>
+            <div>₹ {order.paymentIntent?.discount || 0}</div>
             <div className="font-medium">Total after Discount</div>
             <div>
               ₹ {order.paymentIntent?.amount - order.paymentIntent?.shipping}

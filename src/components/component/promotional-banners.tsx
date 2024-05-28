@@ -1,7 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { FileEditIcon, PlusCircleIcon, ToggleRightIcon } from "lucide-react";
+import {
+  FileEditIcon,
+  PlusCircleIcon,
+  ToggleRightIcon,
+  Trash,
+  Trash2,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
 import {
@@ -30,6 +36,7 @@ import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DrawerTrigger } from "../ui/drawer";
+import { AlertDialog } from "../ui/alert-dialog";
 
 export function PromotionalBanners() {
   const formSchema = z.object({
@@ -109,6 +116,8 @@ export function PromotionalBanners() {
       console.error(error);
     }
   }
+
+  
 
   async function handleSubmit(values: z.infer<typeof formSchema>) {
     try {
@@ -399,6 +408,12 @@ export function PromotionalBanners() {
                         </Form>
                       </DialogContent>
                     </Dialog>
+                  </div>
+                  <div>
+                    <AlertDialog>
+                      
+                    </AlertDialog>
+                    <Trash  className="text-red-500 cursor-pointer" />
                   </div>
                 </div>
               </div>
