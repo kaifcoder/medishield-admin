@@ -36,7 +36,14 @@ import { Input } from "../ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DrawerTrigger } from "../ui/drawer";
-import { AlertDialog } from "../ui/alert-dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogTrigger,
+} from "../ui/alert-dialog";
 
 export function PromotionalBanners() {
   const formSchema = z.object({
@@ -117,8 +124,6 @@ export function PromotionalBanners() {
     }
   }
 
-  
-
   async function handleSubmit(values: z.infer<typeof formSchema>) {
     try {
       setUploading(true);
@@ -171,10 +176,10 @@ export function PromotionalBanners() {
       });
       const result = await response.json();
       if (response.ok) {
-        toast.success(result.message);
+        toast.success("Banner deleted successfully.");
         fetchBanners();
       } else {
-        toast.error(result.message);
+        toast.error("Failed to delete banner.");
       }
     } catch (error) {
       console.error(error);
@@ -411,9 +416,31 @@ export function PromotionalBanners() {
                   </div>
                   <div>
                     <AlertDialog>
-                      
+                      <AlertDialogTrigger>
+                        <Button size="icon" variant="destructive">
+                          <Trash className="h-4 w-4" />
+                          <span className="sr-only">Delete</span>
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <div>
+                          <h2 className="text-lg font-bold mb-4">
+                            Delete Coupon
+                          </h2>
+                          <p className="mb-4">
+                            Are you sure you want to delete this banner?
+                          </p>
+                        </div>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <AlertDialogAction
+                            onClick={() => handleDelete(banner._id)}
+                          >
+                            Delete
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
                     </AlertDialog>
-                    <Trash  className="text-red-500 cursor-pointer" />
                   </div>
                 </div>
               </div>

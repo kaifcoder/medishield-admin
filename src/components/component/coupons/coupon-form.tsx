@@ -20,13 +20,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { toast } from "sonner";
+import { set, z } from "zod";
 
 type Props = {};
 
 const CouponForm = (props: Props) => {
+  const [loading, setLoading] = useState(false);
+
   const formSchema = z.object({
     couponCode: z.string().min(1),
     type: z.string().min(1),
@@ -54,6 +57,7 @@ const CouponForm = (props: Props) => {
     console.log(data);
     try {
       // create new coupon
+      setLoading(true);
       const response = await fetch("/api/coupons/", {
         method: "POST",
         headers: {
@@ -61,12 +65,17 @@ const CouponForm = (props: Props) => {
         },
         body: JSON.stringify(data),
       });
+      setLoading(false);
       if (response.ok) {
         console.log("Coupon created successfully");
         // close the dialog
+        toast.success("Coupon created successfully");
         form.reset();
+        window.location.reload();
       }
     } catch (error) {
+      setLoading(false);
+      toast.error("Error creating coupon");
       console.log(error);
     }
   };
@@ -216,7 +225,9 @@ const CouponForm = (props: Props) => {
                 <Button variant="outline">Cancel</Button>
               </DialogClose>
               <DialogClose>
-                <Button type="submit">Create Coupon</Button>
+                <Button disabled={loading} type="submit">
+                  Create Coupon
+                </Button>
               </DialogClose>
             </DialogFooter>
           </form>

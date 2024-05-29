@@ -43,12 +43,13 @@ export async function POST(request: Request) {
     });
   }
 }
-export async function PUT(request: Request) {
+
+export async function DELETE(request: Request) {
   const session: any = await getServerSession(authOptions);
   try {
-    const response = await axios.post(
-      `${process.env.API_URL}/api/product/banner/updateBannerProduct`,
-      JSON.parse(await request.text()),
+    const body = await request.json();
+    const response = await axios.delete(
+      `${process.env.API_URL}/api/coupon/${body._id}`,
       {
         headers: {
           Authorization: `Bearer ${session?.user?.access_token}`,

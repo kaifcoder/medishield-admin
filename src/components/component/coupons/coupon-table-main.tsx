@@ -24,8 +24,9 @@ const CouponTableMain = (props: Props) => {
   }, []);
 
   const data: Coupon[] = coupon.map((coupon: any) => {
+    console.log(coupon._id);
     return {
-      _id: coupon._id,
+      id: coupon._id,
       couponCode: coupon.couponCode,
       type: coupon.type,
       discount: coupon.discount,

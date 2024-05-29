@@ -68,3 +68,28 @@ export async function PUT(request: Request) {
     });
   }
 }
+
+export async function DELETE(request: Request) {
+  const session: any = await getServerSession(authOptions);
+  try {
+    const body = await request.json();
+
+    const response = await axios.delete(
+      `${process.env.API_URL}/api/product/banner/deleteBanner/${body._id}`,
+
+      {
+        headers: {
+          Authorization: `Bearer ${session?.user?.access_token}`,
+        },
+      }
+    );
+
+    return new Response(JSON.stringify(response.data));
+  } catch (error) {
+    console.log(error);
+    return new Response("Error", {
+      status: 500,
+      statusText: "Internal Server Error",
+    });
+  }
+}

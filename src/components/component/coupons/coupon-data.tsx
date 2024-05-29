@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/alert-dialog";
 
 export type Coupon = {
-  _id: string;
+  id: string;
   couponCode: string;
   type: string;
   discount: number;
@@ -24,11 +24,26 @@ export type Coupon = {
   status: string;
 };
 
-function handleDelete(arg0: any): void {
-  alert("Delete");
-}
+const handleDelete = async (id: string) => {
+  try {
+    const res = await fetch("/api/coupons", {
+      method: "DELETE",
+      body: JSON.stringify({ _id: id }),
+    });
+    if (res.status === 200) {
+      window.location.reload();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const columns: ColumnDef<Coupon>[] = [
+  {
+    accessorKey: "id",
+    header: () => <div className="hidden">ID</div>,
+    cell: ({ row }) => <div className="hidden">{row.getValue("id")}</div>,
+  },
   {
     accessorKey: "couponCode",
     header: () => <div className="">Coupon Code</div>,
@@ -101,12 +116,13 @@ export const columns: ColumnDef<Coupon>[] = [
               <p className="mb-4">
                 Are you sure you want to delete the coupon{" "}
                 <strong>{row.getValue("couponCode")}</strong>?
+                {row.getValue("id")}
               </p>
             </div>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction
-                onClick={() => handleDelete(row.getValue("_id"))}
+                onClick={() => handleDelete(row.getValue("id"))}
               >
                 Delete
               </AlertDialogAction>
