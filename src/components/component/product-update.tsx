@@ -855,6 +855,9 @@ export function ProductUpdate({
                 <Button
                   onClick={(e) => {
                     e.preventDefault();
+                    // save the last child product
+                    console.log("Child", child);
+
                     handleAddChildProduct();
                   }}
                   className="bg-blue-500 hover:bg-blue-600 text-white w-full mt-5"

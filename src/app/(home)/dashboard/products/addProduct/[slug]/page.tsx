@@ -65,7 +65,7 @@ const page = ({ params: { slug } }: any) => {
   };
 
   const handleAddChildProduct = () => {
-    if (childProducts.lenght === 0) {
+    if (childProducts.length === 0) {
       setChildProducts([
         {
           sku: "",
@@ -121,6 +121,8 @@ const page = ({ params: { slug } }: any) => {
       values.childProducts.push(childProducts);
       return;
     }
+    // get last added childProduct
+
     setChildProducts([
       ...childProducts,
       {
