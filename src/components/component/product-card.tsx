@@ -22,6 +22,7 @@ import { Label } from "../ui/label";
 import { Switch } from "../ui/switch";
 import { Input } from "postcss";
 import { cn } from "@/lib/utils";
+import { Badge } from "../ui/badge";
 
 interface ProductCardProps {
   title: string;
@@ -52,7 +53,7 @@ const ProductCard = ({
   const { edgestore } = useEdgeStore();
 
   const [isPublished, setIsPublished] = React.useState(product.published);
-
+  const [isFeatured, setIsFeatured] = React.useState(product.featured);
   const deleteProduct = async (id: string) => {
     const res = await fetch(`/api/product/${id}`, {
       method: "DELETE",
@@ -104,6 +105,20 @@ const ProductCard = ({
     setIsPublished(!isPublished);
   };
 
+  const handleFeatured = async (id: string) => {
+    const res = await fetch(`/api/product/${id}`, {
+      method: "PUT",
+      body: JSON.stringify({ featured: !isFeatured }),
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    console.log("mark as featured product", id);
+    // turn off the switch
+    setIsFeatured(!isFeatured);
+  };
+
   return (
     <Card
       className={cn(
@@ -130,26 +145,38 @@ const ProductCard = ({
         }}
       />
       <CardContent
-        onClick={() => router.push(`/dashboard/products/${id}`)}
-        className={cn(
-          "flex flex-col flex-1  space-y-2 mt-4 items-start justify-center"
-        )}
+        className={cn("flex flex-col flex-1  mt-4 items-start justify-center")}
       >
-        {/* select  */}
+        <div
+          className=" space-y-2"
+          onClick={() => router.push(`/dashboard/products/${id}`)}
+        >
+          <img
+            alt="Image"
+            className="aspect-video object-contain rounded-lg overflow-hidden border border-gray-200 w-full dark:border-gray-800"
+            height={150}
+            src={image}
+            width={200}
+          />
+          <h2 className="text-lg font-bold leading-none">{title}</h2>
+          <p className="text-sm text-muted-foreground leading-none">
+            {description}
+          </p>
+          <div className="flex items-center justify-between">
+            <span className="text-lg font-bold">₹ {price}</span>
+          </div>
+        </div>
 
-        <img
-          alt="Image"
-          className="aspect-video object-contain rounded-lg overflow-hidden border border-gray-200 w-full dark:border-gray-800"
-          height={150}
-          src={image}
-          width={200}
-        />
-        <h2 className="text-lg font-bold leading-none">{title}</h2>
-        <p className="text-sm text-muted-foreground leading-none">
-          {description}
-        </p>
-        <div className="flex items-center justify-between">
-          <span className="text-lg font-bold">₹ {price}</span>
+        <div className="flex items-center justify-between w-full mt-2">
+          <Badge
+            onClick={() => handleFeatured(id)}
+            className={cn(
+              "text-sm",
+              isFeatured ? "bg-green-500 text-white" : "bg-gray-900 text-white"
+            )}
+          >
+            {isFeatured ? "Featured" : "Not Featured"}
+          </Badge>
         </div>
       </CardContent>
       <CardFooter className="p-4 md:flex   items-center hidden  justify-between bg-gray-200">
