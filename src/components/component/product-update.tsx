@@ -92,10 +92,14 @@ const formSchema = z.object({
   name: z.string().min(2, {
     message: "product name must be at least 2 characters.",
   }),
-  sku: z.string().min(2, { message: "sku must be at least 2 characters." }),
+  sku: z
+    .string()
+    .min(2, { message: "sku must be at least 2 characters." })
+    .trim(),
   barcode: z
     .string()
-    .min(2, { message: "barcode must be at least 2 characters." }),
+    .min(2, { message: "barcode must be at least 2 characters." })
+    .trim(),
   medishield_coins: z.coerce.number(),
   price: z.object({
     minimalPrice: z.coerce.number().min(0, {

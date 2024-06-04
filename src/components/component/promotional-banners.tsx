@@ -47,9 +47,9 @@ import {
 
 export function PromotionalBanners() {
   const formSchema = z.object({
-    title: z.string().min(1),
-    mobile_image: z.string().min(1),
-    id: z.string().min(1),
+    title: z.string().trim().min(1),
+    mobile_image: z.string().min(1).trim(),
+    id: z.string().min(1).trim(),
   });
 
   const [banners, setBanners] = useState([]) as any;
