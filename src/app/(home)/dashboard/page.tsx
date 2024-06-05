@@ -107,7 +107,11 @@ const DashBoard = () => {
           title="Shipped Orders"
           heading="Total Shipped Orders"
           value={orders
-            .filter((order: any) => order.orderStatus === "Shipped")
+            .filter(
+              (order: any) =>
+                order.orderStatus === "Shipped" ||
+                order.orderStatus === "Delivered"
+            )
             .length.toString()}
         />
         <DashboardCard
